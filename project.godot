@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot Native"
+config/name="Landlord"
 run/main_scene="res://entity/TitleScreen/TitleScreen.tscn"
 config/icon="res://icon.png"
 

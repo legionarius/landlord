@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entity/TitleScreen/TitleScreen.gdns" type="Script" id=1]
+[ext_resource path="res://asset/TitleScreen/background.png" type="Texture" id=2]
+[ext_resource path="res://asset/TitleScreen/game_title_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://asset/sound/title_music.ogg" type="AudioStream" id=4]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -13,6 +16,7 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
+texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
 __meta__ = {
@@ -20,46 +24,43 @@ __meta__ = {
 }
 
 [node name="GameTitle" type="Label" parent="."]
-margin_left = 221.93
-margin_top = 26.6207
-margin_right = 835.93
-margin_bottom = 144.621
-custom_colors/font_color = Color( 0.980392, 0.964706, 0.964706, 1 )
-text = "Project Name"
+margin_left = 229.93
+margin_top = 14.6207
+margin_right = 843.93
+margin_bottom = 132.621
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.788235, 0.564706, 0.388235, 1 )
+custom_colors/font_color_shadow = Color( 0.356863, 0.262745, 0.168627, 1 )
+text = "LANDLORD"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainMenu" type="Panel" parent="."]
-margin_left = 351.0
-margin_top = 283.0
-margin_right = 681.0
-margin_bottom = 403.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
-margin_left = 39.3213
-margin_top = 0.665161
-margin_right = 289.321
-margin_bottom = 120.665
+[node name="MainMenu" type="VBoxContainer" parent="."]
+margin_left = 416.321
+margin_top = 363.665
+margin_right = 666.321
+margin_bottom = 483.665
 rect_clip_content = true
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start" type="Button" parent="MainMenu/VBoxContainer"]
-margin_top = 37.0
+[node name="Start" type="Button" parent="MainMenu"]
+margin_top = 38.0
 margin_right = 249.0
-margin_bottom = 57.0
+margin_bottom = 58.0
 text = "Start"
 
-[node name="Exit" type="Button" parent="MainMenu/VBoxContainer"]
-margin_top = 61.0
+[node name="Exit" type="Button" parent="MainMenu"]
+margin_top = 62.0
 margin_right = 249.0
-margin_bottom = 81.0
+margin_bottom = 82.0
 text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
