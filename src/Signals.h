@@ -7,7 +7,7 @@
 
 // Application Signals
 #define FLAT_SELECTED "flat_selected"
-
+#define NEW_CYCLE "new_cycle"
 
 // Godot Signals
 #define BTN_PRESSED "pressed"
