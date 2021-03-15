@@ -40,6 +40,8 @@ void GameState::calculate_balance() {
 	balance -= monthly_charge;
 }
 
+
+
 void GameState::_register_methods() {
 	register_method("_init", &GameState::_init);
 	register_method("_ready", &GameState::_ready);

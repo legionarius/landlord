@@ -21,6 +21,8 @@ private:
 	real_t balance;
 	real_t monthly_charge;
 
+	Flat selected_flat;
+
 	void next_month();
 	void calculate_balance();
 public:
