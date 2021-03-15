@@ -14,6 +14,8 @@ class Flat: public TextureButton {
 	GODOT_CLASS(Flat, TextureButton);
 
 	int64_t id;
+	int rent;
+	int health;
 
 public:
 	static void _register_methods();
