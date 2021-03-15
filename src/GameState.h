@@ -8,13 +8,22 @@
 #include <Godot.hpp>
 #include <InputEventKey.hpp>
 #include <Node.hpp>
+#include "Signals.h"
 
 
 namespace godot {
 class GameState : public Node {
 	GODOT_CLASS(GameState, Node);
 
+private:
+	int64_t year;
+	int64_t month;
+	real_t balance;
+
+	void next_month();
 public:
+	void _next_turn();
+
 	static void _register_methods();
 	void _init();
 	void _ready();
