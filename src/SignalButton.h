@@ -16,7 +16,7 @@ namespace godot {
 class SignalButton: public TextureButton {
 	GODOT_CLASS(SignalButton, TextureButton);
 
-	String _path;
+	String _method_name;
 
 public:
 	static void _register_methods();
