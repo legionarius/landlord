@@ -13,6 +13,8 @@
 #include "GameState.h"
 #include "Signals.h"
 #include <vector>
+#include <sstream>
+#include <iomanip>
 
 namespace godot {
 class CycleInfo : public Control {
@@ -22,10 +24,11 @@ private:
 	std::vector<String> months;
 	Label * month;
 	Label * year;
+	Label * balance;
 
 
 public:
-	void _display_cycle(int month, int year);
+	void _display_cycle(int month, int year, real_t balance);
 
 	static void _register_methods();
 	void _init();

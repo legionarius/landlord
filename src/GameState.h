@@ -19,8 +19,10 @@ private:
 	int64_t year;
 	int64_t month;
 	real_t balance;
+	real_t monthly_charge;
 
 	void next_month();
+	void calculate_balance();
 public:
 	void _next_turn();
 
