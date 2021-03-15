@@ -11,7 +11,7 @@ stages:
   - deploy
 
 variables:
-  EXPORT_NAME: godot-native
+  EXPORT_NAME: landlord
   GODOT_CPP: /home/root/godot-cpp/
 
 linux:

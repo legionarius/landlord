@@ -10,8 +10,8 @@ void TitleScreen::_init() {
 }
 
 void TitleScreen::_ready() {
-	Button *exitBtn = Object::cast_to<Button>(get_node("MainMenu/VBoxContainer/Exit"));
-	Button *startBtn = Object::cast_to<Button>(get_node("MainMenu/VBoxContainer/Start"));
+	Button *exitBtn = Object::cast_to<Button>(get_node("MainMenu/Exit"));
+	Button *startBtn = Object::cast_to<Button>(get_node("MainMenu/Start"));
 	exitBtn->connect("pressed", this, "_exit");
 	startBtn->connect("pressed", this, "_start");
 }
@@ -21,8 +21,7 @@ void TitleScreen::_exit() {
 }
 
 void TitleScreen::_start() {
-	throw std::logic_error{ "No Main Scene Set" };
-	//get_tree()->change_scene("");
+	get_tree()->change_scene("entity/MainScene/MainScene.tscn");
 }
 
 void TitleScreen::_input(const Ref<InputEvent> event) {

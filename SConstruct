@@ -44,7 +44,7 @@ if (
 opts.Add(EnumVariable('target', "Compilation target", 'debug', ['d', 'debug', 'r', 'release']))
 opts.Add(EnumVariable('platform', "Compilation platform", '', ['', 'windows', 'x11', 'linux', 'osx']))
 opts.Add(EnumVariable('p', "Compilation target, alias for 'platform'", '', ['', 'windows', 'x11', 'linux', 'osx']))
-opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'yes'))
+opts.Add(BoolVariable('use_llvm', "Use the LLVM / Clang compiler", 'no'))
 opts.Add(PathVariable('target_path', 'The path where the lib is installed.', 'lib/'))
 opts.Add(PathVariable('target_name', 'The library name.', 'libgdnative', PathVariable.PathAccept))
 opts.Add(EnumVariable('bits', 'Target platform bits', '64' if is64 else '32', ('32', '64')))
