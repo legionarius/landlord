@@ -6,12 +6,12 @@
 #define MUNDANE_JAM_FLATSMANAGER_H
 
 #include "Action.h"
-#include "RepairFlatAction.h"
+#include "ActionRepairFlat.h"
 #include "Flat.h"
-#include <stack>
 #include <Array.hpp>
 #include <Godot.hpp>
 #include <Node2D.hpp>
+#include <stack>
 
 namespace godot {
 class FlatsManager : public Node2D {

@@ -50,7 +50,7 @@ void GameState::calculate_balance() {
 void GameState::_add_action() {
 	FlatsManager * flatManager =
 			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
-	RepairFlatAction * action = new RepairFlatAction("repair_flat", 1);
+	ActionRepairFlat * action = new ActionRepairFlat("repair_flat", 1);
 	flatManager->add_action(action);
 }
 
