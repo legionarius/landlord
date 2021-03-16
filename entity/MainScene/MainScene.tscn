@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://asset/MainScene/buildings01.png" type="Texture" id=1]
 [ext_resource path="res://asset/MainScene/paper_texture.png" type="Texture" id=2]
@@ -11,9 +11,10 @@
 [ext_resource path="res://entity/MainScene/NextTurn.gdns" type="Script" id=9]
 [ext_resource path="res://entity/MainScene/CycleInfo.gdns" type="Script" id=10]
 [ext_resource path="res://asset/font/Fashion Stamp.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://entity/MainScene/Flats.gdns" type="Script" id=12]
+[ext_resource path="res://entity/FlatFrame/FlatFrame.tscn" type="PackedScene" id=12]
 [ext_resource path="res://asset/MainScene/btn_add.png" type="Texture" id=13]
 [ext_resource path="res://entity/MainScene/AddAction.gdns" type="Script" id=14]
+[ext_resource path="res://entity/MainScene/Flats.gdns" type="Script" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -49,13 +50,25 @@ __meta__ = {
 }
 
 [node name="Flats" type="Node2D" parent="Map"]
-script = ExtResource( 12 )
+script = ExtResource( 15 )
 
 [node name="Flat01" parent="Map/Flats" instance=ExtResource( 5 )]
 margin_left = 59.0
 margin_top = 73.0
 margin_right = 165.0
 margin_bottom = 129.0
+
+[node name="Flat02" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 175.541
+margin_top = 74.0595
+margin_right = 281.541
+margin_bottom = 130.059
+
+[node name="Flat03" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 59.0
+margin_top = 141.865
+margin_right = 165.0
+margin_bottom = 197.865
 
 [node name="UILayer" type="Control" parent="."]
 margin_top = 0.707104
@@ -150,4 +163,10 @@ margin_bottom = 522.571
 texture_normal = ExtResource( 13 )
 expand = true
 script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 on_pressed = "_add_action"
+
+[node name="FlatFrame" parent="UILayer" instance=ExtResource( 12 )]
+visible = false

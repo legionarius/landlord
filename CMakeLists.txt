@@ -705,4 +705,6 @@ add_executable(
         src/GameState.cpp
         src/TenantIdentityCard.cpp
         src/TitleScreen.cpp
-        src/TenantManager.cpp src/TenantManager.h)
+        src/TenantManager.cpp src/TenantManager.h
+        src/FlatFrame.cpp)
+

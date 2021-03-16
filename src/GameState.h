@@ -13,6 +13,8 @@
 #include "Signals.h"
 #include "FlatsManager.h"
 #include "ActionRepairFlat.h"
+#include "Flat.h"
+
 
 namespace godot {
 class GameState : public Node {
@@ -23,8 +25,6 @@ private:
 	int64_t month;
 	real_t balance;
 	real_t monthly_charge;
-
-	Flat selected_flat;
 
 	void next_month();
 	void calculate_balance();
@@ -37,6 +37,7 @@ public:
 	void _init();
 	void _ready();
 	void _input(const Ref<InputEvent> event);
+	Flat selected_flat;
 };
 } // namespace godot
 

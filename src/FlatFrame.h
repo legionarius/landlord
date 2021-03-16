@@ -7,22 +7,25 @@
 
 #include <Godot.hpp>
 #include <Node2D.hpp>
+#include <TextureButton.hpp>
+#include "Flat.h"
+#include <Label.hpp>
+#include <iomanip>
+#include <PopupDialog.hpp>
 
 namespace godot {
-class FlatFrame: public Node2D {
-	GODOT_CLASS(FlatFrame, Node2D);
+class FlatFrame: public PopupDialog {
+	GODOT_CLASS(FlatFrame, PopupDialog);
 
-	int rent;
-	int health;
-	bool visible;
+	Label *appartmentNameLabel;
+	Label *healthLabel;
 
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
-
-	FlatFrame();
-	~FlatFrame()
+	void _set_characteristics(Flat *flat);
+	void _on_ExitButton_pressed();
 };
 }
 
