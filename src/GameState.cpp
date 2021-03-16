@@ -3,6 +3,7 @@
 //
 
 #include "GameState.h"
+#include "../../../../../../../../home/bogdan/Dev/Godot/mundane-jam/src/GameState.h"
 
 using namespace godot;
 
@@ -47,10 +48,18 @@ void GameState::calculate_balance() {
 	balance -= monthly_charge;
 }
 
+void GameState::_add_action() {
+	FlatsManager * flatManager =
+			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	RepairFlatAction * action = new RepairFlatAction("repair_flat", 1);
+	flatManager->add_action(action);
+}
+
 void GameState::_register_methods() {
 	register_method("_init", &GameState::_init);
 	register_method("_ready", &GameState::_ready);
 	register_method("_input", &GameState::_input);
 	register_method("_next_turn", &GameState::_next_turn);
+	register_method("_add_action", &GameState::_add_action);
 	register_signal<GameState>(NEW_CYCLE, "month", GODOT_VARIANT_TYPE_INT, "year", GODOT_VARIANT_TYPE_INT, "balance", GODOT_VARIANT_TYPE_REAL);
 }

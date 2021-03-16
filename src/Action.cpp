@@ -3,5 +3,7 @@
 //
 
 #include "Action.h"
+
 void Action::apply(godot::Node *item) {
+	godot::Godot::print("Running default Action implementation !");
 }

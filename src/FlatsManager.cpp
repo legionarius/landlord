@@ -21,13 +21,15 @@ void FlatsManager::_register_methods() {
 
 void FlatsManager::run_cycle() {
 	while (!actions.empty()) {
-		auto action = actions.top();
+		Action * action = actions.top();
+		Godot::print("Run action " + action->name + " on flat " + std::to_string(action->target_id).c_str());
 		Array flats = get_children();
-		action.apply(flats[action.target_id]);
+		action->apply(flats[action->target_id - 1]);
 		actions.pop();
 	}
 }
 
-void FlatsManager::add_action(Action action) {
+void FlatsManager::add_action(Action * action) {
+	Godot::print("Adding action : " + action->name);
 	actions.push(action);
 }

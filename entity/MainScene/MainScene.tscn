@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://asset/MainScene/buildings01.png" type="Texture" id=1]
 [ext_resource path="res://asset/MainScene/paper_texture.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://entity/MainScene/CycleInfo.gdns" type="Script" id=10]
 [ext_resource path="res://asset/font/Fashion Stamp.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://entity/MainScene/Flats.gdns" type="Script" id=12]
+[ext_resource path="res://asset/MainScene/btn_add.png" type="Texture" id=13]
+[ext_resource path="res://entity/MainScene/AddAction.gdns" type="Script" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -139,3 +141,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 on_pressed = "_next_turn"
+
+[node name="AddAction" type="TextureButton" parent="UILayer"]
+margin_left = 856.746
+margin_top = 453.571
+margin_right = 922.746
+margin_bottom = 522.571
+texture_normal = ExtResource( 13 )
+expand = true
+script = ExtResource( 14 )
+on_pressed = "_add_action"

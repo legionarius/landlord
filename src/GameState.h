@@ -12,6 +12,7 @@
 #include <Viewport.hpp>
 #include "Signals.h"
 #include "FlatsManager.h"
+#include "RepairFlatAction.h"
 
 namespace godot {
 class GameState : public Node {
@@ -28,6 +29,7 @@ private:
 	void run_actions();
 public:
 	void _next_turn();
+	void _add_action();
 
 	static void _register_methods();
 	void _init();

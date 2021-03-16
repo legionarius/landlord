@@ -6,6 +6,7 @@
 #define MUNDANE_JAM_FLATSMANAGER_H
 
 #include "Action.h"
+#include "RepairFlatAction.h"
 #include "Flat.h"
 #include <stack>
 #include <Array.hpp>
@@ -17,11 +18,11 @@ class FlatsManager : public Node2D {
 	GODOT_CLASS(FlatsManager, Node2D);
 
 private:
-	std::stack<Action> actions;
+	std::stack<Action*> actions;
 
 public:
 	void run_cycle();
-	void add_action(Action action);
+	void add_action(Action * action);
 
 	static void _register_methods();
 	void _init();

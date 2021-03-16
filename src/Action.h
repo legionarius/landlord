@@ -15,7 +15,7 @@ public:
 	~Action() = default;
 	int64_t target_id;
 	godot::String name;
-	void apply(godot::Node *item);
+	virtual void apply(godot::Node *item);
 };
 
 #endif //MUNDANE_JAM_ACTION_H
