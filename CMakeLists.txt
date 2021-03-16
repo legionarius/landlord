@@ -706,5 +706,7 @@ add_executable(
         src/TenantIdentityCard.cpp
         src/TitleScreen.cpp
         src/TenantManager.cpp src/TenantManager.h
-        src/FlatFrame.cpp)
+        src/FlatFrame.cpp
+        src/FlatsManager.cpp
+)
 

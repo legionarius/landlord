@@ -15,12 +15,13 @@ void Flat::_ready() {
 }
 
 void Flat::_on_pressed() {
-	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame");
+	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
 	FlatFrame *flatFrame = cast_to<FlatFrame>(flatFrameScene->instance());
 	if ( flatFrame == nullptr) {
 		Godot::print("Err");
 	} else {
-		flatFrame->_set_characteristics(this);
+		flatFrame->_set_appartment_label(id);
+		// flatFrame->_set_health(health);
 		flatFrame->popup();
 	}
 }

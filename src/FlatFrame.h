@@ -8,7 +8,6 @@
 #include <Godot.hpp>
 #include <Node2D.hpp>
 #include <TextureButton.hpp>
-#include "Flat.h"
 #include <Label.hpp>
 #include <iomanip>
 #include <PopupDialog.hpp>
@@ -20,12 +19,16 @@ class FlatFrame: public PopupDialog {
 	Label *appartmentNameLabel;
 	Label *healthLabel;
 
+
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
-	void _set_characteristics(Flat *flat);
 	void _on_ExitButton_pressed();
+
+	void _set_appartment_label(int64_t id);
+	void _set_health(int64_t health);
+
 };
 }
 

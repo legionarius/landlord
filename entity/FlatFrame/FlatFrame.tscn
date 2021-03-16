@@ -10,12 +10,16 @@
 size = 30
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 6 )
 
-[node name="FlatFrame" type="Node2D"]
+[node name="FlatFrame" type="PopupDialog"]
+visible = true
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="frame_background" type="Sprite" parent="."]
 position = Vector2( 523.443, 302.02 )
@@ -42,7 +46,7 @@ margin_left = 372.0
 margin_top = 83.0
 margin_right = 659.0
 margin_bottom = 143.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 
 [node name="ExitButton" type="TextureButton" parent="."]
 margin_left = 189.0
