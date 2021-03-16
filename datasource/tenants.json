@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "firstname": "George",
+    "lastname": "Cooper",
+    "age": "26",
+    "description": "Propriétaire d'une tanerie fleurisante. Apprécie jouer de la cornemuse après 3 verres de scotch.",
+    "picture_path": "asset/Tenant/picture/men1.png",
+    "confidence": 90,
+    "cleanliness": 30
+  },
+  {
+    "id": 2,
+    "firstname": "Susan",
+    "lastname": "Murphy",
+    "age": "75",
+    "description": "Vielle dame à la retraite. Passionné de plantes grimpantes.",
+    "picture_path": "asset/Tenant/picture/women2.png",
+    "confidence": 50,
+    "cleanliness": 50
+  },
+  {
+    "id": 3,
+    "firstname": "Barbara",
+    "lastname": "Green",
+    "age": "25",
+    "description": "Jeune étudiante anglaise qui travaille dur pour s'en sortir.",
+    "picture_path": "asset/Tenant/picture/women1.png",
+    "confidence": 60,
+    "cleanliness": 80
+  }
+]
