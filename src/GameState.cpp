@@ -3,7 +3,6 @@
 //
 
 #include "GameState.h"
-#include "../../../../../../../../home/bogdan/Dev/Godot/mundane-jam/src/GameState.h"
 
 using namespace godot;
 
