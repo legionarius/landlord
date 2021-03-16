@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GameState="*res://entity/GameState/GameState.tscn"
+TenantManager="*res://entity/Tenant/TenantManager.tscn"
 
 [display]
 
