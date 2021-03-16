@@ -8,8 +8,11 @@
 #include <Godot.hpp>
 #include <InputEventKey.hpp>
 #include <Node.hpp>
+#include <SceneTree.hpp>
+#include <Viewport.hpp>
 #include "Signals.h"
-
+#include "FlatsManager.h"
+#include "ActionRepairFlat.h"
 
 namespace godot {
 class GameState : public Node {
@@ -23,8 +26,10 @@ private:
 
 	void next_month();
 	void calculate_balance();
+	void run_actions();
 public:
 	void _next_turn();
+	void _add_action();
 
 	static void _register_methods();
 	void _init();
