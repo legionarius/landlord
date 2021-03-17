@@ -26,9 +26,9 @@ public:
 	void _ready();
 	void _on_pressed();
 
-	int64_t id;
-	int64_t rent;
-	int64_t health;
+	real_t id;
+	real_t rent;
+	real_t health;
 };
 } // namespace godot
 

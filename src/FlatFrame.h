@@ -27,9 +27,9 @@ public:
 	void _ready();
 	void _on_ExitButton_pressed();
 
-	void _set_appartment_label(int64_t id);
-	void _set_health(int64_t health);
-	void _set_rent(int64_t rent);
+	void _set_appartment_label(real_t id);
+	void _set_health(real_t health);
+	void _set_rent(real_t rent);
 };
 } // namespace godot
 
