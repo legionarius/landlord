@@ -5,16 +5,14 @@
 #ifndef MUNDANE_JAM_GAMESTATE_H
 #define MUNDANE_JAM_GAMESTATE_H
 
+#include "ActionRepairFlat.h"
+#include "FlatsManager.h"
+#include "Signals.h"
 #include <Godot.hpp>
 #include <InputEventKey.hpp>
 #include <Node.hpp>
 #include <SceneTree.hpp>
 #include <Viewport.hpp>
-#include "Signals.h"
-#include "FlatsManager.h"
-#include "ActionRepairFlat.h"
-#include "Flat.h"
-
 
 namespace godot {
 class GameState : public Node {
@@ -29,6 +27,7 @@ private:
 	void next_month();
 	void calculate_balance();
 	void run_actions();
+
 public:
 	void _next_turn();
 	void _add_action();
@@ -37,7 +36,6 @@ public:
 	void _init();
 	void _ready();
 	void _input(const Ref<InputEvent> event);
-	Flat selected_flat;
 };
 } // namespace godot
 

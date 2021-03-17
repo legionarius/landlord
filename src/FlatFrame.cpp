@@ -7,13 +7,12 @@
 using namespace godot;
 
 void FlatFrame::_init() {
-
 }
 
 void FlatFrame::_ready() {
 	Label *appartmentName = cast_to<Label>(get_node("AppartmentName"));
 	Label *health = cast_to<Label>(get_node("Health"));
-	if(appartmentName == nullptr && health == nullptr) {
+	if (appartmentName == nullptr && health == nullptr) {
 		Godot::print("Pointer null");
 	} else {
 		appartmentName->set_text(appartmentNameLabel);
@@ -22,18 +21,19 @@ void FlatFrame::_ready() {
 }
 
 void FlatFrame::_set_appartment_label(int64_t id) {
-	// std::stringstream nameString;
-	// nameString << "APPARTMENT N " << id;
-	appartmentNameLabel = "test";
+	std::stringstream nameString;
+	nameString << "APPARTMENT N " << id;
+	appartmentNameLabel = nameString.str().c_str();
 }
 
-void FlatFrame::_set_health(int64_t health){
-	// std::stringstream healthString;
-	// healthString << health;
-	healthLabel = "testhealth";
+void FlatFrame::_set_health(int64_t health) {
+	std::stringstream healthString;
+	healthString << health;
+	healthLabel = healthString.str().c_str();
 }
 
 void FlatFrame::_on_ExitButton_pressed() {
+	queue_free();
 }
 
 void FlatFrame::_register_methods() {

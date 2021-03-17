@@ -5,19 +5,19 @@
 #ifndef MUNDANE_JAM_FLAT_H
 #define MUNDANE_JAM_FLAT_H
 
-#include <Godot.hpp>
-#include <TextureButton.hpp>
-#include "Signals.h"
-#include <PopupDialog.hpp>
-#include "Viewport.hpp"
-#include "SceneTree.hpp"
 #include "FlatFrame.h"
+#include "SceneTree.hpp"
+#include "Signals.h"
+#include "Viewport.hpp"
+#include <Godot.hpp>
+#include <PackedScene.hpp>
+#include <PopupDialog.hpp>
 #include <Ref.hpp>
 #include <ResourceLoader.hpp>
-#include <PackedScene.hpp>
+#include <TextureButton.hpp>
 
 namespace godot {
-class Flat: public TextureButton {
+class Flat : public TextureButton {
 	GODOT_CLASS(Flat, TextureButton);
 
 public:
@@ -30,6 +30,6 @@ public:
 	int64_t rent;
 	int64_t health;
 };
-}
+} // namespace godot
 
 #endif //MUNDANE_JAM_FLAT_H

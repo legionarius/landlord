@@ -6,19 +6,18 @@
 #define MUNDANE_JAM_FLATFRAME_H
 
 #include <Godot.hpp>
-#include <Node2D.hpp>
-#include <TextureButton.hpp>
 #include <Label.hpp>
-#include <iomanip>
+#include <Node2D.hpp>
 #include <PopupDialog.hpp>
+#include <TextureButton.hpp>
+#include <iomanip>
 
 namespace godot {
-class FlatFrame: public PopupDialog {
+class FlatFrame : public PopupDialog {
 	GODOT_CLASS(FlatFrame, PopupDialog);
 
 	String appartmentNameLabel;
 	String healthLabel;
-
 
 public:
 	static void _register_methods();
@@ -28,9 +27,7 @@ public:
 
 	void _set_appartment_label(int64_t id);
 	void _set_health(int64_t health);
-
 };
-}
-
+} // namespace godot
 
 #endif //MUNDANE_JAM_FLATFRAME_H
