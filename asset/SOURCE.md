@@ -11,7 +11,7 @@
 ## Resources
 
 - Clouds :
-	- https://www.vhv.rs/viewpic/hToxxwJ_clouds-gif-png-graphic-freeuse-stock-moving-clouds/
+	- https://www.flickr.com/photos/internetarchivebookimages/14783096505/
 - Flying Birds by Piers Dyer : http://www.lowgif.com/af641fc38c0726bd.html
 
 ## Music 
