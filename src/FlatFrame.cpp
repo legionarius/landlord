@@ -10,13 +10,17 @@ void FlatFrame::_init() {
 }
 
 void FlatFrame::_ready() {
-	Label *appartmentName = cast_to<Label>(get_node("AppartmentName"));
-	Label *health = cast_to<Label>(get_node("Health"));
-	if (appartmentName == nullptr && health == nullptr) {
+	Label *appartmentName = cast_to<Label>(get_node("Frame/AppartmentName"));
+	Label *health = cast_to<Label>(get_node("Frame/Health"));
+	Label *rent = cast_to<Label>(get_node("Frame/Rent"));
+	AnimationPlayer *animation = cast_to<AnimationPlayer>(get_node("AnimationPlayer"));
+	if (appartmentName == nullptr && health == nullptr && rent == nullptr && animation == nullptr) {
 		Godot::print("Pointer null");
 	} else {
 		appartmentName->set_text(appartmentNameLabel);
 		health->set_text(healthLabel);
+		rent->set_text(rentLabel);
+		animation->play("open");
 	}
 }
 
@@ -30,6 +34,12 @@ void FlatFrame::_set_health(int64_t health) {
 	std::stringstream healthString;
 	healthString << health;
 	healthLabel = healthString.str().c_str();
+}
+
+void FlatFrame::_set_rent(int64_t rent) {
+	std::stringstream rentString;
+	rentString << rent << " $";
+	rentLabel = rentString.str().c_str();
 }
 
 void FlatFrame::_on_ExitButton_pressed() {
