@@ -12,6 +12,7 @@ void Flat::_init() {
 
 void Flat::_ready() {
 	id = get_name().right(2).to_int();
+	health = 100;
 }
 
 void Flat::_on_pressed() {
@@ -21,7 +22,8 @@ void Flat::_on_pressed() {
 		Godot::print("Err");
 	} else {
 		flatFrame->_set_appartment_label(id);
-		// flatFrame->_set_health(health);
+		flatFrame->_set_health(health);
+		add_child(flatFrame);
 		flatFrame->popup();
 	}
 }

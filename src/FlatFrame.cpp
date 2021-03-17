@@ -11,20 +11,26 @@ void FlatFrame::_init() {
 }
 
 void FlatFrame::_ready() {
-	appartmentNameLabel = cast_to<Label>(get_node("AppartmentName"));
-	healthLabel = cast_to<Label>(get_node("Health"));
+	Label *appartmentName = cast_to<Label>(get_node("AppartmentName"));
+	Label *health = cast_to<Label>(get_node("Health"));
+	if(appartmentName == nullptr && health == nullptr) {
+		Godot::print("Pointer null");
+	} else {
+		appartmentName->set_text(appartmentNameLabel);
+		health->set_text(healthLabel);
+	}
 }
 
 void FlatFrame::_set_appartment_label(int64_t id) {
-	std::stringstream nameString;
-	nameString << "APPARTMENT N " <<  id;
-	appartmentNameLabel->set_text(nameString.str().c_str());
+	// std::stringstream nameString;
+	// nameString << "APPARTMENT N " << id;
+	appartmentNameLabel = "test";
 }
 
 void FlatFrame::_set_health(int64_t health){
-	std::stringstream healthString;
-	healthString << health;
-	healthLabel->set_text(healthString.str().c_str());
+	// std::stringstream healthString;
+	// healthString << health;
+	healthLabel = "testhealth";
 }
 
 void FlatFrame::_on_ExitButton_pressed() {

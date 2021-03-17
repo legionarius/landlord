@@ -16,8 +16,8 @@ namespace godot {
 class FlatFrame: public PopupDialog {
 	GODOT_CLASS(FlatFrame, PopupDialog);
 
-	Label *appartmentNameLabel;
-	Label *healthLabel;
+	String appartmentNameLabel;
+	String healthLabel;
 
 
 public:
