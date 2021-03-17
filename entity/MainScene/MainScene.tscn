@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://asset/MainScene/buildings01.png" type="Texture" id=1]
+[ext_resource path="res://asset/MainScene/buildings.png" type="Texture" id=1]
 [ext_resource path="res://asset/MainScene/paper_texture.png" type="Texture" id=2]
 [ext_resource path="res://asset/MainScene/ui_box.png" type="Texture" id=3]
 [ext_resource path="res://asset/font/TheRustic-Demo.ttf" type="DynamicFontData" id=4]
@@ -11,16 +11,28 @@
 [ext_resource path="res://entity/MainScene/NextTurn.gdns" type="Script" id=9]
 [ext_resource path="res://entity/MainScene/CycleInfo.gdns" type="Script" id=10]
 [ext_resource path="res://asset/font/Fashion Stamp.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://entity/FlatFrame/FlatFrame.tscn" type="PackedScene" id=12]
+[ext_resource path="res://entity/MainScene/Flats.gdns" type="Script" id=12]
 [ext_resource path="res://asset/MainScene/btn_add.png" type="Texture" id=13]
 [ext_resource path="res://entity/MainScene/AddAction.gdns" type="Script" id=14]
-[ext_resource path="res://entity/MainScene/Flats.gdns" type="Script" id=15]
+[ext_resource path="res://asset/MainScene/flying_birds-0.png" type="Texture" id=15]
+[ext_resource path="res://asset/MainScene/flying_birds-1.png" type="Texture" id=16]
+[ext_resource path="res://asset/MainScene/cloud01.png" type="Texture" id=17]
+[ext_resource path="res://entity/MainScene/Weather.gdns" type="Script" id=18]
+[ext_resource path="res://entity/MainScene/MainSceneflying_birds.tres" type="Animation" id=19]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=3]
 size = 48
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 18
 font_data = ExtResource( 11 )
 
@@ -37,6 +49,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Weather" type="Node2D" parent="Map"]
+script = ExtResource( 18 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Weather"]
+anims/flying_birds = ExtResource( 19 )
+
+[node name="FlyingBirds" type="AnimatedSprite" parent="Map/Weather"]
+position = Vector2( 755.544, 46.7725 )
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="Cloud" type="Sprite" parent="Map/Weather"]
+position = Vector2( 812.083, 41.9526 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 17 )
+
 [node name="Buildings" type="TextureRect" parent="Map"]
 margin_left = 3.0
 margin_top = -1.0
@@ -50,109 +79,13 @@ __meta__ = {
 }
 
 [node name="Flats" type="Node2D" parent="Map"]
-script = ExtResource( 15 )
+script = ExtResource( 12 )
 
 [node name="Flat01" parent="Map/Flats" instance=ExtResource( 5 )]
 margin_left = 59.0
 margin_top = 73.0
 margin_right = 165.0
 margin_bottom = 129.0
-
-[node name="Flat02" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 175.541
-margin_top = 74.0595
-margin_right = 281.541
-margin_bottom = 130.059
-
-[node name="Flat03" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 59.0
-margin_top = 141.865
-margin_right = 165.0
-margin_bottom = 197.865
-
-[node name="Flat04" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 174.0
-margin_top = 143.865
-margin_right = 280.0
-margin_bottom = 199.865
-
-[node name="Flat05" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 61.0
-margin_top = 219.865
-margin_right = 167.0
-margin_bottom = 275.865
-
-[node name="Flat06" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 177.0
-margin_top = 221.865
-margin_right = 283.0
-margin_bottom = 277.865
-
-[node name="Flat07" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 62.0
-margin_top = 303.865
-margin_right = 168.0
-margin_bottom = 359.865
-
-[node name="Flat08" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 180.0
-margin_top = 306.865
-margin_right = 286.0
-margin_bottom = 362.865
-
-[node name="Flat09" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 306.0
-margin_top = 158.865
-margin_right = 412.0
-margin_bottom = 214.865
-
-[node name="Flat10" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 305.0
-margin_top = 231.865
-margin_right = 411.0
-margin_bottom = 287.865
-
-[node name="Flat11" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 304.0
-margin_top = 315.865
-margin_right = 410.0
-margin_bottom = 371.865
-
-[node name="Flat12" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 432.0
-margin_top = 162.865
-margin_right = 538.0
-margin_bottom = 218.865
-
-[node name="Flat13" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 428.0
-margin_top = 228.865
-margin_right = 534.0
-margin_bottom = 284.865
-
-[node name="Flat14" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 427.0
-margin_top = 319.865
-margin_right = 533.0
-margin_bottom = 375.865
-
-[node name="Flat15" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 551.0
-margin_top = 163.0
-margin_right = 625.0
-margin_bottom = 219.0
-
-[node name="Flat16" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 552.0
-margin_top = 229.0
-margin_right = 626.0
-margin_bottom = 285.0
-
-[node name="Flat17" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 553.0
-margin_top = 317.0
-margin_right = 627.0
-margin_bottom = 373.0
 
 [node name="UILayer" type="Control" parent="."]
 margin_top = 0.707104
@@ -200,7 +133,7 @@ margin_left = 18.0
 margin_top = 18.0
 margin_right = 307.0
 margin_bottom = 75.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.905882, 0.760784, 0.647059, 1 )
 custom_colors/font_color_shadow = Color( 0.356863, 0.262745, 0.168627, 1 )
 text = "JANUARY"
@@ -214,7 +147,7 @@ margin_left = 61.7004
 margin_top = 549.52
 margin_right = 252.7
 margin_bottom = 580.52
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "1000.00 $"
 align = 2
@@ -237,7 +170,6 @@ script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-on_pressed = "_next_turn"
 
 [node name="AddAction" type="TextureButton" parent="UILayer"]
 margin_left = 856.746
@@ -247,10 +179,3 @@ margin_bottom = 522.571
 texture_normal = ExtResource( 13 )
 expand = true
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-on_pressed = "_add_action"
-
-[node name="FlatFrame" parent="UILayer" instance=ExtResource( 12 )]
-visible = false
