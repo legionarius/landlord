@@ -2,15 +2,16 @@
 // Created by bogdan on 11/02/2021.
 //
 
+#include "CycleInfo.h"
 #include "Flat.h"
+#include "FlatFrame.h"
+#include "FlatsManager.h"
 #include "GameState.h"
 #include "SignalButton.h"
-#include "CycleInfo.h"
 #include "TenantIdentityCard.h"
 #include "TenantManager.h"
 #include "TitleScreen.h"
-#include "FlatsManager.h"
-#include "FlatFrame.h"
+#include "Weather.h"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
 	godot::Godot::gdnative_init(o);
@@ -32,4 +33,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
 	godot::register_class<godot::CycleInfo>();
 	godot::register_class<godot::FlatFrame>();
 	godot::register_class<godot::FlatsManager>();
+	godot::register_class<godot::Weather>();
 }
