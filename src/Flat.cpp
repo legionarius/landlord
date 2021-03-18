@@ -12,11 +12,19 @@ void Flat::_init() {
 void Flat::_ready() {
 	connect("pressed", this, "_on_pressed");
 	id = get_name().right(2).to_int();
-	health = 50;
-	rent = 350;
+	health = 50; // TODO: Randomize health
+	rent = 350; // TODO: Randomize rent
+}
+
+void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
+	this->tenant = tenant;
+	end_lease = 12; // TODO: Randomize the length of the lease.
 }
 
 void Flat::_on_pressed() {
+	if (tenant != nullptr) {
+		Godot::print(String(tenant->first_name) + " " + String(tenant->last_name) + " lives here.");
+	}
 	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
 	FlatFrame *flatFrame = cast_to<FlatFrame>(flatFrameScene->instance());
 	flatFrame->_set_apartment_label(id);

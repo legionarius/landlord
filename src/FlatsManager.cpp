@@ -11,7 +11,16 @@ void FlatsManager::_init() {
 }
 
 void FlatsManager::_ready() {
+	add_tenants();
+}
 
+void FlatsManager::add_tenants() {
+	Array flats = get_children();
+	TenantManager * tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
+	for (size_t i = 0; i < flats.size(); i++) {
+		Flat * flat = cast_to<Flat>(flats[i]);
+		flat->sign_lease(tenantManager->get_tenant(i));
+	}
 }
 
 void FlatsManager::_register_methods() {
