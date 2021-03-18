@@ -15,6 +15,10 @@ void FlatFrame::_ready() {
 	Label *rent = cast_to<Label>(get_node("Frame/RentBackground/Rent"));
 	AnimationPlayer *animation = cast_to<AnimationPlayer>(get_node("AnimationPlayer"));
 	AudioStreamPlayer *audio = cast_to<AudioStreamPlayer>(get_node("AudioStreamPlayer"));
+	TextureButton *exitButton = cast_to<TextureButton>(get_node("Frame/ExitButton"));
+
+	exitButton->connect("pressed", this, "_on_ExitButton_pressed");
+
 	audio->play();
 	animation->play("open");
 

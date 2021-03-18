@@ -55,7 +55,6 @@ tracks/1/keys = {
 }
 
 [node name="FlatFrame" type="PopupDialog"]
-visible = true
 margin_left = 0.445435
 margin_top = -0.445465
 margin_right = 1029.45
@@ -67,7 +66,8 @@ __meta__ = {
 }
 
 [node name="Frame" type="Sprite" parent="."]
-position = Vector2( 510.48, 300.485 )
+position = Vector2( -86.1938, 38.8567 )
+rotation = -0.757473
 scale = Vector2( 1.31696, 1.31696 )
 texture = ExtResource( 1 )
 
@@ -190,4 +190,3 @@ anims/open = SubResource( 5 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -15.0
-[connection signal="pressed" from="Frame/ExitButton" to="." method="_on_ExitButton_pressed"]
