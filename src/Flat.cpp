@@ -12,14 +12,14 @@ void Flat::_init() {
 void Flat::_ready() {
 	connect("pressed", this, "_on_pressed");
 	id = get_name().right(2).to_int();
-	health = 100;
+	health = 50;
 	rent = 350;
 }
 
 void Flat::_on_pressed() {
 	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
 	FlatFrame *flatFrame = cast_to<FlatFrame>(flatFrameScene->instance());
-	flatFrame->_set_appartment_label(id);
+	flatFrame->_set_apartment_label(id);
 	flatFrame->_set_health(health);
 	flatFrame->_set_rent(rent);
 	add_child(flatFrame);
