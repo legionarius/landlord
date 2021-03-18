@@ -28,6 +28,8 @@ public:
 	void run_cycle();
 	void add_action(Action * action);
 	void add_tenants();
+	real_t _collect_rent();
+	void update_flats();
 
 	static void _register_methods();
 	void _init();

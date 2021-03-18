@@ -7,13 +7,23 @@
 using namespace godot;
 
 void Flat::_init() {
+	health = 50; // TODO: Randomize health
+	rent = 350; // TODO: Randomize rent
+	update_charge();
+}
+
+// Should be run after each cycle when
+// the flat health changes.
+void Flat::update_charge() {
+	// Charge :
+	// - 50% of the rent
+	// - Bonus of 25% of the health (remove the bonus from the charge)
+	charge = (rent * 50.f) / 100.f - (health * 0.25);
 }
 
 void Flat::_ready() {
 	connect("pressed", this, "_on_pressed");
 	id = get_name().right(2).to_int();
-	health = 50; // TODO: Randomize health
-	rent = 350; // TODO: Randomize rent
 }
 
 void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
@@ -38,4 +48,20 @@ void Flat::_register_methods() {
 	register_method("_init", &Flat::_init);
 	register_method("_ready", &Flat::_ready);
 	register_method("_on_pressed", &Flat::_on_pressed);
+}
+real_t Flat::break_legs_and_collect_money() {
+	if (tenant != nullptr) {
+		auto rnd = RandomNumberGenerator()._new();
+		rnd->set_seed(1894720573047910);
+		real_t n = rnd->randf_range(0, 1);
+		if (n < (tenant->confidence / 100.f)) {
+			Godot::print("Rent payed for flat " + String(std::to_string(id).c_str()));
+			return rent - charge;
+		} else {
+			Godot::print("Rent NOT payed for flat " + String(std::to_string(id).c_str()));
+			return 0.f;
+		}
+	} else {
+		return 0.f;
+	}
 }

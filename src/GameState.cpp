@@ -20,11 +20,11 @@ void GameState::_input(const Ref<InputEvent> event) {
 }
 
 void GameState::_next_turn() {
+	calculate_balance();
 	// Apply actions
 	run_actions();
 	// Update current state
 	next_month();
-	calculate_balance();
 	// Update UI
 	emit_signal(NEW_CYCLE, month, year, balance);
 }
@@ -44,7 +44,9 @@ void GameState::run_actions() {
 }
 
 void GameState::calculate_balance() {
-	balance -= monthly_charge;
+	FlatsManager * flatManager =
+			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	balance += flatManager->_collect_rent();
 }
 
 void GameState::_add_action() {

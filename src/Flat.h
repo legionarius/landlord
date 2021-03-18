@@ -16,6 +16,7 @@
 #include <TextureButton.hpp>
 #include <Viewport.hpp>
 #include "TenantIdentityCard.h"
+#include <RandomNumberGenerator.hpp>
 
 namespace godot {
 class Flat : public TextureButton {
@@ -30,10 +31,13 @@ public:
 	void _ready();
 	void _on_pressed();
 	void sign_lease(TenantIdentityCard::Tenant * tenant);
+	void update_charge();
+	real_t break_legs_and_collect_money();
 
-	real_t id;
+	int64_t id;
 	real_t rent;
 	real_t health;
+	real_t charge;
 };
 } // namespace godot
 

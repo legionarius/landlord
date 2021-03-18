@@ -28,6 +28,16 @@ void FlatsManager::_register_methods() {
 	register_method("_ready", &FlatsManager::_ready);
 }
 
+real_t FlatsManager::_collect_rent() {
+	real_t money = 0.f;
+	Array flats = get_children();
+	for (size_t i = 0; i < flats.size(); i++) {
+		Flat * flat = cast_to<Flat>(flats[i]);
+		money += flat->break_legs_and_collect_money();
+	}
+	return money;
+}
+
 void FlatsManager::run_cycle() {
 	while (!actions.empty()) {
 		Action * action = actions.top();
@@ -35,6 +45,17 @@ void FlatsManager::run_cycle() {
 		Array flats = get_children();
 		action->apply(flats[action->target_id - 1]);
 		actions.pop();
+	}
+	update_flats();
+}
+
+// After actions are run we update
+// the flat charges
+void FlatsManager::update_flats() {
+	Array flats = get_children();
+	for (size_t i = 0; i < flats.size(); i++) {
+		Flat * flat = cast_to<Flat>(flats[i]);
+		flat->update_charge();
 	}
 }
 
