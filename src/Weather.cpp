@@ -17,7 +17,6 @@ void Weather::_register_methods() {
 	register_method("_on_animation_started", &Weather::_on_animation_started);
 }
 void Weather::_init() {
-
 }
 void Weather::_ready() {
 	player = cast_to<AnimationPlayer>(get_node("AnimationPlayer"));
