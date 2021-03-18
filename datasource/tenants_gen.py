@@ -52,7 +52,20 @@ def gen_tenants(n = 50):
     with open('tenants.json', 'w') as out:
         json.dump(tenants, out)
 
+def edit_desc():
+    f = open('tenants.json', 'r')
+    data = json.load(f)
+    f.close()
+    for tenant in data:
+        if not tenant['description']:
+            print(json.dumps(tenant, indent=4))
+            tenant['description'] = input('Enter description: ')
+    with open('tenants.json', 'w') as out:
+        json.dump(data, out)
+
+
 if __name__=="__main__":
     gen_tenants()
+    edit_desc()
 
 
