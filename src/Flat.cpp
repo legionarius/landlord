@@ -7,8 +7,10 @@
 using namespace godot;
 
 void Flat::_init() {
-	health = 50; // TODO: Randomize health
-	rent = 350; // TODO: Randomize rent
+	rng = RandomNumberGenerator()._new();
+	rng->randomize();
+	health = rng->randi_range(0, 100);
+	rent = rng->randf_range(100, 500);
 	update_charge();
 }
 
@@ -51,9 +53,8 @@ void Flat::_register_methods() {
 }
 real_t Flat::break_legs_and_collect_money() {
 	if (tenant != nullptr) {
-		auto rnd = RandomNumberGenerator()._new();
-		rnd->set_seed(1894720573047910);
-		real_t n = rnd->randf_range(0, 1);
+		rng->randomize();
+		real_t n = rng->randf_range(0, 1);
 		if (n < (tenant->confidence / 100.f)) {
 			Godot::print("Rent payed for flat " + String(std::to_string(id).c_str()));
 			return rent - charge;

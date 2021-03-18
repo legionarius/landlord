@@ -24,6 +24,7 @@ class Flat : public TextureButton {
 
 	TenantIdentityCard::Tenant * tenant;
 	int64_t end_lease; // cycle at which the
+	RandomNumberGenerator * rng;
 
 public:
 	static void _register_methods();
@@ -36,7 +37,7 @@ public:
 
 	int64_t id;
 	real_t rent;
-	real_t health;
+	int64_t health;
 	real_t charge;
 };
 } // namespace godot
