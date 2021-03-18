@@ -5,20 +5,20 @@
 #ifndef MUNDANE_JAM_WEATHER_H
 #define MUNDANE_JAM_WEATHER_H
 
+#include <AnimatedSprite.hpp>
+#include <AnimationPlayer.hpp>
 #include <Godot.hpp>
 #include <Node2D.hpp>
-#include <AnimationPlayer.hpp>
 #include <RandomNumberGenerator.hpp>
-#include <AnimatedSprite.hpp>
 #include <Sprite.hpp>
 
 namespace godot {
 class Weather : public Node2D {
 	GODOT_CLASS(Weather, Node2D);
 
-	AnimationPlayer * player;
-	AnimatedSprite * birds;
-	Sprite * clouds;
+	AnimationPlayer *player;
+	AnimatedSprite *birds;
+	Sprite *clouds;
 	real_t min_time;
 
 public:
@@ -29,6 +29,6 @@ public:
 	void _init();
 	void _ready();
 };
-}
+} // namespace godot
 
 #endif //MUNDANE_JAM_WEATHER_H

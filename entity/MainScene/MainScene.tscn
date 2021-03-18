@@ -87,6 +87,12 @@ margin_top = 73.0
 margin_right = 165.0
 margin_bottom = 129.0
 
+[node name="Flat02" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 174.0
+margin_top = 73.0
+margin_right = 280.0
+margin_bottom = 129.0
+
 [node name="UILayer" type="Control" parent="."]
 margin_top = 0.707104
 margin_right = 40.0
@@ -170,6 +176,7 @@ script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+on_pressed = "_next_turn"
 
 [node name="AddAction" type="TextureButton" parent="UILayer"]
 margin_left = 856.746
@@ -179,3 +186,4 @@ margin_bottom = 522.571
 texture_normal = ExtResource( 13 )
 expand = true
 script = ExtResource( 14 )
+on_pressed = "_add_action"
