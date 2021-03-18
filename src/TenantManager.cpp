@@ -13,6 +13,10 @@ TenantManager::~TenantManager() {
 	tenant_array.clear();
 }
 
+TenantIdentityCard::Tenant * TenantManager::get_tenant(int n) {
+	return tenant_array[n];
+}
+
 void TenantManager::load_inputs() {
 	Ref<File> file = File::_new();
 	Error json_file = file->open("datasource/tenants.json", File::ModeFlags::READ);

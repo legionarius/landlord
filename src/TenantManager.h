@@ -16,6 +16,8 @@
 #include <vector>
 
 #include "TenantIdentityCard.h"
+#include "TenantManager.h"
+#include "Flat.h"
 
 namespace godot {
 class TenantManager: public Node {
@@ -26,6 +28,7 @@ private:
 	void load_inputs();
 
 public:
+	TenantIdentityCard::Tenant* get_tenant(int n);
 	static void _register_methods();
 	void _init();
 	void _ready();

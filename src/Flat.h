@@ -15,16 +15,21 @@
 #include <SceneTree.hpp>
 #include <TextureButton.hpp>
 #include <Viewport.hpp>
+#include "TenantIdentityCard.h"
 
 namespace godot {
 class Flat : public TextureButton {
 	GODOT_CLASS(Flat, TextureButton);
+
+	TenantIdentityCard::Tenant * tenant;
+	int64_t end_lease; // cycle at which the
 
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
 	void _on_pressed();
+	void sign_lease(TenantIdentityCard::Tenant * tenant);
 
 	real_t id;
 	real_t rent;

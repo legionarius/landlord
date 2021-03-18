@@ -8,9 +8,13 @@
 #include "Action.h"
 #include "ActionRepairFlat.h"
 #include "Flat.h"
+#include "TenantManager.h"
+#include <Viewport.hpp>
+#include <SceneTree.hpp>
 #include <Array.hpp>
 #include <Godot.hpp>
 #include <Node2D.hpp>
+#include <Node.hpp>
 #include <stack>
 
 namespace godot {
@@ -23,6 +27,7 @@ private:
 public:
 	void run_cycle();
 	void add_action(Action * action);
+	void add_tenants();
 
 	static void _register_methods();
 	void _init();

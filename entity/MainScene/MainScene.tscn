@@ -93,6 +93,96 @@ margin_top = 73.0
 margin_right = 280.0
 margin_bottom = 129.0
 
+[node name="Flat03" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 61.6786
+margin_top = 141.903
+margin_right = 167.679
+margin_bottom = 197.903
+
+[node name="Flat04" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 182.495
+margin_top = 141.903
+margin_right = 288.495
+margin_bottom = 197.903
+
+[node name="Flat05" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 65.4542
+margin_top = 220.245
+margin_right = 171.454
+margin_bottom = 276.245
+
+[node name="Flat06" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 182.495
+margin_top = 220.245
+margin_right = 288.495
+margin_bottom = 276.245
+
+[node name="Flat07" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 65.0
+margin_top = 296.0
+margin_right = 171.0
+margin_bottom = 377.0
+
+[node name="Flat08" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 180.0
+margin_top = 298.0
+margin_right = 286.0
+margin_bottom = 380.0
+
+[node name="Flat09" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 308.974
+margin_top = 161.724
+margin_right = 414.974
+margin_bottom = 217.724
+
+[node name="Flat10" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 311.0
+margin_top = 228.0
+margin_right = 417.0
+margin_bottom = 291.0
+
+[node name="Flat11" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 305.0
+margin_top = 305.0
+margin_right = 419.0
+margin_bottom = 382.0
+
+[node name="Flat12" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 430.0
+margin_top = 165.0
+margin_right = 546.0
+margin_bottom = 221.0
+
+[node name="Flat13" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 433.0
+margin_top = 226.0
+margin_right = 544.0
+margin_bottom = 292.0
+
+[node name="Flat14" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 430.0
+margin_top = 310.0
+margin_right = 544.0
+margin_bottom = 388.0
+
+[node name="Flat15" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 555.0
+margin_top = 165.0
+margin_right = 634.0
+margin_bottom = 221.0
+
+[node name="Flat16" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 554.0
+margin_top = 233.0
+margin_right = 631.0
+margin_bottom = 289.0
+
+[node name="Flat17" parent="Map/Flats" instance=ExtResource( 5 )]
+margin_left = 554.0
+margin_top = 298.0
+margin_right = 630.0
+margin_bottom = 381.0
+
 [node name="UILayer" type="Control" parent="."]
 margin_top = 0.707104
 margin_right = 40.0
