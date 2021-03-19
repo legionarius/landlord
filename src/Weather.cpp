@@ -17,6 +17,7 @@ void Weather::_register_methods() {
 	register_method("_on_animation_started", &Weather::_on_animation_started);
 }
 void Weather::_init() {
+	rng = RandomNumberGenerator()._new();
 }
 void Weather::_ready() {
 	player = cast_to<AnimationPlayer>(get_node("AnimationPlayer"));
@@ -26,12 +27,10 @@ void Weather::_ready() {
 }
 void Weather::_process(float delta) {
 	if (!player->is_playing() && min_time > 15.f) {
-		auto rnd = RandomNumberGenerator()._new();
-		rnd->set_seed(1894720573047910);
-		real_t n = rnd->randf_range(0, 20);
-		auto rnd2 = RandomNumberGenerator()._new();
-		real_t show_birds = rnd2->randf_range(0, 50);
-		real_t show_cloud = rnd2->randf_range(0, 10);
+		rng->randomize();
+		real_t n = rng->randf_range(0, 20);
+		real_t show_birds = rng->randf_range(0, 50);
+		real_t show_cloud = rng->randf_range(0, 10);
 		if (show_birds > 25.f) {
 			birds->set_visible(true);
 		} else {

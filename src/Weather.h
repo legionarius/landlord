@@ -20,6 +20,7 @@ class Weather : public Node2D {
 	AnimatedSprite *birds;
 	Sprite *clouds;
 	real_t min_time;
+	RandomNumberGenerator * rng;
 
 public:
 	void _on_animation_started();
