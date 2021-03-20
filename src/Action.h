@@ -9,7 +9,7 @@
 #include <Node.hpp>
 #include <string>
 
-enum ActionType { ACTION_REPAIR_FLAT, ACTION_FIRE_TENANT };
+enum ActionType { ACTION_REPAIR_FLAT, ACTION_FIRE_TENANT, ACTION_MOVE_IN_TENANT};
 
 class Action {
 public:
@@ -18,6 +18,8 @@ public:
 	int64_t target_id;
 	ActionType actionType;
 	virtual void apply(godot::Node *item);
+	virtual godot::String get_texture_path();
+	static godot::String type_to_string(ActionType type);
 };
 
 #endif //MUNDANE_JAM_ACTION_H

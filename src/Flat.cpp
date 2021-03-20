@@ -6,6 +6,16 @@
 
 using namespace godot;
 
+void Flat::_register_methods() {
+	register_method("_init", &Flat::_init);
+	register_method("_ready", &Flat::_ready);
+	register_method("_on_pressed", &Flat::_on_pressed);
+	register_method("queue_move_in_tenant", &Flat::queue_move_in_tenant);
+	register_method("queue_repair_flat", &Flat::queue_repair_flat);
+	register_method("queue_fire_tenant", &Flat::queue_fire_tenant);
+	register_method("reset_action_icon", &Flat::reset_action_icon);
+}
+
 void Flat::_init() {
 	rng = RandomNumberGenerator()._new();
 	rng->randomize();
@@ -25,7 +35,7 @@ void Flat::update_charge() {
 
 void Flat::_ready() {
 	connect("pressed", this, "_on_pressed");
-	id = get_name().right(2).to_int();
+	id = get_name().right(4).to_int();
 }
 
 void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
@@ -40,15 +50,14 @@ void Flat::_on_pressed() {
 	flatFrame->_set_health(health);
 	flatFrame->_set_rent(rent);
 	flatFrame->_set_tenant(tenant);
+	// TODO: Voir pour faire une methode queue action en passant un param dans la méthode connect
+	flatFrame->connect(SIGNAL_REPAIR_FLAT, this, "queue_repair_flat");
+	flatFrame->connect(SIGNAL_FIRE_TENANT, this, "queue_fire_tenant");
+	flatFrame->connect(SIGNAL_MOVE_IN_TENANT, this, "queue_move_in_tenant");
 	add_child(flatFrame);
 	flatFrame->popup();
 }
 
-void Flat::_register_methods() {
-	register_method("_init", &Flat::_init);
-	register_method("_ready", &Flat::_ready);
-	register_method("_on_pressed", &Flat::_on_pressed);
-}
 real_t Flat::break_legs_and_collect_money() {
 	if (tenant != nullptr) {
 		rng->randomize();
@@ -63,4 +72,69 @@ real_t Flat::break_legs_and_collect_money() {
 	} else {
 		return 0.f;
 	}
+}
+
+void Flat::queue_move_in_tenant(const bool isPressed) {
+	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	if (isPressed){
+		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this->id);
+		flatsManager->add_action(actionMoveInTenant);
+		_add_action_icon_on_flat(actionMoveInTenant);
+
+	} else {
+		flatsManager->remove_action(this->id, ACTION_MOVE_IN_TENANT);
+		_remove_action_icon_on_flat(ACTION_MOVE_IN_TENANT);
+	}
+}
+
+void Flat::queue_fire_tenant(const bool isPressed) {
+	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	if (isPressed){
+		ActionFireTenant *actionFireTenant = new ActionFireTenant(this->id);
+		flatsManager->add_action(actionFireTenant);
+		_add_action_icon_on_flat(actionFireTenant);
+
+	} else {
+		flatsManager->remove_action(this->id, ACTION_FIRE_TENANT);
+		_remove_action_icon_on_flat(ACTION_FIRE_TENANT);
+	}
+}
+
+void Flat::queue_repair_flat(const bool isPressed) {
+	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	if (isPressed){
+		ActionRepairFlat *actionRepairFlat = new ActionRepairFlat(this->id);
+		if(!flatsManager->action_will_be_executed_in_apartment(this->id, ACTION_REPAIR_FLAT)){
+			flatsManager->add_action(actionRepairFlat);
+			_add_action_icon_on_flat(actionRepairFlat);
+		}
+	} else {
+		flatsManager->remove_action(this->id, ACTION_REPAIR_FLAT);
+		_remove_action_icon_on_flat(ACTION_REPAIR_FLAT);
+	}
+}
+
+void Flat::reset_action_icon() {
+	Array icons = get_children();
+	for (size_t i = 0; i < icons.size(); i++) {
+		Node *icon = cast_to<Node>(icons[i]);
+		icon->queue_free();
+	}
+}
+
+void Flat::_add_action_icon_on_flat(Action *action) {
+	TextureRect *textureRect = TextureRect::_new();
+	Ref<Texture> action_icon = ResourceLoader::get_singleton()->load(action->get_texture_path());
+	textureRect->set_name(action->type_to_string(action->actionType));
+	textureRect->set_texture(action_icon);
+	textureRect->set_position(Vector2(0, 35));
+	textureRect->set_scale(Vector2(0.2, 0.2));
+	textureRect->set_margin(0, 20*(get_child_count()-1));
+	add_child(textureRect);
+}
+
+void Flat::_remove_action_icon_on_flat(ActionType actionType) {
+	std::stringstream actionNodeName;
+	Node *node = get_node(Action::type_to_string(actionType).operator NodePath());
+	node->queue_free();
 }

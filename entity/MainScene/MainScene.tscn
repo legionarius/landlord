@@ -39,8 +39,10 @@ font_data = ExtResource( 11 )
 [node name="Map" type="Node2D" parent="."]
 
 [node name="BackgroundTexture" type="TextureRect" parent="Map"]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = 2.12132
+margin_top = -0.707108
+margin_right = 1026.12
+margin_bottom = 599.293
 texture = ExtResource( 2 )
 stretch_mode = 2
 __meta__ = {
@@ -57,7 +59,6 @@ anims/flying_birds = ExtResource( 19 )
 position = Vector2( 755.544, 46.7725 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Cloud" type="Sprite" parent="Map/Weather"]
@@ -80,10 +81,10 @@ __meta__ = {
 script = ExtResource( 12 )
 
 [node name="Flat01" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 59.0
-margin_top = 73.0
-margin_right = 165.0
-margin_bottom = 129.0
+margin_left = 61.6757
+margin_top = 69.7297
+margin_right = 167.676
+margin_bottom = 125.73
 
 [node name="Flat02" parent="Map/Flats" instance=ExtResource( 5 )]
 margin_left = 174.0
@@ -92,9 +93,9 @@ margin_right = 280.0
 margin_bottom = 129.0
 
 [node name="Flat03" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 61.6786
+margin_left = 62.1505
 margin_top = 141.903
-margin_right = 167.679
+margin_right = 168.151
 margin_bottom = 197.903
 
 [node name="Flat04" parent="Map/Flats" instance=ExtResource( 5 )]

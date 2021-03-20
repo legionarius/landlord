@@ -19,6 +19,7 @@
 #include <PackedScene.hpp>
 #include <PopupDialog.hpp>
 #include <ProgressBar.hpp>
+#include <ResourceLoader.hpp>
 #include <Sprite.hpp>
 #include <TextureButton.hpp>
 #include <iomanip>
@@ -37,7 +38,8 @@ public:
 	static void _register_methods();
 	void _init();
 	void _ready();
-	void _on_ExitButton_pressed();
+	void _on_exitButton_pressed();
+	void _on_move_in_pressed();
 	void _on_repair_pressed();
 	void _on_fire_pressed();
 
@@ -45,6 +47,7 @@ public:
 	void _set_health(real_t health);
 	void _set_rent(real_t rent);
 	void _set_tenant(TenantIdentityCard::Tenant* tenant);
+	TextureButton _get_fire_tenant_button() const;
 };
 } // namespace godot
 
