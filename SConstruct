@@ -91,9 +91,9 @@ elif env['platform'] in ('x11', 'linux'):
     env['target_path'] += 'x11/'
     cpp_library += '.linux'
     if env['target'] in ('debug', 'd'):
-        env.Append(CCFLAGS = ['-fPIC', '-g3','-Og', '-std=c++17'])
+        env.Append(CCFLAGS = ['-fPIC', '-g3','-Og', '-std=c++2a'])
     else:
-        env.Append(CCFLAGS = ['-fPIC', '-g','-O3', '-std=c++17'])
+        env.Append(CCFLAGS = ['-fPIC', '-g','-O3', '-std=c++2a'])
 
 elif env['platform'] == "windows":
     env['target_path'] += 'win64/'
@@ -134,7 +134,7 @@ elif env['platform'] == "windows":
     # Native or cross-compilation using MinGW
     if host_platform == 'linux' or host_platform == 'osx' or env['use_mingw']:
         # These options are for a release build even using target=debug
-        env.Append(CCFLAGS=['-O3', '-std=c++14', '-Wwrite-strings'])
+        env.Append(CCFLAGS=['-O3', '-std=c++2a', '-Wwrite-strings'])
         env.Append(LINKFLAGS=[
             '--static',
             '-Wl,--no-undefined',

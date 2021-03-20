@@ -6,28 +6,29 @@
 #define MUNDANE_JAM_FLATSMANAGER_H
 
 #include "Action.h"
-#include "ActionRepairFlat.h"
 #include "Flat.h"
 #include "TenantManager.h"
 #include <Viewport.hpp>
 #include <SceneTree.hpp>
 #include <Array.hpp>
 #include <Godot.hpp>
-#include <Node2D.hpp>
 #include <Node.hpp>
-#include <stack>
+#include <Node2D.hpp>
+#include <vector>
 
 namespace godot {
 class FlatsManager : public Node2D {
 	GODOT_CLASS(FlatsManager, Node2D);
 
 private:
-	std::stack<Action*> actions;
+	std::vector<Action*> actions;
 
 public:
 	void run_cycle();
 	void add_action(Action * action);
 	void add_tenants();
+	void remove_action(real_t apartmentId, ActionType actionType);
+	bool action_will_be_executed_in_apartment(real_t apartmentId, ActionType actionType);
 	real_t _collect_rent();
 	void update_flats();
 

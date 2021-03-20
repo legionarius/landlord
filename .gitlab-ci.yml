@@ -18,7 +18,6 @@ linux:
   stage: export
   script:
     - scons platform=linux target=release
-    - sed -i -e 's/X11.64/Server/g' lib/gdlibrary.tres
     - mkdir -v -p build/linux
     - godot -v --export "Linux/X11" build/linux/$EXPORT_NAME.x86_64
   artifacts:

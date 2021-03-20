@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
 project(mundane-jam)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 20)
 
 include_directories(godot-cpp)
 include_directories(godot-cpp/godot-headers)
@@ -708,5 +708,5 @@ add_executable(
         src/TenantManager.cpp src/TenantManager.h
         src/FlatFrame.cpp
         src/FlatsManager.cpp
-)
+        src/ActionFireTenant.cpp src/ActionFireTenant.h)
 

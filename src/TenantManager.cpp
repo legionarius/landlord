@@ -7,19 +7,19 @@
 using namespace godot;
 
 TenantManager::~TenantManager() {
-	for(TenantIdentityCard::Tenant* tenant:tenant_array){
+	for (TenantIdentityCard::Tenant *tenant : tenant_array) {
 		delete tenant;
 	}
 	tenant_array.clear();
 }
 
-TenantIdentityCard::Tenant * TenantManager::get_tenant(int n) {
+TenantIdentityCard::Tenant *TenantManager::get_tenant(int n) {
 	return tenant_array[n];
 }
 
 void TenantManager::load_inputs() {
 	Ref<File> file = File::_new();
-	Error json_file = file->open("datasource/tenants.json", File::ModeFlags::READ);
+	Error json_file = file->open("res://datasource/tenants.json", File::ModeFlags::READ);
 	if (json_file == Error::ERR_FILE_CANT_OPEN) {
 		Godot::print("Can't open file !");
 	} else if (json_file == Error::ERR_FILE_CANT_READ) {
@@ -41,7 +41,6 @@ void TenantManager::load_inputs() {
 		tenant->cleanliness = input["cleanliness"];
 		tenant_array.push_back(tenant);
 	}
-
 }
 
 void TenantManager::_init() {
@@ -50,7 +49,7 @@ void TenantManager::_init() {
 	Godot::print("All tenants loaded");
 }
 
-void TenantManager::_ready(){}
+void TenantManager::_ready() {}
 
 void TenantManager::_register_methods() {
 	register_method("_init", &TenantManager::_init);

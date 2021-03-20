@@ -9,12 +9,14 @@
 #include <Node.hpp>
 #include <string>
 
+enum ActionType { ACTION_REPAIR_FLAT, ACTION_FIRE_TENANT };
+
 class Action {
 public:
-	Action(godot::String name, int64_t id): name{ name }, target_id{ id } {}
+	Action(ActionType actionType, int64_t id): actionType{ actionType }, target_id{ id } {}
 	~Action() = default;
 	int64_t target_id;
-	godot::String name;
+	ActionType actionType;
 	virtual void apply(godot::Node *item);
 };
 
