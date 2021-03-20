@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/women2.png-0e8c5303ea2461a86ff3289cfc3a4683.stex"
+path="res://.import/fire_action_button_selected.png-c044a5cd29f5f5c174e1ba10a3808f4d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Tenant/picture/women2.png"
-dest_files=[ "res://.import/women2.png-0e8c5303ea2461a86ff3289cfc3a4683.stex" ]
+source_file="res://asset/FlatFrame/fire_action_button_selected.png"
+dest_files=[ "res://.import/fire_action_button_selected.png-c044a5cd29f5f5c174e1ba10a3808f4d.stex" ]
 
 [params]
 

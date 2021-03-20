@@ -14,7 +14,7 @@
 class ActionRepairFlat : public Action {
 
 public:
-	ActionRepairFlat(godot::String name, int64_t id): Action { name, id } {};
+	ActionRepairFlat(int64_t id, ActionType actionType = ACTION_REPAIR_FLAT): Action{ actionType, id } {};
 	void apply(godot::Node * item) override;
 };
 

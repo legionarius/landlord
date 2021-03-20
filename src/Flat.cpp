@@ -34,14 +34,12 @@ void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 }
 
 void Flat::_on_pressed() {
-	if (tenant != nullptr) {
-		Godot::print(String(tenant->first_name) + " " + String(tenant->last_name) + " lives here.");
-	}
 	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
 	FlatFrame *flatFrame = cast_to<FlatFrame>(flatFrameScene->instance());
 	flatFrame->_set_apartment_label(id);
 	flatFrame->_set_health(health);
 	flatFrame->_set_rent(rent);
+	flatFrame->_set_tenant(tenant);
 	add_child(flatFrame);
 	flatFrame->popup();
 }
@@ -56,10 +54,10 @@ real_t Flat::break_legs_and_collect_money() {
 		rng->randomize();
 		real_t n = rng->randf_range(0, 1);
 		if (n < (tenant->confidence / 100.f)) {
-			Godot::print("Rent payed for flat " + String(std::to_string(id).c_str()));
+			Godot::print("[RENT]: payed for flat " + String(std::to_string(id).c_str()));
 			return rent - charge;
 		} else {
-			Godot::print("Rent NOT payed for flat " + String(std::to_string(id).c_str()));
+			Godot::print("[RENT]: NOT payed for flat " + String(std::to_string(id).c_str()));
 			return 0.f;
 		}
 	} else {

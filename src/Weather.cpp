@@ -7,7 +7,7 @@
 using namespace godot;
 
 void Weather::_on_animation_started() {
-	Godot::print("Animation started");
+	Godot::print("[ANIMATION]: started");
 }
 
 void Weather::_register_methods() {

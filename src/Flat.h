@@ -5,8 +5,12 @@
 #ifndef MUNDANE_JAM_FLAT_H
 #define MUNDANE_JAM_FLAT_H
 
+#include "ActionRepairFlat.h"
+#include "ActionFireTenant.h"
 #include "FlatFrame.h"
+#include "FlatsManager.h"
 #include "Signals.h"
+
 #include <Godot.hpp>
 #include <PackedScene.hpp>
 #include <PopupDialog.hpp>
