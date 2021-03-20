@@ -35,7 +35,7 @@ void FlatFrame::_ready() {
 		tenantIdentityCard->set_tenant(tenant);
 		tenantIdentityCard->set_position(Vector2(-112, -95));
 		mainContainer->add_child(tenantIdentityCard);
-		_get_fire_tenant_button();
+		_add_fire_tenant_button();
 
 	} else {
 		Godot::print("no Tenant");
@@ -92,11 +92,16 @@ void FlatFrame::_on_repair_pressed() {
 	emit_signal(SIGNAL_REPAIR_FLAT, repairButton->is_pressed());
 }
 
-TextureButton FlatFrame::_get_fire_tenant_button() const {
-	Ref<Texture> action_icon = ResourceLoader::get_singleton()->load(ActionFireTenant::iconPath);
+void FlatFrame::_add_fire_tenant_button() const {
+	Ref<Texture> actionIcon = ResourceLoader::get_singleton()->load(ActionFireTenant::iconPath);
+	Ref<Texture> actionIconSelected = ResourceLoader::get_singleton()->load(ActionFireTenant::iconPathSelected);
 	TextureButton *fireButton = TextureButton::_new();
 	fireButton->set_position(Vector2(-276, 130));
 	fireButton->set_scale(Vector2(0.4, 0.4));
+	fireButton->set_normal_texture(actionIcon);
+	fireButton->set_pressed_texture(actionIconSelected);
+	Node *parentNode = get_node("Frame");
+	parentNode->add_child(fireButton);
 }
 
 void FlatFrame::_register_methods() {

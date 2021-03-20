@@ -47,7 +47,7 @@ public:
 	void _set_health(real_t health);
 	void _set_rent(real_t rent);
 	void _set_tenant(TenantIdentityCard::Tenant* tenant);
-	TextureButton _get_fire_tenant_button() const;
+	void _add_fire_tenant_button() const;
 };
 } // namespace godot
 
