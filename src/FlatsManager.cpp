@@ -49,6 +49,7 @@ void FlatsManager::update_flats() {
 		Flat *flat = cast_to<Flat>(flats[i]);
 		flat->reset_action_icon();
 		flat->update_charge();
+		flat->update_health();
 	}
 }
 

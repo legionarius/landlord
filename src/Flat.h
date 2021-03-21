@@ -11,6 +11,7 @@
 #include "FlatFrame.h"
 #include "FlatsManager.h"
 #include "Signals.h"
+#include "Constants.h"
 
 #include <Godot.hpp>
 #include <PackedScene.hpp>
@@ -24,6 +25,7 @@
 #include <Viewport.hpp>
 #include "TenantIdentityCard.h"
 #include <RandomNumberGenerator.hpp>
+#include <algorithm>
 
 namespace godot {
 class Flat : public TextureButton {
@@ -48,6 +50,7 @@ public:
 	void _add_action_icon_on_flat(Action *action);
 	void _remove_action_icon_on_flat(ActionType actionType);
 	void repair();
+	void update_health();
 
 	int64_t id;
 	real_t rent;
