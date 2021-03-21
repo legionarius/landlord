@@ -18,6 +18,7 @@ void FlatFrame::_ready() {
 	AudioStreamPlayer *audio = cast_to<AudioStreamPlayer>(get_node("AudioStreamPlayer"));
 	TextureButton *exitButton = cast_to<TextureButton>(get_node("Frame/ExitButton"));
 
+	tenant = nullptr;
 	if(tenant != nullptr) {
 		Ref<PackedScene> tenantIdentityCardScene = ResourceLoader::get_singleton()->load("entity/Tenant/TenantIdentityCard.tscn");
 		TenantIdentityCard *tenantIdentityCard = cast_to<TenantIdentityCard>(tenantIdentityCardScene->instance());
