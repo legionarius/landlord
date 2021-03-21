@@ -14,12 +14,12 @@
 class ActionRepairFlat : public Action {
 
 public:
-	static godot::String iconPath;
-	static godot::String iconPathSelected;
+	static std::string iconPath;
+	static std::string iconPathSelected;
 
 	ActionRepairFlat(int64_t id, ActionType actionType = ACTION_REPAIR_FLAT): Action{ actionType, id } {};
 	void apply(godot::Node * item) override;
-	godot::String get_texture_path() override {return iconPath;};
+	godot::String get_texture_path() override {return godot::String(iconPath.c_str());};
 };
 
 #endif //MUNDANE_JAM_ACTIONREPAIRFLAT_H

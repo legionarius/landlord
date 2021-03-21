@@ -14,12 +14,12 @@
 class ActionFireTenant : public Action {
 
 public:
-	static godot::String iconPath;
-	static godot::String iconPathSelected;
+	static std::string iconPath;
+	static std::string iconPathSelected;
 
 	ActionFireTenant(int64_t id, ActionType actionType = ACTION_FIRE_TENANT): Action{ actionType, id } {};
 	void apply(godot::Node * item) override;
-	godot::String get_texture_path() override {return iconPath;};
+	godot::String get_texture_path() override {return godot::String(iconPath.c_str());};
 };
 
 #endif //MUNDANE_JAM_ACTIONFIRETENANT_H

@@ -14,11 +14,11 @@
 class ActionMoveInTenant : public Action {
 
 public:
-	static godot::String iconPath;
-	static godot::String iconPathSelected;
+	static std::string iconPath;
+	static std::string iconPathSelected;
 
 	ActionMoveInTenant(int64_t id, ActionType actionType = ACTION_MOVE_IN_TENANT): Action{ actionType, id } {};
 	void apply(godot::Node * item) override;
-	godot::String get_texture_path() override {return iconPath;};
+	godot::String get_texture_path() override {return godot::String(iconPath.c_str());};
 };
 #endif //MUNDANE_JAM_ACTIONMOVEINTENANT_H

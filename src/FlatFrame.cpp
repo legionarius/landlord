@@ -17,18 +17,8 @@ void FlatFrame::_ready() {
 	AnimationPlayer *animation = cast_to<AnimationPlayer>(get_node("AnimationPlayer"));
 	AudioStreamPlayer *audio = cast_to<AudioStreamPlayer>(get_node("AudioStreamPlayer"));
 	TextureButton *exitButton = cast_to<TextureButton>(get_node("Frame/ExitButton"));
-	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 
-//	TextureButton *repairButton = cast_to<TextureButton>(get_node("Frame/RepairButton"));
-//	TextureButton *fireButton = cast_to<TextureButton>(get_node("Frame/FireButton"));
-//	TextureButton *moveInButton = cast_to<TextureButton>(get_node("Frame/MoveInButton"));
-//	repairButton->connect("pressed", this, "_on_repair_pressed");
-//	fireButton->connect("pressed", this, "_on_fire_pressed");
-//	moveInButton->connect("pressed", this, "_on_move_in_pressed");
-//	repairButton->set_pressed(flatsManager->action_will_be_executed_in_apartment(this->apartmentId, ACTION_REPAIR_FLAT));
-//	fireButton->set_pressed(flatsManager->action_will_be_executed_in_apartment(this->apartmentId, ACTION_FIRE_TENANT));
-//	moveInButton->set_pressed(flatsManager->action_will_be_executed_in_apartment(this->apartmentId, ACTION_MOVE_IN_TENANT));
-
+	
 	if(tenant != nullptr) {
 		Ref<PackedScene> tenantIdentityCardScene = ResourceLoader::get_singleton()->load("entity/Tenant/TenantIdentityCard.tscn");
 		TenantIdentityCard *tenantIdentityCard = cast_to<TenantIdentityCard>(tenantIdentityCardScene->instance());
@@ -36,9 +26,9 @@ void FlatFrame::_ready() {
 		tenantIdentityCard->set_position(Vector2(-112, -95));
 		mainContainer->add_child(tenantIdentityCard);
 		_add_fire_tenant_button();
-
 	} else {
-		Godot::print("no Tenant");
+		_add_move_in_tenant_button();
+		_add_repair_flat_button();
 	}
 
 	exitButton->connect("pressed", this, "_on_exitButton_pressed");
@@ -93,15 +83,57 @@ void FlatFrame::_on_repair_pressed() {
 }
 
 void FlatFrame::_add_fire_tenant_button() const {
-	Ref<Texture> actionIcon = ResourceLoader::get_singleton()->load(ActionFireTenant::iconPath);
-	Ref<Texture> actionIconSelected = ResourceLoader::get_singleton()->load(ActionFireTenant::iconPathSelected);
+	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	Ref<Texture> actionIcon = ResourceLoader::get_singleton()->load(ActionFireTenant::iconPath.c_str());
+	Ref<Texture> actionIconSelected = ResourceLoader::get_singleton()->load(ActionFireTenant::iconPathSelected.c_str());
 	TextureButton *fireButton = TextureButton::_new();
+	fireButton->set_name("FireButton");
 	fireButton->set_position(Vector2(-276, 130));
 	fireButton->set_scale(Vector2(0.4, 0.4));
 	fireButton->set_normal_texture(actionIcon);
 	fireButton->set_pressed_texture(actionIconSelected);
+	fireButton->set_toggle_mode(true);
+	fireButton->connect("pressed", this, "_on_fire_pressed");
+	fireButton->set_pressed(flatsManager->action_will_be_executed_in_apartment(this->apartmentId, ACTION_FIRE_TENANT));
+
 	Node *parentNode = get_node("Frame");
 	parentNode->add_child(fireButton);
+}
+
+void FlatFrame::_add_move_in_tenant_button() const {
+	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	Ref<Texture> actionIcon = ResourceLoader::get_singleton()->load(ActionMoveInTenant::iconPath.c_str());
+	Ref<Texture> actionIconSelected = ResourceLoader::get_singleton()->load(ActionMoveInTenant::iconPathSelected.c_str());
+	TextureButton *moveInButton = TextureButton::_new();
+	moveInButton->set_name("MoveInButton");
+	moveInButton->set_position(Vector2(-276, 130));
+	moveInButton->set_scale(Vector2(0.4, 0.4));
+	moveInButton->set_normal_texture(actionIcon);
+	moveInButton->set_pressed_texture(actionIconSelected);
+	moveInButton->set_toggle_mode(true);
+	moveInButton->connect("pressed", this, "_on_move_in_pressed");
+	moveInButton->set_pressed(flatsManager->action_will_be_executed_in_apartment(this->apartmentId, ACTION_MOVE_IN_TENANT));
+
+	Node *parentNode = get_node("Frame");
+	parentNode->add_child(moveInButton);
+}
+
+void FlatFrame::_add_repair_flat_button() const {
+	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	Ref<Texture> actionIcon = ResourceLoader::get_singleton()->load(ActionRepairFlat::iconPath.c_str());
+	Ref<Texture> actionIconSelected = ResourceLoader::get_singleton()->load(ActionRepairFlat::iconPathSelected.c_str());
+	TextureButton *repairFlatButton = TextureButton::_new();
+	repairFlatButton->set_name("RepairButton");
+	repairFlatButton->set_position(Vector2(-237, 130));
+	repairFlatButton->set_scale(Vector2(0.4, 0.4));
+	repairFlatButton->set_normal_texture(actionIcon);
+	repairFlatButton->set_pressed_texture(actionIconSelected);
+	repairFlatButton->set_toggle_mode(true);
+	repairFlatButton->connect("pressed", this, "_on_repair_pressed");
+	repairFlatButton->set_pressed(flatsManager->action_will_be_executed_in_apartment(this->apartmentId, ACTION_REPAIR_FLAT));
+
+	Node *parentNode = get_node("Frame");
+	parentNode->add_child(repairFlatButton);
 }
 
 void FlatFrame::_register_methods() {

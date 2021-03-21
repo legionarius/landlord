@@ -4,8 +4,8 @@
 
 #include "ActionFireTenant.h"
 
-godot::String ActionFireTenant::iconPath = "res://asset/FlatFrame/fire_action_button.png";
-godot::String ActionFireTenant::iconPathSelected = "res://asset/FlatFrame/fire_action_button_selected.png";
+std::string ActionFireTenant::iconPath = "res://asset/FlatFrame/fire_action_button.png";
+std::string ActionFireTenant::iconPathSelected = "res://asset/FlatFrame/fire_action_button_selected.png";
 
 void ActionFireTenant::apply(godot::Node *item) {
 	godot::Flat *flat = godot::Object::cast_to<godot::Flat>(item);
