@@ -143,3 +143,17 @@ void Flat::_remove_action_icon_on_flat(ActionType actionType) {
 void Flat::repair() {
 	health = 100;
 }
+
+void Flat::fire_tenant() {
+	std::free(tenant);
+	tenant = nullptr;
+}
+
+void Flat::fire_tenant_if_end_leasing() {
+	if(tenant != nullptr){
+		GameState *gameState = Object::cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
+		if (tenant->leasing_end_cycle <= gameState->get_cycle_number()){
+			fire_tenant();
+		}
+	}
+}

@@ -10,6 +10,7 @@ std::string ActionFireTenant::iconPathSelected = "res://asset/FlatFrame/fire_act
 void ActionFireTenant::apply() {
 	godot::Flat *flat = godot::Object::cast_to<godot::Flat>(target);
 	godot::Godot::print("[ACTION]: Fire tenant in flat : " + flat->get_name());
+	flat->fire_tenant();
 }
 
 real_t ActionFireTenant::get_cost() {

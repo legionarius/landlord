@@ -21,6 +21,7 @@ class GameState : public Node {
 private:
 	int64_t year;
 	int64_t month;
+	real_t cycle_number;
 	real_t balance;
 	real_t monthly_charge;
 
@@ -31,6 +32,7 @@ private:
 
 public:
 	void _next_turn();
+	real_t get_cycle_number(){return cycle_number;}
 
 	static void _register_methods();
 	void _init();

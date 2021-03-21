@@ -12,6 +12,7 @@ void TenantIdentityCard::_ready() {
 	Label *age_label = Object::cast_to<Label>(get_node("Age"));
 	Label *confidence_label = Object::cast_to<Label>(get_node("Confidence"));
 	Label *cleanliness_label = Object::cast_to<Label>(get_node("Cleanliness"));
+	Label *leasing_duration_label = Object::cast_to<Label>(get_node("LeasingDuration"));
 	RichTextLabel *description_label = Object::cast_to<RichTextLabel>(get_node("Description"));
 	TextureRect *picture = Object::cast_to<TextureRect>(get_node("Picture"));
 
@@ -23,6 +24,9 @@ void TenantIdentityCard::_ready() {
 			confidence_label->set_text(String::num_int64(get_confidence()));
 			cleanliness_label->set_text(String::num_int64(get_cleanliness()));
 			description_label->set_text(get_description());
+			std::stringstream leasing_duration_stream;
+			leasing_duration_stream << get_leasing_duration() << " month(s)";
+			leasing_duration_label->set_text(leasing_duration_stream.str().c_str());
 
 			Ref<Texture> picture_png = ResourceLoader::get_singleton()->load(get_picture_path());
 			if(!picture_png.is_null()){

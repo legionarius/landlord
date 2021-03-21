@@ -12,6 +12,7 @@ from random import randint, choice
 
 men_pic = "asset/Tenant/picture/men1.png"
 women_pic = "asset/Tenant/picture/woman1.png"
+leasing_duration_array = [1, 6 , 12]
 
 def age():
     return randint(18, 99)
@@ -34,6 +35,9 @@ def picture(gender):
     else:
         return women_pic
 
+def leasing_duration():
+    return leasing_duration_array[randint(0,2)]
+
 def gen_tenants(n = 50):
     tenants = []
     for i in range(1,n+1):
@@ -46,7 +50,8 @@ def gen_tenants(n = 50):
                 "description": "",
                 "picture_path": picture(sex),
                 "confidence": percentage(),
-                "cleanliness": percentage()
+                "cleanliness": percentage(),
+                "leasing_duration": leasing_duration()
                 }
         tenants.append(tenant)
     with open('tenants.json', 'w') as out:

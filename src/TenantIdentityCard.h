@@ -11,6 +11,7 @@
 #include <RichTextLabel.hpp>
 #include <Texture.hpp>
 #include <TextureRect.hpp>
+#include <sstream>
 
 namespace godot {
 class TenantIdentityCard : public TextureRect{
@@ -26,6 +27,8 @@ public:
 		uint16_t age;
 		uint16_t confidence;
 		uint16_t cleanliness;
+		real_t leasing_duration;
+		real_t leasing_end_cycle;
 	};
 
 	Tenant *tenant;
@@ -43,6 +46,7 @@ public:
 	String get_picture_path(){return tenant->picture_path;}
 	uint16_t get_confidence(){return tenant->confidence;}
 	uint16_t get_cleanliness(){return tenant->cleanliness;}
+	uint16_t get_leasing_duration(){return tenant->leasing_duration;}
 
 	// Setter
 	void set_tenant(TenantIdentityCard::Tenant *m_tenant){ tenant = m_tenant;};

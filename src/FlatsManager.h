@@ -6,8 +6,10 @@
 #define MUNDANE_JAM_FLATSMANAGER_H
 
 #include "Action.h"
+#include "GameState.h"
 #include "Flat.h"
 #include "TenantManager.h"
+
 #include <Viewport.hpp>
 #include <SceneTree.hpp>
 #include <Array.hpp>

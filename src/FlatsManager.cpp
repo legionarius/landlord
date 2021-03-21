@@ -15,10 +15,13 @@ void FlatsManager::_ready() {
 
 void FlatsManager::add_tenants() {
 	Array flats = get_children();
+	GameState *gameState = Object::cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
 	TenantManager *tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
 	for (size_t i = 0; i < flats.size(); i++) {
 		Flat *flat = cast_to<Flat>(flats[i]);
-		flat->sign_lease(tenantManager->get_tenant(i));
+		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(i);
+		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration - 1;
+		flat->sign_lease(tenant);
 	}
 }
 
@@ -47,6 +50,7 @@ void FlatsManager::update_flats() {
 	Array flats = get_children();
 	for (size_t i = 0; i < flats.size(); i++) {
 		Flat *flat = cast_to<Flat>(flats[i]);
+		flat->fire_tenant_if_end_leasing();
 		flat->reset_action_icon();
 		flat->update_charge();
 	}
