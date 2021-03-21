@@ -14,8 +14,9 @@
 class ActionFireTenant : public Action {
 
 public:
-	ActionFireTenant(int64_t id, ActionType actionType = ACTION_FIRE_TENANT): Action{ actionType, id } {};
-	void apply(godot::Node * item) override;
+	ActionFireTenant(godot::Node * item, ActionType actionType = ACTION_FIRE_TENANT): Action{ actionType, item } {};
+	void apply() override;
+	virtual real_t get_cost() override;
 };
 
 #endif //MUNDANE_JAM_ACTIONFIRETENANT_H

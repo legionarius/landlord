@@ -27,10 +27,10 @@ private:
 	void next_month();
 	void calculate_balance();
 	void run_actions();
+	void calculate_actions_cost();
 
 public:
 	void _next_turn();
-	void _add_action();
 
 	static void _register_methods();
 	void _init();

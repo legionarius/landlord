@@ -38,6 +38,7 @@ public:
 	void sign_lease(TenantIdentityCard::Tenant * tenant);
 	void update_charge();
 	real_t break_legs_and_collect_money();
+	void repair();
 
 	int64_t id;
 	real_t rent;

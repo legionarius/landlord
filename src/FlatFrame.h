@@ -27,8 +27,9 @@ namespace godot {
 class FlatFrame : public PopupDialog {
 	GODOT_CLASS(FlatFrame, PopupDialog);
 
-	real_t apartmentId;
-	String apartmentNameLabel;
+	Node * flat;
+	real_t flatId;
+	String flatNameLabel;
 	real_t healthLabel;
 	String rentLabel;
 	TenantIdentityCard::Tenant *tenant;
@@ -41,7 +42,8 @@ public:
 	void _on_repair_pressed();
 	void _on_fire_pressed();
 
-	void _set_apartment_label(real_t id);
+	void _set_flat(Node * item);
+	void _set_flat_label(real_t id);
 	void _set_health(real_t health);
 	void _set_rent(real_t rent);
 	void _set_tenant(TenantIdentityCard::Tenant* tenant);
