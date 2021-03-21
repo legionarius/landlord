@@ -12,6 +12,7 @@
 #include "TenantManager.h"
 #include "TitleScreen.h"
 #include "Weather.h"
+#include "MonthReport.h"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
 	godot::Godot::gdnative_init(o);
@@ -34,4 +35,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
 	godot::register_class<godot::FlatFrame>();
 	godot::register_class<godot::FlatsManager>();
 	godot::register_class<godot::Weather>();
+	godot::register_class<godot::MonthReport>();
 }

@@ -8,6 +8,8 @@
 #include "ActionRepairFlat.h"
 #include "FlatsManager.h"
 #include "Signals.h"
+#include "MonthReport.h"
+
 #include <Godot.hpp>
 #include <InputEventKey.hpp>
 #include <Node.hpp>
@@ -24,6 +26,7 @@ private:
 	real_t cycle_number;
 	real_t balance;
 	real_t monthly_charge;
+	MonthReport * monthReport;
 
 	void next_month();
 	void calculate_balance();
