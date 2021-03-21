@@ -8,6 +8,7 @@
 #include "Action.h"
 #include "Flat.h"
 #include "TenantManager.h"
+#include "MonthReport.h"
 #include <Viewport.hpp>
 #include <SceneTree.hpp>
 #include <Array.hpp>
@@ -22,6 +23,7 @@ class FlatsManager : public Node2D {
 
 private:
 	std::vector<Action*> actions;
+	MonthReport * monthReport;
 
 public:
 	void run_cycle();
