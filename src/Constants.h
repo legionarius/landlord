@@ -1,0 +1,11 @@
+//
+// Created by bogdan on 21/03/2021.
+//
+
+#ifndef MUNDANE_JAM_CONSTANTS_H
+#define MUNDANE_JAM_CONSTANTS_H
+
+#define FLAT_DECAY_RATE_NO_TENANT 1
+#define FLAT_DECAY_RATE 10
+
+#endif //MUNDANE_JAM_CONSTANTS_H

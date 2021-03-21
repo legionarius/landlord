@@ -143,3 +143,14 @@ void Flat::_remove_action_icon_on_flat(ActionType actionType) {
 void Flat::repair() {
 	health = 100;
 }
+
+void Flat::update_health() {
+	int64_t decay = 0;
+	int64_t min_health = 0;
+	if (tenant != nullptr) {
+		decay = static_cast<int64_t>(FLAT_DECAY_RATE - (tenant->cleanliness * FLAT_DECAY_RATE_NO_TENANT) / 100);
+	} else {
+		decay = FLAT_DECAY_RATE_NO_TENANT;
+	}
+	health -= std::max(min_health, decay);
+}
