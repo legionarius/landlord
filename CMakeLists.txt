@@ -708,5 +708,8 @@ add_executable(
         src/TenantManager.cpp src/TenantManager.h
         src/FlatFrame.cpp
         src/FlatsManager.cpp
-        src/ActionFireTenant.cpp src/ActionFireTenant.h)
+        src/ActionFireTenant.cpp src/ActionFireTenant.h
+        src/ActionRepairFlat.cpp src/ActionRepairFlat.h
+        src/ActionMoveInTenant.cpp src/ActionMoveInTenant.h
+)
 

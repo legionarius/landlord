@@ -4,6 +4,9 @@
 
 #include "ActionRepairFlat.h"
 
+std::string ActionRepairFlat::iconPath = "res://asset/FlatFrame/repair_action_button.png";
+std::string ActionRepairFlat::iconPathSelected = "res://asset/FlatFrame/repair_action_button_selected.png";
+
 void ActionRepairFlat::apply() {
 	godot::Flat *flat = godot::Object::cast_to<godot::Flat>(target);
 	flat->repair();

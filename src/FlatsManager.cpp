@@ -47,17 +47,12 @@ void FlatsManager::update_flats() {
 	Array flats = get_children();
 	for (size_t i = 0; i < flats.size(); i++) {
 		Flat *flat = cast_to<Flat>(flats[i]);
+		flat->reset_action_icon();
 		flat->update_charge();
 	}
 }
 
 void FlatsManager::add_action(Action *m_action) {
-	for (Action *action : actions) {
-		if ((action->actionType == m_action->actionType) && (action->target == m_action->target)) {
-			// Action already registered
-			return;
-		}
-	}
 	actions.push_back(m_action);
 	get_actions_cost();
 }
