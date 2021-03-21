@@ -42,6 +42,9 @@ void CycleInfo::_display_cycle(const int month, const int year, const real_t bal
 
 	balance_str << std::fixed << std::setprecision(2) << balance;
 	this->balance->set_text(String(balance_str.str().c_str()) + String(" $"));
+
+	// Reset actions cost
+	_display_actions_cost(0.f);
 }
 
 void CycleInfo::_display_actions_cost(real_t cost) {
