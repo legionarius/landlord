@@ -11,6 +11,7 @@
 #include <SceneTree.hpp>
 #include <Label.hpp>
 #include "GameState.h"
+#include "FlatsManager.h"
 #include "Signals.h"
 #include <vector>
 #include <sstream>
@@ -25,10 +26,12 @@ private:
 	Label * month;
 	Label * year;
 	Label * balance;
+	Label * actions_cost;
 
 
 public:
 	void _display_cycle(int month, int year, real_t balance);
+	void _display_actions_cost(real_t cost);
 
 	static void _register_methods();
 	void _init();

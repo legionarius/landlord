@@ -46,7 +46,8 @@ void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 void Flat::_on_pressed() {
 	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
 	FlatFrame *flatFrame = cast_to<FlatFrame>(flatFrameScene->instance());
-	flatFrame->_set_apartment_label(id);
+	flatFrame->_set_flat(this);
+	flatFrame->_set_flat_label(id);
 	flatFrame->_set_health(health);
 	flatFrame->_set_rent(rent);
 	flatFrame->_set_tenant(tenant);
@@ -77,12 +78,12 @@ real_t Flat::break_legs_and_collect_money() {
 void Flat::queue_move_in_tenant(const bool isPressed) {
 	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	if (isPressed){
-		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this->id);
+		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this);
 		flatsManager->add_action(actionMoveInTenant);
 		_add_action_icon_on_flat(actionMoveInTenant);
 
 	} else {
-		flatsManager->remove_action(this->id, ACTION_MOVE_IN_TENANT);
+		flatsManager->remove_action(this, ACTION_MOVE_IN_TENANT);
 		_remove_action_icon_on_flat(ACTION_MOVE_IN_TENANT);
 	}
 }
@@ -90,12 +91,12 @@ void Flat::queue_move_in_tenant(const bool isPressed) {
 void Flat::queue_fire_tenant(const bool isPressed) {
 	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	if (isPressed){
-		ActionFireTenant *actionFireTenant = new ActionFireTenant(this->id);
+		ActionFireTenant *actionFireTenant = new ActionFireTenant(this);
 		flatsManager->add_action(actionFireTenant);
 		_add_action_icon_on_flat(actionFireTenant);
 
 	} else {
-		flatsManager->remove_action(this->id, ACTION_FIRE_TENANT);
+		flatsManager->remove_action(this, ACTION_FIRE_TENANT);
 		_remove_action_icon_on_flat(ACTION_FIRE_TENANT);
 	}
 }
@@ -103,13 +104,13 @@ void Flat::queue_fire_tenant(const bool isPressed) {
 void Flat::queue_repair_flat(const bool isPressed) {
 	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	if (isPressed){
-		ActionRepairFlat *actionRepairFlat = new ActionRepairFlat(this->id);
-		if(!flatsManager->action_will_be_executed_in_apartment(this->id, ACTION_REPAIR_FLAT)){
+		ActionRepairFlat *actionRepairFlat = new ActionRepairFlat(this);
+		if(!flatsManager->action_will_be_executed_in_flat(this, ACTION_REPAIR_FLAT)){
 			flatsManager->add_action(actionRepairFlat);
 			_add_action_icon_on_flat(actionRepairFlat);
 		}
 	} else {
-		flatsManager->remove_action(this->id, ACTION_REPAIR_FLAT);
+		flatsManager->remove_action(this, ACTION_REPAIR_FLAT);
 		_remove_action_icon_on_flat(ACTION_REPAIR_FLAT);
 	}
 }
@@ -137,4 +138,8 @@ void Flat::_remove_action_icon_on_flat(ActionType actionType) {
 	std::stringstream actionNodeName;
 	Node *node = get_node(Action::type_to_string(actionType).operator NodePath());
 	node->queue_free();
+}
+
+void Flat::repair() {
+	health = 100;
 }

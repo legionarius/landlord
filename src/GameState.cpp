@@ -21,6 +21,7 @@ void GameState::_input(const Ref<InputEvent> event) {
 
 void GameState::_next_turn() {
 	calculate_balance();
+	calculate_actions_cost();
 	// Apply actions
 	run_actions();
 	// Update current state
@@ -47,6 +48,12 @@ void GameState::calculate_balance() {
 	FlatsManager * flatManager =
 			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	balance += flatManager->_collect_rent();
+}
+
+void GameState::calculate_actions_cost() {
+	FlatsManager * flatManager =
+			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	balance -= flatManager->get_actions_cost();
 }
 
 void GameState::_register_methods() {

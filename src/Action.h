@@ -13,11 +13,12 @@ enum ActionType { ACTION_REPAIR_FLAT, ACTION_FIRE_TENANT, ACTION_MOVE_IN_TENANT}
 
 class Action {
 public:
-	Action(ActionType actionType, int64_t id): actionType{ actionType }, target_id{ id } {}
+	Action(ActionType actionType, godot::Node *item): actionType{ actionType }, target{ item } {}
 	~Action() = default;
-	int64_t target_id;
+	godot::Node *target;
 	ActionType actionType;
-	virtual void apply(godot::Node *item);
+	virtual void apply();
+	virtual real_t get_cost();
 	virtual godot::String get_texture_path();
 	static godot::String type_to_string(ActionType type);
 };

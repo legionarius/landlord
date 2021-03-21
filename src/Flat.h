@@ -47,6 +47,7 @@ public:
 	void reset_action_icon();
 	void _add_action_icon_on_flat(Action *action);
 	void _remove_action_icon_on_flat(ActionType actionType);
+	void repair();
 
 	int64_t id;
 	real_t rent;

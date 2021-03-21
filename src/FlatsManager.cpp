@@ -22,11 +22,6 @@ void FlatsManager::add_tenants() {
 	}
 }
 
-void FlatsManager::_register_methods() {
-	register_method("_init", &FlatsManager::_init);
-	register_method("_ready", &FlatsManager::_ready);
-}
-
 real_t FlatsManager::_collect_rent() {
 	real_t money = 0.f;
 	Array flats = get_children();
@@ -40,8 +35,7 @@ real_t FlatsManager::_collect_rent() {
 void FlatsManager::run_cycle() {
 	while (!actions.empty()) {
 		Action *action = actions.back();
-		Array flats = get_children();
-		action->apply(flats[action->target_id - 1]);
+		action->apply();
 		actions.pop_back();
 	}
 	update_flats();
@@ -60,21 +54,38 @@ void FlatsManager::update_flats() {
 
 void FlatsManager::add_action(Action *m_action) {
 	actions.push_back(m_action);
+	get_actions_cost();
 }
 
-void FlatsManager::remove_action(real_t apartmentId, ActionType actionType) {
+void FlatsManager::remove_action(Node * flat, ActionType actionType) {
 	for (Action *action : actions) {
-		if ((action->actionType == actionType) && (action->target_id == apartmentId)) {
+		if ((action->actionType == actionType) && (action->target == flat)) {
 			std::erase(actions, action);
+			get_actions_cost();
 		}
 	}
 }
 
-bool FlatsManager::action_will_be_executed_in_apartment(real_t apartmentId, ActionType actionType) {
+bool FlatsManager::action_will_be_executed_in_flat(Node *  flat, ActionType actionType) {
 	for (Action *action : actions) {
-		if ((action->actionType == actionType) && (action->target_id == apartmentId)) {
+		if ((action->actionType == actionType) && (action->target == flat)) {
 			return true;
 		}
 	}
 	return false;
+}
+
+real_t FlatsManager::get_actions_cost() {
+	real_t cost = 0;
+	for (Action *action: actions) {
+		cost += action->get_cost();
+	}
+	emit_signal(ACTIONS_COST, cost);
+	return cost;
+}
+
+void FlatsManager::_register_methods() {
+	register_method("_init", &FlatsManager::_init);
+	register_method("_ready", &FlatsManager::_ready);
+	register_signal<FlatsManager>(ACTIONS_COST, "cost", GODOT_VARIANT_TYPE_REAL);
 }

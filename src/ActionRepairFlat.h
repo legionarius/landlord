@@ -17,8 +17,9 @@ public:
 	static std::string iconPath;
 	static std::string iconPathSelected;
 
-	ActionRepairFlat(int64_t id, ActionType actionType = ACTION_REPAIR_FLAT): Action{ actionType, id } {};
-	void apply(godot::Node * item) override;
+	ActionRepairFlat(godot::Node * item, ActionType actionType = ACTION_REPAIR_FLAT): Action{ actionType, item } {};
+	void apply() override;
+	virtual real_t get_cost() override;
 	godot::String get_texture_path() override {return godot::String(iconPath.c_str());};
 };
 
