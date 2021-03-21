@@ -8,6 +8,7 @@
 // Application Signals
 #define FLAT_SELECTED "flat_selected"
 #define NEW_CYCLE "new_cycle"
+#define ACTIONS_COST "actions_cost"
 
 // Godot Signals
 #define BTN_PRESSED "pressed"

@@ -36,7 +36,8 @@ void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 void Flat::_on_pressed() {
 	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
 	FlatFrame *flatFrame = cast_to<FlatFrame>(flatFrameScene->instance());
-	flatFrame->_set_apartment_label(id);
+	flatFrame->_set_flat(this);
+	flatFrame->_set_flat_label(id);
 	flatFrame->_set_health(health);
 	flatFrame->_set_rent(rent);
 	flatFrame->_set_tenant(tenant);
@@ -49,6 +50,7 @@ void Flat::_register_methods() {
 	register_method("_ready", &Flat::_ready);
 	register_method("_on_pressed", &Flat::_on_pressed);
 }
+
 real_t Flat::break_legs_and_collect_money() {
 	if (tenant != nullptr) {
 		rng->randomize();
@@ -63,4 +65,8 @@ real_t Flat::break_legs_and_collect_money() {
 	} else {
 		return 0.f;
 	}
+}
+
+void Flat::repair() {
+	health = 100;
 }

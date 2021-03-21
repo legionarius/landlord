@@ -14,8 +14,9 @@
 class ActionRepairFlat : public Action {
 
 public:
-	ActionRepairFlat(int64_t id, ActionType actionType = ACTION_REPAIR_FLAT): Action{ actionType, id } {};
-	void apply(godot::Node * item) override;
+	ActionRepairFlat(godot::Node * item, ActionType actionType = ACTION_REPAIR_FLAT): Action{ actionType, item } {};
+	void apply() override;
+	virtual real_t get_cost() override;
 };
 
 #endif //MUNDANE_JAM_ACTIONREPAIRFLAT_H

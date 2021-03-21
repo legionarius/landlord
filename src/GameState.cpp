@@ -21,6 +21,7 @@ void GameState::_input(const Ref<InputEvent> event) {
 
 void GameState::_next_turn() {
 	calculate_balance();
+	calculate_actions_cost();
 	// Apply actions
 	run_actions();
 	// Update current state
@@ -49,11 +50,10 @@ void GameState::calculate_balance() {
 	balance += flatManager->_collect_rent();
 }
 
-void GameState::_add_action() {
+void GameState::calculate_actions_cost() {
 	FlatsManager * flatManager =
 			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
-	ActionRepairFlat * action = new ActionRepairFlat(1);
-	flatManager->add_action(action);
+	balance -= flatManager->get_actions_cost();
 }
 
 void GameState::_register_methods() {
@@ -61,6 +61,5 @@ void GameState::_register_methods() {
 	register_method("_ready", &GameState::_ready);
 	register_method("_input", &GameState::_input);
 	register_method("_next_turn", &GameState::_next_turn);
-	register_method("_add_action", &GameState::_add_action);
 	register_signal<GameState>(NEW_CYCLE, "month", GODOT_VARIANT_TYPE_INT, "year", GODOT_VARIANT_TYPE_INT, "balance", GODOT_VARIANT_TYPE_REAL);
 }

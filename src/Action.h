@@ -13,11 +13,12 @@ enum ActionType { ACTION_REPAIR_FLAT, ACTION_FIRE_TENANT };
 
 class Action {
 public:
-	Action(ActionType actionType, int64_t id): actionType{ actionType }, target_id{ id } {}
+	Action(ActionType actionType, godot::Node * item): actionType{ actionType }, target{ item } {}
 	~Action() = default;
-	int64_t target_id;
+	godot::Node * target;
 	ActionType actionType;
-	virtual void apply(godot::Node *item);
+	virtual void apply();
+	virtual real_t get_cost();
 };
 
 #endif //MUNDANE_JAM_ACTION_H

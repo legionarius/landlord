@@ -27,10 +27,11 @@ public:
 	void run_cycle();
 	void add_action(Action * action);
 	void add_tenants();
-	void remove_action(real_t apartmentId, ActionType actionType);
-	bool action_will_be_executed_in_apartment(real_t apartmentId, ActionType actionType);
+	void remove_action(Node * flat, ActionType actionType);
+	bool action_will_be_executed_in_flat(Node * flat, ActionType actionType);
 	real_t _collect_rent();
 	void update_flats();
+	real_t get_actions_cost();
 
 	static void _register_methods();
 	void _init();

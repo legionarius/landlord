@@ -57,7 +57,6 @@ anims/flying_birds = ExtResource( 19 )
 position = Vector2( 755.544, 46.7725 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Cloud" type="Sprite" parent="Map/Weather"]
@@ -246,6 +245,18 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "1000.00 $"
 align = 2
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionsCost" type="Label" parent="UILayer/CycleInfo"]
+margin_left = 20.9534
+margin_top = 401.148
+margin_right = 225.953
+margin_bottom = 429.148
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Action costs : 0.00 $"
 __meta__ = {
 "_edit_use_anchors_": false
 }

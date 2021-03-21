@@ -71,7 +71,6 @@ tracks/1/keys = {
 }
 
 [node name="FlatFrame" type="PopupDialog"]
-visible = true
 margin_left = 0.445435
 margin_top = -0.445465
 margin_right = 1029.45
@@ -143,13 +142,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ApartmentNameBackground" type="Sprite" parent="Frame"]
+[node name="FlatNameBackground" type="Sprite" parent="Frame"]
 position = Vector2( -27.3099, -161.729 )
 rotation = -4.79966
 scale = Vector2( 0.182895, 0.287756 )
 texture = ExtResource( 9 )
 
-[node name="AppartmentName" type="Label" parent="Frame/ApartmentNameBackground"]
+[node name="FlatName" type="Label" parent="Frame/FlatNameBackground"]
 margin_left = -170.0
 margin_top = 294.0
 margin_right = 415.0
