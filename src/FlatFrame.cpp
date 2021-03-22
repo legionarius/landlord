@@ -80,8 +80,16 @@ void FlatFrame::_on_move_in_pressed() {
 		TenantSelector *tenantSelector = Object::cast_to<TenantSelector>(tenantSelectorScene->instance());
 		tenantSelector->set_name("TenantSelector");
 		tenantSelector->connect(NEW_TENANT_SELECTED, this, "_on_tenant_selected");
+		tenantSelector->connect(EXIT_TENANT_SELECTOR, this, "_exit_tenant_selector");
 		add_child(tenantSelector);
 	}
+}
+
+void FlatFrame::_exit_tenant_selector() {
+	TextureButton *moveInButton = cast_to<TextureButton>(get_node("Frame/MoveInButton"));
+	moveInButton->set_pressed(false);
+	Node *tenantSelector = get_node("TenantSelector");
+	tenantSelector->queue_free();
 }
 
 void FlatFrame::_on_tenant_selected(uint64_t tenantId) {
@@ -165,6 +173,7 @@ void FlatFrame::_register_methods() {
 	register_method("_on_tenant_selected", &FlatFrame::_on_tenant_selected);
 	register_method("_on_repair_pressed", &FlatFrame::_on_repair_pressed);
 	register_method("_on_fire_pressed", &FlatFrame::_on_fire_pressed);
+	register_method("_exit_tenant_selector", &FlatFrame::_exit_tenant_selector);
 	register_signal<FlatFrame>(SIGNAL_MOVE_IN_TENANT, "isPressed", GODOT_VARIANT_TYPE_BOOL, "tenantId", GODOT_VARIANT_TYPE_INT);
 	register_signal<FlatFrame>(SIGNAL_FIRE_TENANT, "isPressed", GODOT_VARIANT_TYPE_BOOL);
 	register_signal<FlatFrame>(SIGNAL_REPAIR_FLAT, "isPressed", GODOT_VARIANT_TYPE_BOOL);

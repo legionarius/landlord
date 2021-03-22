@@ -14,6 +14,7 @@
 #define SIGNAL_REPAIR_FLAT "repair_flat"
 #define NEW_TENANT_SELECTED "new_tenant_selected"
 #define TENANT_SELECTOR_PRESSED "tenant_selector_pressed"
+#define EXIT_TENANT_SELECTOR "exit_tenant_selector"
 
 // Godot Signals
 

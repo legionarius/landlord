@@ -25,6 +25,7 @@ public:
 	void _init();
 	void _ready();
 	void tenant_selected(uint64_t tenantId);
+	void exit_selector();
 };
 }
 
