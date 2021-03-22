@@ -72,7 +72,8 @@ void FlatsManager::add_action(Action *m_action) {
 void FlatsManager::remove_action(Node * flat, ActionType actionType) {
 	for (Action *action : actions) {
 		if ((action->actionType == actionType) && (action->target == flat)) {
-			std::erase(actions, action);
+			auto pos = std::find(actions.begin(), actions.end(), action);
+			actions.erase(pos);
 			get_actions_cost();
 		}
 	}
