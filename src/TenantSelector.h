@@ -8,6 +8,7 @@
 #include <Godot.hpp>
 #include <TextureButton.hpp>
 #include <TextureRect.hpp>
+#include <RandomNumberGenerator.hpp>
 
 #include "TenantManager.h"
 #include "TenantIdentityCard.h"
@@ -19,6 +20,7 @@ class TenantSelector: public TextureRect {
 	GODOT_CLASS(TenantSelector, TextureRect);
 
 	static int64_t maxTenantInSelector;
+	RandomNumberGenerator * rng;
 
 public:
 	static void _register_methods();

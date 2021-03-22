@@ -9,7 +9,7 @@ using namespace godot;
 void GameState::_init() {
 	month = 0; // Starts at 0 -> JANUARY
 	year = 1;
-	cycle_number = 1;
+	cycle_number = 0;
 	balance = 1000;
 	monthly_charge = 100;
 }

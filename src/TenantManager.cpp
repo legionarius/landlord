@@ -14,9 +14,6 @@ TenantManager::~TenantManager() {
 }
 
 TenantIdentityCard::Tenant *TenantManager::get_tenant(int n) {
-	std::stringstream test;
-	test << "tenant mange id: " << n;
-	Godot::print(test.str().c_str());
 	return tenant_array[n];
 }
 
@@ -35,6 +32,7 @@ void TenantManager::load_inputs() {
 	for (int i = 0; i < json_results.size(); i++) {
 		Dictionary input = json_results[i];
 		TenantIdentityCard::Tenant *tenant = new TenantIdentityCard::Tenant;
+		tenant->id = input["id"];
 		tenant->first_name = input["firstname"];
 		tenant->last_name = input["lastname"];
 		tenant->age = input["age"];

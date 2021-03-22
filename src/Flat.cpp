@@ -45,7 +45,11 @@ void Flat::_ready() {
 
 void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 	GameState *gameState = Object::cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
-	tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration - 1;
+	if(gameState->get_cycle_number() == 0){
+		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration-1;
+	} else {
+		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration;
+	}
 	this->tenant = tenant;
 }
 
@@ -89,7 +93,7 @@ void Flat::queue_move_in_tenant(const bool isPressed, const uint64_t tenantId) {
 	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	if (isPressed) {
 		TenantManager *tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
-		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(tenantId);
+		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(tenantId-1);
 		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this, tenant);
 		flatsManager->add_action(actionMoveInTenant);
 		_add_action_icon_on_flat(actionMoveInTenant);
