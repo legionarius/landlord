@@ -712,5 +712,6 @@ add_executable(
         src/ActionRepairFlat.cpp src/ActionRepairFlat.h
         src/ActionMoveInTenant.cpp src/ActionMoveInTenant.h
         src/FlatIndicators.cpp src/FlatIndicators.h
+        src/TenantSelector.cpp src/TenantSelector.h src/TenantSelectorButton.cpp src/TenantSelectorButton.h
 )
 

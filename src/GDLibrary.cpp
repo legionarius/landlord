@@ -12,6 +12,8 @@
 #include "SignalButton.h"
 #include "TenantIdentityCard.h"
 #include "TenantManager.h"
+#include "TenantSelector.h"
+#include "TenantSelectorButton.h"
 #include "TitleScreen.h"
 #include "Weather.h"
 
@@ -30,6 +32,8 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
 	godot::register_class<godot::GameState>();
 	godot::register_class<godot::TenantIdentityCard>();
 	godot::register_class<godot::TenantManager>();
+	godot::register_class<godot::TenantSelector>();
+	godot::register_class<godot::TenantSelectorButton>();
 	godot::register_class<godot::TitleScreen>();
 	godot::register_class<godot::SignalButton>();
 	godot::register_class<godot::CycleInfo>();

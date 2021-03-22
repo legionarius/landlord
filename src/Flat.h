@@ -8,14 +8,14 @@
 #include "ActionFireTenant.h"
 #include "ActionMoveInTenant.h"
 #include "ActionRepairFlat.h"
-#include "Constants.h"
+#include "GameState.h"
 #include "FlatFrame.h"
 #include "FlatIndicators.h"
 #include "FlatsManager.h"
-#include "GameState.h"
 #include "Signals.h"
-
 #include "TenantIdentityCard.h"
+#include "Constants.h"
+
 #include <Godot.hpp>
 #include <Light2D.hpp>
 #include <PackedScene.hpp>
@@ -50,7 +50,7 @@ public:
 	void sign_lease(TenantIdentityCard::Tenant *tenant);
 	void update_charge();
 	real_t break_legs_and_collect_money();
-	void queue_move_in_tenant(const bool isPressed);
+	void queue_move_in_tenant(const bool isPressed, const uint64_t tenantId);
 	void queue_fire_tenant(const bool isPressed);
 	void queue_repair_flat(const bool isPressed);
 	void reset_action_icon();

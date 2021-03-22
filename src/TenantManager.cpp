@@ -17,6 +17,13 @@ TenantIdentityCard::Tenant *TenantManager::get_tenant(int n) {
 	return tenant_array[n];
 }
 
+TenantIdentityCard::Tenant *TenantManager::get_tenant_by_id(int tenantId) {
+	std::stringstream test;
+	test << "Tenant id in manger: " << tenantId;
+	Godot::print(test.str().c_str());
+	return tenant_array[1];
+}
+
 void TenantManager::load_inputs() {
 	Ref<File> file = File::_new();
 	Error json_file = file->open("res://datasource/tenants.json", File::ModeFlags::READ);

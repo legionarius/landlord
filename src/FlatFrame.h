@@ -10,6 +10,7 @@
 #include "FlatsManager.h"
 #include "Signals.h"
 #include "TenantIdentityCard.h"
+#include "TenantSelector.h"
 
 #include <AnimationPlayer.hpp>
 #include <AudioStreamPlayer.hpp>
@@ -43,6 +44,8 @@ public:
 	void _on_move_in_pressed();
 	void _on_repair_pressed();
 	void _on_fire_pressed();
+	void _on_tenant_selected(uint64_t tenantId);
+	void _exit_tenant_selector();
 
 	void _set_flat(Node * item);
 	void _set_flat_label(real_t id);
