@@ -4,10 +4,15 @@
 
 #include "ActionMoveInTenant.h"
 
+using namespace godot;
+
 std::string ActionMoveInTenant::iconPath = "res://asset/FlatFrame/move_in_action_button.png";
 std::string ActionMoveInTenant::iconPathSelected = "res://asset/FlatFrame/move_in_action_button_selected.png";
 
 void ActionMoveInTenant::apply() {
 	godot::Flat *flat = godot::Object::cast_to<godot::Flat>(target);
-	godot::Godot::print("[ACTION]: Move in tenant in flat : " + flat->get_name());
+	flat->sign_lease(tenant);
+	std::stringstream output;
+	output << "[ACTION]: Move in tenant in flat : " << flat->get_name().alloc_c_string() << " Tenant id: " << tenant->id;
+	godot::Godot::print(output.str().c_str());
 }

@@ -21,9 +21,6 @@ void FlatsManager::add_tenants() {
 	for (size_t i = 0; i < flats.size(); i++) {
 		Flat *flat = cast_to<Flat>(flats[i]);
 		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(i);
-		std::stringstream tenantstr;
-		tenantstr << "Id:" << tenant->id << "Age: " << tenant->age << "Confidence:" << tenant->confidence;
-		Godot::print(tenantstr.str().c_str());
 		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration - 1;
 		flat->sign_lease(tenant);
 	}

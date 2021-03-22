@@ -75,10 +75,12 @@ real_t Flat::break_legs_and_collect_money() {
 	}
 }
 
-void Flat::queue_move_in_tenant(const bool isPressed) {
+void Flat::queue_move_in_tenant(const bool isPressed, const uint64_t tenantId) {
 	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	if (isPressed){
-		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this);
+		TenantManager *tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
+		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant_by_id(tenantId);
+		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this, tenant);
 		flatsManager->add_action(actionMoveInTenant);
 		_add_action_icon_on_flat(actionMoveInTenant);
 

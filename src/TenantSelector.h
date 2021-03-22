@@ -11,6 +11,8 @@
 
 #include "TenantManager.h"
 #include "TenantIdentityCard.h"
+#include "TenantSelectorButton.h"
+#include "Signals.h"
 
 namespace godot {
 class TenantSelector: public TextureRect {
@@ -22,7 +24,7 @@ public:
 	static void _register_methods();
 	void _init();
 	void _ready();
-	void tenant_selected();
+	void tenant_selected(uint64_t tenantId);
 };
 }
 

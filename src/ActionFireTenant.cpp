@@ -4,6 +4,8 @@
 
 #include "ActionFireTenant.h"
 
+using namespace godot;
+
 std::string ActionFireTenant::iconPath = "res://asset/FlatFrame/fire_action_button.png";
 std::string ActionFireTenant::iconPathSelected = "res://asset/FlatFrame/fire_action_button_selected.png";
 

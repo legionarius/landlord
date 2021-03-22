@@ -4,6 +4,8 @@
 
 #include "ActionRepairFlat.h"
 
+using namespace godot;
+
 std::string ActionRepairFlat::iconPath = "res://asset/FlatFrame/repair_action_button.png";
 std::string ActionRepairFlat::iconPathSelected = "res://asset/FlatFrame/repair_action_button_selected.png";
 
