@@ -31,14 +31,8 @@ void TenantIdentityCard::_ready() {
 			Ref<Texture> picture_png = ResourceLoader::get_singleton()->load(get_picture_path());
 			if (!picture_png.is_null()) {
 				picture->set_texture(picture_png);
-			} else {
-				Godot::print("Path doesn't exist");
 			}
-		} else {
-			Godot::print("Tenant is required");
 		}
-	} else {
-		Godot::print("Can't get all node of scene");
 	}
 }
 

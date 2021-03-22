@@ -12,7 +12,6 @@ std::string ActionRepairFlat::iconPathSelected = "res://asset/FlatFrame/repair_a
 void ActionRepairFlat::apply() {
 	godot::Flat *flat = godot::Object::cast_to<godot::Flat>(target);
 	flat->repair();
-	godot::Godot::print("[ACTION]: Repairing flat : " + flat->get_name());
 }
 
 real_t ActionRepairFlat::get_cost() {

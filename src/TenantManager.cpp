@@ -46,9 +46,7 @@ void TenantManager::load_inputs() {
 }
 
 void TenantManager::_init() {
-	Godot::print("Initialize tenants");
 	load_inputs();
-	Godot::print("All tenants loaded");
 }
 
 void TenantManager::_ready() {}

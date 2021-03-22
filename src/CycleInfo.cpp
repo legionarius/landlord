@@ -35,7 +35,6 @@ void CycleInfo::_ready() {
 }
 
 void CycleInfo::_display_cycle(const int month, const int year, const real_t balance) {
-	Godot::print("Received new cycle info" + String(std::to_string(month).c_str()));
 	std::stringstream balance_str;
 	this->month->set_text(months[month]);
 	this->year->set_text("year " + String(std::to_string(year).c_str()));
@@ -48,7 +47,6 @@ void CycleInfo::_display_cycle(const int month, const int year, const real_t bal
 }
 
 void CycleInfo::_display_actions_cost(real_t cost) {
-	Godot::print("Received actions cost " + String(std::to_string(cost).c_str()));
 	std::stringstream cost_str;
 	cost_str << std::fixed << std::setprecision(2) << cost;
 	actions_cost->set_text(String("Actions cost : ") + String(cost_str.str().c_str()) + String(" $"));

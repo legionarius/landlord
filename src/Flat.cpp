@@ -75,12 +75,10 @@ real_t Flat::break_legs_and_collect_money() {
 		rng->randomize();
 		real_t n = rng->randf_range(0, 1);
 		if (n < (tenant->confidence / 100.f)) {
-			Godot::print("[RENT]: payed for flat " + String(std::to_string(id).c_str()));
 			flatIndicators->isPayedVisible = true;
 			flatIndicators->isNotPayedVisible = false;
 			return rent - charge;
 		} else {
-			Godot::print("[RENT]: NOT payed for flat " + String(std::to_string(id).c_str()));
 			flatIndicators->isNotPayedVisible = true;
 			flatIndicators->isPayedVisible = false;
 			return -charge;

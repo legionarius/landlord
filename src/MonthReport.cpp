@@ -11,7 +11,6 @@ void MonthReport::_init() {}
 void MonthReport::_ready() {
 	richTextLabel = cast_to<RichTextLabel>(get_node("Logs"));
 	if (richTextLabel != nullptr) {
-		Godot::print("Logs initialized !");
 	}
 }
 
