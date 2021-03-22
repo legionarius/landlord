@@ -711,5 +711,5 @@ add_executable(
         src/ActionFireTenant.cpp src/ActionFireTenant.h
         src/ActionRepairFlat.cpp src/ActionRepairFlat.h
         src/ActionMoveInTenant.cpp src/ActionMoveInTenant.h
-)
+        src/TenantSelector.cpp src/TenantSelector.h)
 

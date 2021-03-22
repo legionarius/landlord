@@ -145,7 +145,6 @@ void Flat::repair() {
 }
 
 void Flat::fire_tenant() {
-	std::free(tenant);
 	tenant = nullptr;
 }
 
