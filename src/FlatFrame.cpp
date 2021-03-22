@@ -18,7 +18,7 @@ void FlatFrame::_ready() {
 	AudioStreamPlayer *audio = cast_to<AudioStreamPlayer>(get_node("AudioStreamPlayer"));
 	TextureButton *exitButton = cast_to<TextureButton>(get_node("Frame/ExitButton"));
 
-	if(tenant != nullptr) {
+	if (tenant != nullptr) {
 		Ref<PackedScene> tenantIdentityCardScene = ResourceLoader::get_singleton()->load("entity/Tenant/TenantIdentityCard.tscn");
 		TenantIdentityCard *tenantIdentityCard = cast_to<TenantIdentityCard>(tenantIdentityCardScene->instance());
 		tenantIdentityCard->set_tenant(tenant);
@@ -63,7 +63,7 @@ void FlatFrame::_set_rent(real_t rent) {
 	rentLabel = rentString.str().c_str();
 }
 
-void FlatFrame::_set_tenant(TenantIdentityCard::Tenant* m_tenant) {
+void FlatFrame::_set_tenant(TenantIdentityCard::Tenant *m_tenant) {
 	this->tenant = m_tenant;
 }
 
@@ -71,7 +71,7 @@ void FlatFrame::_on_exitButton_pressed() {
 	queue_free();
 }
 
-void::FlatFrame::_on_move_in_pressed() {
+void ::FlatFrame::_on_move_in_pressed() {
 	TextureButton *moveInButton = cast_to<TextureButton>(get_node("Frame/MoveInButton"));
 	emit_signal(SIGNAL_MOVE_IN_TENANT, moveInButton->is_pressed());
 }

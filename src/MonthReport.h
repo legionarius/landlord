@@ -5,25 +5,24 @@
 #ifndef MUNDANE_JAM_MONTHREPORT_H
 #define MUNDANE_JAM_MONTHREPORT_H
 
-#include <Godot.hpp>
 #include <Control.hpp>
-#include <RichTextLabel.hpp>
+#include <Godot.hpp>
 #include <Label.hpp>
-
+#include <RichTextLabel.hpp>
 
 namespace godot {
 class MonthReport : public Control {
 	GODOT_CLASS(MonthReport, Control);
 
-	RichTextLabel * richTextLabel;
+	RichTextLabel *richTextLabel;
 
 public:
 	void _add_entry(String entry);
 	void _flush();
-	static void  _register_methods();
+	static void _register_methods();
 	void _init();
 	void _ready();
 };
-}
+} // namespace godot
 
 #endif //MUNDANE_JAM_MONTHREPORT_H

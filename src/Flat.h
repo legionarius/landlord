@@ -5,43 +5,49 @@
 #ifndef MUNDANE_JAM_FLAT_H
 #define MUNDANE_JAM_FLAT_H
 
+#include "ActionFireTenant.h"
 #include "ActionMoveInTenant.h"
 #include "ActionRepairFlat.h"
-#include "ActionFireTenant.h"
-#include "GameState.h"
-#include "FlatFrame.h"
-#include "FlatsManager.h"
-#include "Signals.h"
 #include "Constants.h"
+#include "FlatFrame.h"
+#include "FlatIndicators.h"
+#include "FlatsManager.h"
+#include "GameState.h"
+#include "Signals.h"
 
+#include "TenantIdentityCard.h"
 #include <Godot.hpp>
+#include <Light2D.hpp>
 #include <PackedScene.hpp>
 #include <PopupDialog.hpp>
+#include <RandomNumberGenerator.hpp>
 #include <Ref.hpp>
 #include <ResourceLoader.hpp>
 #include <SceneTree.hpp>
+#include <Sprite.hpp>
 #include <Texture.hpp>
 #include <TextureButton.hpp>
 #include <TextureRect.hpp>
 #include <Viewport.hpp>
-#include "TenantIdentityCard.h"
-#include <RandomNumberGenerator.hpp>
 #include <algorithm>
 
 namespace godot {
 class Flat : public TextureButton {
 	GODOT_CLASS(Flat, TextureButton);
 
-	TenantIdentityCard::Tenant * tenant;
+	TenantIdentityCard::Tenant *tenant;
 	int64_t end_lease; // cycle at which the
-	RandomNumberGenerator * rng;
+	RandomNumberGenerator *rng;
+	FlatIndicators *flatIndicators;
+	Light2D *lightBulbTenant;
+	Sprite *lightBulb;
 
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
 	void _on_pressed();
-	void sign_lease(TenantIdentityCard::Tenant * tenant);
+	void sign_lease(TenantIdentityCard::Tenant *tenant);
 	void update_charge();
 	real_t break_legs_and_collect_money();
 	void queue_move_in_tenant(const bool isPressed);
@@ -52,6 +58,8 @@ public:
 	void _remove_action_icon_on_flat(ActionType actionType);
 	void repair();
 	void update_health();
+	void show_indicators();
+	void update_tenant_presence();
 	void fire_tenant();
 	void fire_tenant_if_end_leasing();
 

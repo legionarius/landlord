@@ -14,6 +14,7 @@ void Flat::_register_methods() {
 	register_method("queue_repair_flat", &Flat::queue_repair_flat);
 	register_method("queue_fire_tenant", &Flat::queue_fire_tenant);
 	register_method("reset_action_icon", &Flat::reset_action_icon);
+	register_method("show_indicators", &Flat::show_indicators);
 }
 
 void Flat::_init() {
@@ -36,6 +37,10 @@ void Flat::update_charge() {
 void Flat::_ready() {
 	connect("pressed", this, "_on_pressed");
 	id = get_name().right(4).to_int();
+	flatIndicators = cast_to<FlatIndicators>(get_node("FlatIndicators"));
+	lightBulbTenant = cast_to<Light2D>(get_node("LightBulb/Light2D"));
+	lightBulb = cast_to<Sprite>(get_node("LightBulb"));
+	lightBulb->set_modulate(Color(0.5, 0.5, 0.5));
 }
 
 void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
@@ -65,9 +70,13 @@ real_t Flat::break_legs_and_collect_money() {
 		real_t n = rng->randf_range(0, 1);
 		if (n < (tenant->confidence / 100.f)) {
 			Godot::print("[RENT]: payed for flat " + String(std::to_string(id).c_str()));
+			flatIndicators->isPayedVisible = true;
+			flatIndicators->isNotPayedVisible = false;
 			return rent - charge;
 		} else {
 			Godot::print("[RENT]: NOT payed for flat " + String(std::to_string(id).c_str()));
+			flatIndicators->isNotPayedVisible = true;
+			flatIndicators->isPayedVisible = false;
 			return 0.f;
 		}
 	} else {
@@ -77,7 +86,7 @@ real_t Flat::break_legs_and_collect_money() {
 
 void Flat::queue_move_in_tenant(const bool isPressed) {
 	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
-	if (isPressed){
+	if (isPressed) {
 		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this);
 		flatsManager->add_action(actionMoveInTenant);
 		_add_action_icon_on_flat(actionMoveInTenant);
@@ -90,28 +99,31 @@ void Flat::queue_move_in_tenant(const bool isPressed) {
 
 void Flat::queue_fire_tenant(const bool isPressed) {
 	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
-	if (isPressed){
+	if (isPressed) {
 		ActionFireTenant *actionFireTenant = new ActionFireTenant(this);
 		flatsManager->add_action(actionFireTenant);
 		_add_action_icon_on_flat(actionFireTenant);
-
+		flatIndicators->isLeaveVisible = true;
 	} else {
 		flatsManager->remove_action(this, ACTION_FIRE_TENANT);
 		_remove_action_icon_on_flat(ACTION_FIRE_TENANT);
+		flatIndicators->isLeaveVisible = false;
 	}
 }
 
 void Flat::queue_repair_flat(const bool isPressed) {
 	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
-	if (isPressed){
+	if (isPressed) {
 		ActionRepairFlat *actionRepairFlat = new ActionRepairFlat(this);
-		if(!flatsManager->action_will_be_executed_in_flat(this, ACTION_REPAIR_FLAT)){
+		if (!flatsManager->action_will_be_executed_in_flat(this, ACTION_REPAIR_FLAT)) {
 			flatsManager->add_action(actionRepairFlat);
 			_add_action_icon_on_flat(actionRepairFlat);
+			flatIndicators->isRepairVisible = true;
 		}
 	} else {
 		flatsManager->remove_action(this, ACTION_REPAIR_FLAT);
 		_remove_action_icon_on_flat(ACTION_REPAIR_FLAT);
+		flatIndicators->isRepairVisible = false;
 	}
 }
 
@@ -119,8 +131,14 @@ void Flat::reset_action_icon() {
 	Array icons = get_children();
 	for (size_t i = 0; i < icons.size(); i++) {
 		Node *icon = cast_to<Node>(icons[i]);
-		icon->queue_free();
+		if (icon->get_class() == "TextureRect") {
+			icon->queue_free();
+		}
 	}
+}
+
+void Flat::show_indicators() {
+	flatIndicators->_show_indicators();
 }
 
 void Flat::_add_action_icon_on_flat(Action *action) {
@@ -130,7 +148,7 @@ void Flat::_add_action_icon_on_flat(Action *action) {
 	textureRect->set_texture(action_icon);
 	textureRect->set_position(Vector2(0, 35));
 	textureRect->set_scale(Vector2(0.2, 0.2));
-	textureRect->set_margin(0, 20*(get_child_count()-1));
+	textureRect->set_margin(0, 20 * (get_child_count() - 1));
 	add_child(textureRect);
 }
 
@@ -150,9 +168,9 @@ void Flat::fire_tenant() {
 }
 
 void Flat::fire_tenant_if_end_leasing() {
-	if(tenant != nullptr){
+	if (tenant != nullptr) {
 		GameState *gameState = Object::cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
-		if (tenant->leasing_end_cycle <= gameState->get_cycle_number()){
+		if (tenant->leasing_end_cycle <= gameState->get_cycle_number()) {
 			fire_tenant();
 		}
 	}
@@ -167,4 +185,12 @@ void Flat::update_health() {
 		decay = FLAT_DECAY_RATE_NO_TENANT;
 	}
 	health -= std::max(min_health, decay);
+}
+
+void Flat::update_tenant_presence() {
+	if (tenant != nullptr) {
+		lightBulbTenant->set_enabled(true);
+	} else {
+		lightBulbTenant->set_enabled(false);
+	}
 }

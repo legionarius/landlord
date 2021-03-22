@@ -47,19 +47,19 @@ void GameState::next_month() {
 }
 
 void GameState::run_actions() {
-	FlatsManager * flatManager =
+	FlatsManager *flatManager =
 			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	flatManager->run_cycle();
 }
 
 void GameState::calculate_balance() {
-	FlatsManager * flatManager =
+	FlatsManager *flatManager =
 			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	balance += flatManager->_collect_rent();
 }
 
 void GameState::calculate_actions_cost() {
-	FlatsManager * flatManager =
+	FlatsManager *flatManager =
 			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	balance -= flatManager->get_actions_cost();
 }

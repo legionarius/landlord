@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://asset/FlatFrame/not_payed_indicator.png" type="Texture" id=1]
+[ext_resource path="res://asset/FlatFrame/payed_indicator.png" type="Texture" id=2]
+[ext_resource path="res://asset/FlatFrame/repair_indicator.png" type="Texture" id=3]
+[ext_resource path="res://entity/FlatIndicators/FlatIndicators.gdns" type="Script" id=4]
+[ext_resource path="res://asset/FlatFrame/leave_indicator.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=2]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[node name="FlatIndicators" type="GridContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -299.0
+margin_right = -408.0
+margin_bottom = -211.0
+custom_constants/vseparation = -16
+columns = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PayedIndicator" type="TextureRect" parent="."]
+margin_right = 50.0
+margin_bottom = 52.0
+size_flags_horizontal = 4
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NotPayedIndicator" type="TextureRect" parent="."]
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 52.0
+size_flags_horizontal = 4
+texture = ExtResource( 1 )
+
+[node name="RepairIndicator" type="TextureRect" parent="."]
+margin_top = 36.0
+margin_right = 50.0
+margin_bottom = 88.0
+size_flags_horizontal = 4
+texture = ExtResource( 3 )
+
+[node name="LeaveIndicator" type="TextureRect" parent="."]
+margin_left = 54.0
+margin_top = 36.0
+margin_right = 104.0
+margin_bottom = 88.0
+size_flags_horizontal = 4
+texture = ExtResource( 5 )
+
+[node name="FlatIndicatorsAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/active = SubResource( 2 )
+[connection signal="animation_finished" from="FlatIndicatorsAnimationPlayer" to="." method="_on_FlatIndicatorsAnimationPlayer_animation_finished"]

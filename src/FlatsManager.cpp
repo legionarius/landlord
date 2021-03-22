@@ -61,6 +61,8 @@ void FlatsManager::update_flats() {
 		flat->reset_action_icon();
 		flat->update_charge();
 		flat->update_health();
+		flat->update_tenant_presence();
+		flat->show_indicators();
 	}
 }
 
@@ -69,7 +71,7 @@ void FlatsManager::add_action(Action *m_action) {
 	get_actions_cost();
 }
 
-void FlatsManager::remove_action(Node * flat, ActionType actionType) {
+void FlatsManager::remove_action(Node *flat, ActionType actionType) {
 	for (Action *action : actions) {
 		if ((action->actionType == actionType) && (action->target == flat)) {
 			std::erase(actions, action);
@@ -78,7 +80,7 @@ void FlatsManager::remove_action(Node * flat, ActionType actionType) {
 	}
 }
 
-bool FlatsManager::action_will_be_executed_in_flat(Node *  flat, ActionType actionType) {
+bool FlatsManager::action_will_be_executed_in_flat(Node *flat, ActionType actionType) {
 	for (Action *action : actions) {
 		if ((action->actionType == actionType) && (action->target == flat)) {
 			return true;
@@ -89,7 +91,7 @@ bool FlatsManager::action_will_be_executed_in_flat(Node *  flat, ActionType acti
 
 real_t FlatsManager::get_actions_cost() {
 	real_t cost = 0;
-	for (Action *action: actions) {
+	for (Action *action : actions) {
 		cost += action->get_cost();
 	}
 	emit_signal(ACTIONS_COST, cost);
