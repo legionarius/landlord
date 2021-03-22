@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://asset/MainScene/buildings.png" type="Texture" id=1]
 [ext_resource path="res://asset/MainScene/paper_texture.png" type="Texture" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://asset/MainScene/cloud01.png" type="Texture" id=17]
 [ext_resource path="res://entity/MainScene/Weather.gdns" type="Script" id=18]
 [ext_resource path="res://entity/MainScene/MainSceneflying_birds.tres" type="Animation" id=19]
+[ext_resource path="res://asset/sound/background_music.ogg" type="AudioStream" id=20]
+[ext_resource path="res://asset/sound/background_chatter.ogg" type="AudioStream" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -65,7 +67,6 @@ anims/flying_birds = ExtResource( 19 )
 position = Vector2( 755.544, 46.7725 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Cloud" type="Sprite" parent="Map/Weather"]
@@ -339,3 +340,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 on_pressed = "_next_turn"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 20 )
+volume_db = -15.0
+autoplay = true
+
+[node name="BackgroundChat" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 0, -1 )
+stream = ExtResource( 21 )
+volume_db = -15.0
+autoplay = true
