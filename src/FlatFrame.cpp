@@ -115,6 +115,8 @@ void FlatFrame::_add_fire_tenant_button() const {
 	Ref<Texture> actionIconSelected = ResourceLoader::get_singleton()->load(ActionFireTenant::iconPathSelected.c_str());
 	TextureButton *fireButton = TextureButton::_new();
 	fireButton->set_name("FireButton");
+	fireButton->set_tooltip("Click to fire tenant");
+	fireButton->set_default_cursor_shape(2);
 	fireButton->set_position(Vector2(-276, 130));
 	fireButton->set_scale(Vector2(0.4, 0.4));
 	fireButton->set_normal_texture(actionIcon);
@@ -135,6 +137,8 @@ void FlatFrame::_add_move_in_tenant_button() const {
 	moveInButton->set_name("MoveInButton");
 	moveInButton->set_position(Vector2(-276, 130));
 	moveInButton->set_scale(Vector2(0.4, 0.4));
+	moveInButton->set_tooltip("Click to move in a new tenant");
+	moveInButton->set_default_cursor_shape(2);
 	moveInButton->set_normal_texture(actionIcon);
 	moveInButton->set_pressed_texture(actionIconSelected);
 	moveInButton->set_toggle_mode(true);
@@ -153,6 +157,8 @@ void FlatFrame::_add_repair_flat_button() const {
 	repairFlatButton->set_name("RepairButton");
 	repairFlatButton->set_position(Vector2(-237, 130));
 	repairFlatButton->set_scale(Vector2(0.4, 0.4));
+	repairFlatButton->set_tooltip("Click to repair the flat");
+	repairFlatButton->set_default_cursor_shape(2);
 	repairFlatButton->set_normal_texture(actionIcon);
 	repairFlatButton->set_pressed_texture(actionIconSelected);
 	repairFlatButton->set_toggle_mode(true);
