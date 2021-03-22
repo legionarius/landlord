@@ -11,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -844.0
 margin_bottom = -500.0
+mouse_default_cursor_shape = 2
 texture_hover = ExtResource( 1 )
 expand = true
 stretch_mode = 1
