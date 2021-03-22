@@ -134,7 +134,7 @@ elif env['platform'] == "windows":
     # Native or cross-compilation using MinGW
     if host_platform == 'linux' or host_platform == 'osx' or env['use_mingw']:
         # These options are for a release build even using target=debug
-        env.Append(CCFLAGS=['-O3', '-std=c++2a', '-Wwrite-strings'])
+        env.Append(CCFLAGS=['-O3', '-std=c++17', '-Wwrite-strings'])
         env.Append(LINKFLAGS=[
             '--static',
             '-Wl,--no-undefined',

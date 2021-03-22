@@ -5,8 +5,10 @@
 #include "CycleInfo.h"
 #include "Flat.h"
 #include "FlatFrame.h"
+#include "FlatIndicators.h"
 #include "FlatsManager.h"
 #include "GameState.h"
+#include "MonthReport.h"
 #include "SignalButton.h"
 #include "TenantIdentityCard.h"
 #include "TenantManager.h"
@@ -14,7 +16,6 @@
 #include "TenantSelectorButton.h"
 #include "TitleScreen.h"
 #include "Weather.h"
-#include "MonthReport.h"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
 	godot::Godot::gdnative_init(o);
@@ -39,5 +40,6 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
 	godot::register_class<godot::FlatFrame>();
 	godot::register_class<godot::FlatsManager>();
 	godot::register_class<godot::Weather>();
+	godot::register_class<godot::FlatIndicators>();
 	godot::register_class<godot::MonthReport>();
 }
