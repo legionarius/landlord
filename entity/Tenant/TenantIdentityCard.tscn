@@ -20,6 +20,9 @@ margin_bottom = 794.0
 rect_scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FirstNameLabel" type="Label" parent="."]
 margin_left = 37.7839

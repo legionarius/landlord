@@ -45,8 +45,13 @@ void Flat::_ready() {
 }
 
 void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
+	GameState *gameState = Object::cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
+	if(gameState->get_cycle_number() == 0){
+		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration-1;
+	} else {
+		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration;
+	}
 	this->tenant = tenant;
-	end_lease = 12; // TODO: Randomize the length of the lease.
 }
 
 void Flat::_on_pressed() {
@@ -70,12 +75,10 @@ real_t Flat::break_legs_and_collect_money() {
 		rng->randomize();
 		real_t n = rng->randf_range(0, 1);
 		if (n < (tenant->confidence / 100.f)) {
-			Godot::print("[RENT]: payed for flat " + String(std::to_string(id).c_str()));
 			flatIndicators->isPayedVisible = true;
 			flatIndicators->isNotPayedVisible = false;
 			return rent - charge;
 		} else {
-			Godot::print("[RENT]: NOT payed for flat " + String(std::to_string(id).c_str()));
 			flatIndicators->isNotPayedVisible = true;
 			flatIndicators->isPayedVisible = false;
 			return -charge;
@@ -89,7 +92,7 @@ void Flat::queue_move_in_tenant(const bool isPressed, const uint64_t tenantId) {
 	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	if (isPressed) {
 		TenantManager *tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
-		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant_by_id(tenantId);
+		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(tenantId-1);
 		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this, tenant);
 		flatsManager->add_action(actionMoveInTenant);
 		_add_action_icon_on_flat(actionMoveInTenant);
@@ -121,12 +124,12 @@ void Flat::queue_repair_flat(const bool isPressed) {
 		if (!flatsManager->action_will_be_executed_in_flat(this, ACTION_REPAIR_FLAT)) {
 			flatsManager->add_action(actionRepairFlat);
 			_add_action_icon_on_flat(actionRepairFlat);
-			flatIndicators->isRepairVisible = true;
+			flatIndicators->isLeaveVisible = true;
 		}
 	} else {
 		flatsManager->remove_action(this, ACTION_REPAIR_FLAT);
 		_remove_action_icon_on_flat(ACTION_REPAIR_FLAT);
-		flatIndicators->isRepairVisible = false;
+		flatIndicators->isLeaveVisible = false;
 	}
 }
 
@@ -166,6 +169,7 @@ void Flat::repair() {
 }
 
 void Flat::fire_tenant() {
+	flatIndicators->isLeaveVisible = true;
 	tenant = nullptr;
 }
 

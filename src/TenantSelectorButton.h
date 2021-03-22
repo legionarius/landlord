@@ -17,14 +17,14 @@ namespace godot {
 class TenantSelectorButton: public TextureButton {
 GODOT_CLASS(TenantSelectorButton, TextureButton);
 
-	uint64_t tenantId;
+	int64_t tenantId;
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
 	void _on_pressed();
 
-	void set_tenant_id(uint64_t m_tenantId){tenantId = m_tenantId;}
+	void set_tenant_id(int64_t m_tenantId){tenantId = m_tenantId;}
 };
 }
 

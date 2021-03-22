@@ -12,7 +12,4 @@ std::string ActionMoveInTenant::iconPathSelected = "res://asset/FlatFrame/move_i
 void ActionMoveInTenant::apply() {
 	godot::Flat *flat = godot::Object::cast_to<godot::Flat>(target);
 	flat->sign_lease(tenant);
-	std::stringstream output;
-	output << "[ACTION]: Move in tenant in flat : " << flat->get_name().alloc_c_string() << " Tenant id: " << tenant->id;
-	godot::Godot::print(output.str().c_str());
 }

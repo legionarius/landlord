@@ -6,9 +6,11 @@
 
 using namespace godot;
 
-real_t TenantSelector::maxTenantInSelector = 3;
+int64_t TenantSelector::maxTenantInSelector = 3;
 
-void TenantSelector::_init() {}
+void TenantSelector::_init() {
+	rng = RandomNumberGenerator()._new();
+}
 
 void TenantSelector::_ready() {
 	TenantManager *tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
@@ -16,9 +18,11 @@ void TenantSelector::_ready() {
 	TextureButton *exitSelector = cast_to<TextureButton>(get_node("ExitSelector"));
 	exitSelector->connect("pressed", this, "exit_selector");
 	Ref<Texture> hover_texture = ResourceLoader::get_singleton()->load("asset/Flat/hover_texture.png");
+	rng->randomize();
 	Ref<PackedScene> tenantIdentityCardScene = ResourceLoader::get_singleton()->load("entity/Tenant/TenantIdentityCard.tscn");
-	for (size_t i = 0; i < maxTenantInSelector; i++) {
-		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(i);
+	for (int64_t i = 0; i < maxTenantInSelector; i++) {
+		real_t tenantIndex = rng->randf_range(0, 49);
+		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(tenantIndex);
 		TenantIdentityCard *tenantIdentityCard = cast_to<TenantIdentityCard>(tenantIdentityCardScene->instance());
 		TenantSelectorButton *tenantButtonSelector = TenantSelectorButton::_new();
 		tenantButtonSelector->set_size(Vector2(190, 200));
@@ -33,7 +37,7 @@ void TenantSelector::_ready() {
 	}
 }
 
-void TenantSelector::tenant_selected(uint64_t tenantId) {
+void TenantSelector::tenant_selected(int64_t tenantId) {
 	emit_signal(NEW_TENANT_SELECTED, tenantId);
 }
 

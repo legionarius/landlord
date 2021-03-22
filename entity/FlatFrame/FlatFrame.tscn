@@ -228,8 +228,8 @@ margin_right = 276.402
 margin_bottom = 94.7025
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.345098, 0.305882, 0.305882, 1 )
-text = "Choose a new 
-tenant  to inhabit 
+text = "Choose a new
+tenant  to inhabit
 the flat."
 __meta__ = {
 "_edit_use_anchors_": true
@@ -246,8 +246,8 @@ margin_right = 278.608
 margin_bottom = 221.079
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.345098, 0.305882, 0.305882, 1 )
-text = "Restore the health 
-of a flat to 
+text = "Restore the health
+of a flat to
 it's maximum."
 __meta__ = {
 "_edit_use_anchors_": true
