@@ -18,13 +18,13 @@ namespace godot {
 class TenantSelector: public TextureRect {
 	GODOT_CLASS(TenantSelector, TextureRect);
 
-	static real_t maxTenantInSelector;
+	static int64_t maxTenantInSelector;
 
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
-	void tenant_selected(uint64_t tenantId);
+	void tenant_selected(int64_t tenantId);
 	void exit_selector();
 };
 }

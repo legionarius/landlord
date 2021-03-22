@@ -29,7 +29,6 @@ private:
 
 public:
 	TenantIdentityCard::Tenant* get_tenant(int n);
-	TenantIdentityCard::Tenant* get_tenant_by_id(int tenantId);
 	static void _register_methods();
 	void _init();
 	void _ready();

@@ -36,7 +36,6 @@ class Flat : public TextureButton {
 	GODOT_CLASS(Flat, TextureButton);
 
 	TenantIdentityCard::Tenant *tenant;
-	int64_t end_lease; // cycle at which the
 	RandomNumberGenerator *rng;
 	FlatIndicators *flatIndicators;
 	Light2D *lightBulbTenant;

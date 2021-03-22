@@ -14,14 +14,10 @@ TenantManager::~TenantManager() {
 }
 
 TenantIdentityCard::Tenant *TenantManager::get_tenant(int n) {
-	return tenant_array[n];
-}
-
-TenantIdentityCard::Tenant *TenantManager::get_tenant_by_id(int tenantId) {
 	std::stringstream test;
-	test << "Tenant id in manger: " << tenantId;
+	test << "tenant mange id: " << n;
 	Godot::print(test.str().c_str());
-	return tenant_array[1];
+	return tenant_array[n];
 }
 
 void TenantManager::load_inputs() {
