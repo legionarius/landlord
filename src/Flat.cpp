@@ -31,7 +31,7 @@ void Flat::update_charge() {
 	// Charge :
 	// - 50% of the rent
 	// - Bonus of 25% of the health (remove the bonus from the charge)
-	charge = (rent * 50.f) / 100.f - (health * 0.25);
+	charge = (rent * 25.f) / 100.f - (health * 0.25);
 }
 
 void Flat::_ready() {
@@ -77,10 +77,10 @@ real_t Flat::break_legs_and_collect_money() {
 			Godot::print("[RENT]: NOT payed for flat " + String(std::to_string(id).c_str()));
 			flatIndicators->isNotPayedVisible = true;
 			flatIndicators->isPayedVisible = false;
-			return 0.f;
+			return -charge;
 		}
 	} else {
-		return 0.f;
+		return -charge;
 	}
 }
 
