@@ -72,6 +72,9 @@ void FlatFrame::_on_exitButton_pressed() {
 }
 
 void::FlatFrame::_on_move_in_pressed() {
+	Ref<PackedScene> tenantSelectorScene = ResourceLoader::get_singleton()->load("entity/Tenant/TenantSelector.tscn");
+	TenantSelector *tenantSelector = Object::cast_to<TenantSelector>(tenantSelectorScene->instance());
+	add_child(tenantSelector);
 	TextureButton *moveInButton = cast_to<TextureButton>(get_node("Frame/MoveInButton"));
 	emit_signal(SIGNAL_MOVE_IN_TENANT, moveInButton->is_pressed());
 }
@@ -105,7 +108,6 @@ void FlatFrame::_add_fire_tenant_button() const {
 }
 
 void FlatFrame::_add_move_in_tenant_button() const {
-	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	Ref<Texture> actionIcon = ResourceLoader::get_singleton()->load(ActionMoveInTenant::iconPath.c_str());
 	Ref<Texture> actionIconSelected = ResourceLoader::get_singleton()->load(ActionMoveInTenant::iconPathSelected.c_str());
 	TextureButton *moveInButton = TextureButton::_new();
@@ -114,9 +116,7 @@ void FlatFrame::_add_move_in_tenant_button() const {
 	moveInButton->set_scale(Vector2(0.4, 0.4));
 	moveInButton->set_normal_texture(actionIcon);
 	moveInButton->set_pressed_texture(actionIconSelected);
-	moveInButton->set_toggle_mode(true);
 	moveInButton->connect("pressed", this, "_on_move_in_pressed");
-	moveInButton->set_pressed(flatsManager->action_will_be_executed_in_flat(this->flat, ACTION_MOVE_IN_TENANT));
 
 	Node *parentNode = get_node("Frame");
 	parentNode->add_child(moveInButton);

@@ -10,6 +10,7 @@
 #include "FlatsManager.h"
 #include "Signals.h"
 #include "TenantIdentityCard.h"
+#include "TenantSelector.h"
 
 #include <AnimationPlayer.hpp>
 #include <AudioStreamPlayer.hpp>
