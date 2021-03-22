@@ -124,12 +124,12 @@ void Flat::queue_repair_flat(const bool isPressed) {
 		if (!flatsManager->action_will_be_executed_in_flat(this, ACTION_REPAIR_FLAT)) {
 			flatsManager->add_action(actionRepairFlat);
 			_add_action_icon_on_flat(actionRepairFlat);
-			flatIndicators->isRepairVisible = true;
+			flatIndicators->isLeaveVisible = true;
 		}
 	} else {
 		flatsManager->remove_action(this, ACTION_REPAIR_FLAT);
 		_remove_action_icon_on_flat(ACTION_REPAIR_FLAT);
-		flatIndicators->isRepairVisible = false;
+		flatIndicators->isLeaveVisible = false;
 	}
 }
 
@@ -169,6 +169,7 @@ void Flat::repair() {
 }
 
 void Flat::fire_tenant() {
+	flatIndicators->isLeaveVisible = true;
 	tenant = nullptr;
 }
 
