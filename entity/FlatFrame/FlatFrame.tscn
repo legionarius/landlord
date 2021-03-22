@@ -79,6 +79,7 @@ __meta__ = {
 position = Vector2( -86.1938, 38.8567 )
 rotation = -0.757473
 scale = Vector2( 1.31696, 1.31696 )
+z_index = 2
 texture = ExtResource( 1 )
 
 [node name="HealthBackground" type="Sprite" parent="Frame"]
