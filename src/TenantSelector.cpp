@@ -26,10 +26,8 @@ void TenantSelector::_ready() {
 		tenantButtonSelector->connect(TENANT_SELECTOR_PRESSED, this, "tenant_selected");
 		tenantButtonSelector->set_tenant_id(tenant->id);
 		tenantIdentityCard->set_tenant(tenant);
-		tenantButtonSelector->set_position(Vector2(80,30));
-		if(i != 0) {
-			tenantButtonSelector->set_margin(0, 400 * i);
-		}
+		tenantButtonSelector->set_position(Vector2(0,30));
+		tenantButtonSelector->set_margin(0, 200 * (i+1));
 		tenantButtonSelector->add_child(tenantIdentityCard);
 		selectorBackground->add_child(tenantButtonSelector);
 	}
