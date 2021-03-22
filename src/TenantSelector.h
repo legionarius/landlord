@@ -22,6 +22,7 @@ public:
 	static void _register_methods();
 	void _init();
 	void _ready();
+	void tenant_selected();
 };
 }
 
