@@ -8,6 +8,7 @@
 #include "ActionMoveInTenant.h"
 #include "ActionRepairFlat.h"
 #include "ActionFireTenant.h"
+#include "GameState.h"
 #include "FlatFrame.h"
 #include "FlatsManager.h"
 #include "Signals.h"
@@ -51,6 +52,8 @@ public:
 	void _remove_action_icon_on_flat(ActionType actionType);
 	void repair();
 	void update_health();
+	void fire_tenant();
+	void fire_tenant_if_end_leasing();
 
 	int64_t id;
 	real_t rent;
