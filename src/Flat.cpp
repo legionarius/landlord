@@ -41,6 +41,7 @@ void Flat::_ready() {
 	lightBulbTenant = cast_to<Light2D>(get_node("LightBulb/Light2D"));
 	lightBulb = cast_to<Sprite>(get_node("LightBulb"));
 	lightBulb->set_modulate(Color(0.5, 0.5, 0.5));
+	set_tooltip("Click to open flat details");
 }
 
 void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
