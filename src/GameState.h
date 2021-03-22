@@ -7,7 +7,9 @@
 
 #include "ActionRepairFlat.h"
 #include "FlatsManager.h"
+#include "MonthReport.h"
 #include "Signals.h"
+
 #include <Godot.hpp>
 #include <InputEventKey.hpp>
 #include <Node.hpp>
@@ -21,8 +23,10 @@ class GameState : public Node {
 private:
 	int64_t year;
 	int64_t month;
+	real_t cycle_number;
 	real_t balance;
 	real_t monthly_charge;
+	MonthReport *monthReport;
 
 	void next_month();
 	void calculate_balance();
@@ -31,6 +35,7 @@ private:
 
 public:
 	void _next_turn();
+	real_t get_cycle_number() { return cycle_number; }
 
 	static void _register_methods();
 	void _init();

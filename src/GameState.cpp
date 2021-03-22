@@ -9,6 +9,7 @@ using namespace godot;
 void GameState::_init() {
 	month = 0; // Starts at 0 -> JANUARY
 	year = 1;
+	cycle_number = 1;
 	balance = 1000;
 	monthly_charge = 100;
 }
@@ -20,12 +21,19 @@ void GameState::_input(const Ref<InputEvent> event) {
 }
 
 void GameState::_next_turn() {
+	// Clean-up logs
+	if (monthReport == nullptr) {
+		monthReport = cast_to<MonthReport>(get_tree()->get_root()->get_node("MainScene/UILayer/MonthReport"));
+	}
+	monthReport->_flush();
+
 	calculate_balance();
 	calculate_actions_cost();
 	// Apply actions
 	run_actions();
 	// Update current state
 	next_month();
+	cycle_number += 1;
 	// Update UI
 	emit_signal(NEW_CYCLE, month, year, balance);
 }
@@ -39,19 +47,19 @@ void GameState::next_month() {
 }
 
 void GameState::run_actions() {
-	FlatsManager * flatManager =
+	FlatsManager *flatManager =
 			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	flatManager->run_cycle();
 }
 
 void GameState::calculate_balance() {
-	FlatsManager * flatManager =
+	FlatsManager *flatManager =
 			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	balance += flatManager->_collect_rent();
 }
 
 void GameState::calculate_actions_cost() {
-	FlatsManager * flatManager =
+	FlatsManager *flatManager =
 			cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	balance -= flatManager->get_actions_cost();
 }

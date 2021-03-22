@@ -49,9 +49,9 @@ __meta__ = {
 
 [node name="LastNameLabel" type="Label" parent="."]
 margin_left = 40.0111
-margin_top = 97.0307
+margin_top = 81.1974
 margin_right = 142.011
-margin_bottom = 126.031
+margin_bottom = 110.198
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nom:"
@@ -61,10 +61,10 @@ __meta__ = {
 }
 
 [node name="LastName" type="Label" parent="."]
-margin_left = 125.835
-margin_top = 98.8183
-margin_right = 219.835
-margin_bottom = 127.818
+margin_left = 130.002
+margin_top = 84.6516
+margin_right = 224.002
+margin_bottom = 113.652
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Green"
@@ -74,10 +74,10 @@ __meta__ = {
 }
 
 [node name="AgeLabel" type="Label" parent="."]
-margin_left = 40.0111
-margin_top = 149.742
-margin_right = 142.011
-margin_bottom = 178.742
+margin_left = 42.5111
+margin_top = 116.409
+margin_right = 144.511
+margin_bottom = 145.409
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Age:"
@@ -87,10 +87,10 @@ __meta__ = {
 }
 
 [node name="Age" type="Label" parent="."]
-margin_left = 100.101
-margin_top = 150.432
-margin_right = 194.101
-margin_bottom = 179.432
+margin_left = 101.768
+margin_top = 119.599
+margin_right = 195.768
+margin_bottom = 148.599
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "26"
@@ -146,6 +146,32 @@ margin_bottom = 137.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "60"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeasingDurationLabel" type="Label" parent="."]
+margin_left = 39.6116
+margin_top = 150.803
+margin_right = 151.612
+margin_bottom = 179.803
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Leasing duration:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeasingDuration" type="Label" parent="."]
+margin_left = 258.333
+margin_top = 153.136
+margin_right = 292.333
+margin_bottom = 182.136
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "12"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false

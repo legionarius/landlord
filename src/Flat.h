@@ -12,6 +12,7 @@
 #include "FlatFrame.h"
 #include "FlatIndicators.h"
 #include "FlatsManager.h"
+#include "GameState.h"
 #include "Signals.h"
 
 #include "TenantIdentityCard.h"
@@ -59,6 +60,8 @@ public:
 	void update_health();
 	void show_indicators();
 	void update_tenant_presence();
+	void fire_tenant();
+	void fire_tenant_if_end_leasing();
 
 	int64_t id;
 	real_t rent;

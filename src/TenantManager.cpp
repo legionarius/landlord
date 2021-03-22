@@ -39,6 +39,7 @@ void TenantManager::load_inputs() {
 		tenant->picture_path = input["picture_path"];
 		tenant->confidence = input["confidence"];
 		tenant->cleanliness = input["cleanliness"];
+		tenant->leasing_duration = input["leasing_duration"];
 		tenant_array.push_back(tenant);
 	}
 }

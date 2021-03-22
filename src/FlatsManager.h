@@ -7,13 +7,16 @@
 
 #include "Action.h"
 #include "Flat.h"
+#include "GameState.h"
+#include "MonthReport.h"
 #include "TenantManager.h"
-#include <Viewport.hpp>
-#include <SceneTree.hpp>
+
 #include <Array.hpp>
 #include <Godot.hpp>
 #include <Node.hpp>
 #include <Node2D.hpp>
+#include <SceneTree.hpp>
+#include <Viewport.hpp>
 #include <vector>
 
 namespace godot {
@@ -21,14 +24,15 @@ class FlatsManager : public Node2D {
 	GODOT_CLASS(FlatsManager, Node2D);
 
 private:
-	std::vector<Action*> actions;
+	std::vector<Action *> actions;
+	MonthReport *monthReport;
 
 public:
 	void run_cycle();
-	void add_action(Action * action);
+	void add_action(Action *action);
 	void add_tenants();
-	void remove_action(Node * flat, ActionType actionType);
-	bool action_will_be_executed_in_flat(Node * flat, ActionType actionType);
+	void remove_action(Node *flat, ActionType actionType);
+	bool action_will_be_executed_in_flat(Node *flat, ActionType actionType);
 	real_t _collect_rent();
 	void update_flats();
 	real_t get_actions_cost();
