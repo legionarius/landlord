@@ -31,4 +31,5 @@ cmake-build-debug/
 lib/win64
 lib/x11
 *.os
+*.bc
 .sconsign.dblite
