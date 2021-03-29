@@ -7,6 +7,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
+use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -14,11 +15,12 @@ size = 28
 font_data = ExtResource( 2 )
 
 [node name="TenantCard" type="TextureRect"]
-margin_left = 0.235214
-margin_right = 704.235
+margin_left = -0.161637
+margin_right = 703.838
 margin_bottom = 794.0
 rect_scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
+expand = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -31,16 +33,16 @@ margin_right = 139.784
 margin_bottom = 79.2585
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Prénom:"
+text = "First name:"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FirstName" type="Label" parent="."]
-margin_left = 150.631
+margin_left = 178.41
 margin_top = 50.2585
-margin_right = 244.631
+margin_right = 272.41
 margin_bottom = 79.2585
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -57,7 +59,7 @@ margin_right = 142.011
 margin_bottom = 110.198
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Nom:"
+text = "Name:"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -104,12 +106,12 @@ __meta__ = {
 
 [node name="ConfidenceLabel" type="Label" parent="."]
 margin_left = 479.205
-margin_top = 72.6487
-margin_right = 573.205
-margin_bottom = 101.649
+margin_top = 73.9715
+margin_right = 607.205
+margin_bottom = 102.972
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Confiance:"
+text = "Trust:"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -135,7 +137,7 @@ margin_right = 589.843
 margin_bottom = 132.796
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Propreté:"
+text = "Cleanliness:"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false

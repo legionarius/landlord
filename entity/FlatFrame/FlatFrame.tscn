@@ -42,6 +42,7 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 27
+use_filter = true
 extra_spacing_bottom = -19
 font_data = ExtResource( 6 )
 
@@ -97,13 +98,13 @@ scale = Vector2( 0.31943, 0.31943 )
 texture = ExtResource( 7 )
 
 [node name="HealthTitle" type="Label" parent="Frame/HealthBackground"]
-margin_left = -83.3328
-margin_top = -234.503
-margin_right = 77.6672
-margin_bottom = -172.503
+margin_left = -107.244
+margin_top = -237.974
+margin_right = 111.756
+margin_bottom = -175.974
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.415686, 0.32549, 0.196078, 1 )
-text = "Health"
+text = "Cleanliness"
 align = 1
 valign = 3
 __meta__ = {
