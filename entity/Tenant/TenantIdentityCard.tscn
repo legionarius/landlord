@@ -7,6 +7,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
+use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -19,6 +20,7 @@ margin_right = 703.838
 margin_bottom = 794.0
 rect_scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
+expand = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
