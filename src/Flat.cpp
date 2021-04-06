@@ -51,17 +51,14 @@ void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 }
 
 void Flat::_on_pressed() {
-	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
-	FlatFrame *flatFrame = cast_to<FlatFrame>(flatFrameScene->instance());
+//	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
+	FlatFrame *flatFrame = cast_to<FlatFrame>(get_tree()->get_root()->get_node("MainScene/FlatFrame"));
 	flatFrame->_set_flat(this);
 	flatFrame->_set_flat_label(id);
 	flatFrame->_set_health(health);
 	flatFrame->_set_rent(rent);
 	flatFrame->_set_tenant(tenant);
-	flatFrame->connect(SIGNAL_REPAIR_FLAT, this, "queue_repair_flat");
-	flatFrame->connect(SIGNAL_FIRE_TENANT, this, "queue_fire_tenant");
-	flatFrame->connect(SIGNAL_MOVE_IN_TENANT, this, "queue_move_in_tenant");
-	add_child(flatFrame);
+	// TODO: Voir pour faire une methode queue action en passant un param dans la méthode connect
 	flatFrame->popup();
 }
 
