@@ -65,6 +65,7 @@ html5:
 
 pages:
   stage: deploy
+  when: manual
   script:
     - mkdir public
     - cp build/html5/* public
@@ -72,8 +73,8 @@ pages:
     paths:
       - public
     expire_in: 1 week
-  only:
-    - master
+
+
 
   # Itch.io Deploy
 itchio:linux:
