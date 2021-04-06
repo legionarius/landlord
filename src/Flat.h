@@ -10,12 +10,12 @@
 #include "ActionRepairFlat.h"
 #include "GameState.h"
 #include "FlatFrame.h"
-#include "FlatIndicators.h"
 #include "FlatsManager.h"
 #include "Signals.h"
 #include "TenantIdentityCard.h"
 #include "Constants.h"
 
+#include <ColorRect.hpp>
 #include <Godot.hpp>
 #include <Light2D.hpp>
 #include <PackedScene.hpp>
@@ -37,9 +37,7 @@ class Flat : public TextureButton {
 
 	TenantIdentityCard::Tenant *tenant;
 	RandomNumberGenerator *rng;
-	FlatIndicators *flatIndicators;
-	Light2D *lightBulbTenant;
-	Sprite *lightBulb;
+	TextureRect *flatMask;
 
 public:
 	static void _register_methods();
@@ -52,12 +50,11 @@ public:
 	void queue_move_in_tenant(const bool isPressed, const uint64_t tenantId);
 	void queue_fire_tenant(const bool isPressed);
 	void queue_repair_flat(const bool isPressed);
-	void reset_action_icon();
+	// void reset_action_icon();
 	void _add_action_icon_on_flat(Action *action);
 	void _remove_action_icon_on_flat(ActionType actionType);
 	void repair();
 	void update_health();
-	void show_indicators();
 	void update_tenant_presence();
 	void fire_tenant();
 	void fire_tenant_if_end_leasing();

@@ -6,7 +6,6 @@
 #include "EndScreen.h"
 #include "Flat.h"
 #include "FlatFrame.h"
-#include "FlatIndicators.h"
 #include "FlatsManager.h"
 #include "GameState.h"
 #include "MonthReport.h"
@@ -42,6 +41,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
 	godot::register_class<godot::FlatFrame>();
 	godot::register_class<godot::FlatsManager>();
 	godot::register_class<godot::Weather>();
-	godot::register_class<godot::FlatIndicators>();
 	godot::register_class<godot::MonthReport>();
 }
