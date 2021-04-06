@@ -17,7 +17,7 @@ include_directories(godot-cpp/include/core)
 include_directories(godot-cpp/include/gen)
 
 add_executable(
-        weekly-gamejam-190
+        mundane-jam
         godot-cpp/godot-headers/android/godot_android.h
         godot-cpp/godot-headers/arvr/godot_arvr.h
         godot-cpp/godot-headers/gdnative/aabb.h
@@ -250,7 +250,6 @@ add_executable(
         godot-cpp/include/gen/EditorResourcePreview.hpp
         godot-cpp/include/gen/EditorResourcePreviewGenerator.hpp
         godot-cpp/include/gen/EditorSceneImporter.hpp
-        godot-cpp/include/gen/EditorSceneImporterAssimp.hpp
         godot-cpp/include/gen/EditorScenePostImport.hpp
         godot-cpp/include/gen/EditorScript.hpp
         godot-cpp/include/gen/EditorSelection.hpp
