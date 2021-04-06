@@ -19,5 +19,6 @@
 // Godot Signals
 
 #define BTN_PRESSED "pressed"
+#define POPUP_ABOUT_TO_SHOW "about_to_show"
 
 #endif //MUNDANE_JAM_SIGNALS_H

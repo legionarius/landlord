@@ -1,0 +1,23 @@
+//
+// Created by bogdan on 29/03/2021.
+//
+
+#ifndef MUNDANE_JAM_MONTH_H
+#define MUNDANE_JAM_MONTH_H
+
+enum Month {
+	JANUARY,
+	FEBRUARY,
+	MARCH,
+	APRIL,
+	MAY,
+	JUNE,
+	JULY,
+	AUGUST,
+	SEPTEMBER,
+	OCTOBER,
+	NOVEMBER,
+	DECEMBER
+};
+
+#endif //MUNDANE_JAM_MONTH_H
