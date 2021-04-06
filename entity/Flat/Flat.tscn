@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://asset/Flat/hover_texture.png" type="Texture" id=1]
 [ext_resource path="res://entity/Flat/Flat.gdns" type="Script" id=2]
-[ext_resource path="res://entity/FlatIndicators/FlatIndicators.tscn" type="PackedScene" id=3]
-[ext_resource path="res://asset/FlatFrame/light_bulb.png" type="Texture" id=4]
-[ext_resource path="res://asset/FlatFrame/light.png" type="Texture" id=5]
 
 [node name="Flat" type="TextureButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -844.0
-margin_bottom = -500.0
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 0.297302
+margin_top = 0.891906
+margin_right = -843.703
+margin_bottom = -499.108
 mouse_default_cursor_shape = 2
 texture_hover = ExtResource( 1 )
 expand = true
@@ -19,24 +20,3 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="FlatIndicators" parent="." instance=ExtResource( 3 )]
-margin_left = -56.2378
-margin_top = -35.6677
-margin_right = 47.7622
-margin_bottom = 52.3323
-rect_scale = Vector2( 0.3, 0.3 )
-
-[node name="LightBulb" type="Sprite" parent="."]
-position = Vector2( 52.0005, 17.4669 )
-scale = Vector2( 0.0228102, 0.0228102 )
-texture = ExtResource( 4 )
-
-[node name="Light2D" type="Light2D" parent="LightBulb"]
-position = Vector2( 0, 196.666 )
-scale = Vector2( 0.265666, 0.265666 )
-z_as_relative = false
-texture = ExtResource( 5 )
-color = Color( 0.788235, 0.733333, 0.121569, 1 )
-energy = 3.0
-range_z_max = 0
