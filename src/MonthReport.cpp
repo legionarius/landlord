@@ -10,8 +10,6 @@ void MonthReport::_init() {}
 
 void MonthReport::_ready() {
 	richTextLabel = cast_to<RichTextLabel>(get_node("Logs"));
-	if (richTextLabel != nullptr) {
-	}
 }
 
 void MonthReport::_add_entry(String entry) {
