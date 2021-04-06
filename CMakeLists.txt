@@ -703,6 +703,7 @@ add_executable(
         src/GDLibrary.cpp
         src/Flat.cpp
         src/GameState.cpp
+        src/CycleInfo.cpp src/CycleInfo.h
         src/TenantIdentityCard.cpp
         src/TitleScreen.cpp
         src/TenantManager.cpp src/TenantManager.h
@@ -713,5 +714,6 @@ add_executable(
         src/ActionMoveInTenant.cpp src/ActionMoveInTenant.h
         src/FlatIndicators.cpp src/FlatIndicators.h
         src/TenantSelector.cpp src/TenantSelector.h src/TenantSelectorButton.cpp src/TenantSelectorButton.h
+        src/EndScreen.cpp src/EndScreen.h
 )
 
