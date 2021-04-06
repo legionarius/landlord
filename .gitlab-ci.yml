@@ -67,7 +67,7 @@ pages:
   stage: deploy
   script:
     - mkdir public
-    - cp -r build/html5 public
+    - cp build/html5/* public
   artifacts:
     paths:
       - public
