@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://entity/ReportFrame/ReportFrame.gdns" type="Script" id=1]
+[ext_resource path="res://asset/ReportFrame/report_frame.png" type="Texture" id=2]
+[ext_resource path="res://asset/ReportFrame/report_header.png" type="Texture" id=3]
+[ext_resource path="res://asset/ReportFrame/Charlotte Southern.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 4 )
+
+[node name="ReportFrame" type="PopupDialog"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReportFrame" type="TextureRect" parent="MarginContainer"]
+margin_left = 294.0
+margin_top = 14.0
+margin_right = 730.0
+margin_bottom = 586.0
+texture = ExtResource( 2 )
+flip_h = true
+flip_v = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/ReportFrame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="VBoxContainer" parent="MarginContainer/ReportFrame/CenterContainer"]
+margin_left = 80.0
+margin_top = 177.0
+margin_right = 355.0
+margin_bottom = 305.0
+
+[node name="Label" type="Label" parent="MarginContainer/ReportFrame/CenterContainer/ItemList"]
+margin_right = 275.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.337255, 0.309804, 0.309804, 1 )
+text = "L'ppart test123"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="MarginContainer/ReportFrame/CenterContainer/ItemList"]
+margin_top = 44.0
+margin_right = 275.0
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.337255, 0.309804, 0.309804, 1 )
+text = "L'ppart test123qsdqsdqsdqsd"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="MarginContainer/ReportFrame/CenterContainer/ItemList"]
+margin_top = 88.0
+margin_right = 275.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.337255, 0.309804, 0.309804, 1 )
+text = "L'ppart test123"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReportHeader" type="Sprite" parent="MarginContainer/ReportFrame"]
+position = Vector2( 221.103, 57.6219 )
+scale = Vector2( 0.386179, 0.386179 )
+texture = ExtResource( 3 )
