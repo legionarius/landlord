@@ -62,8 +62,20 @@ html5:
     paths:
       - build/html5
     expire_in: 2 days
-    
-# Itch.io Deploy
+
+pages:
+  stage: deploy
+  script:
+    - mkdir public
+    - cp -r build/html5 public
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 week
+  only:
+    - master
+
+  # Itch.io Deploy
 itchio:linux:
   stage: deploy
   only:
