@@ -10,6 +10,7 @@ void Flat::_register_methods() {
 	register_method("_init", &Flat::_init);
 	register_method("_ready", &Flat::_ready);
 	register_method("_on_pressed", &Flat::_on_pressed);
+	register_method("_process", &Flat::_process);
 	register_method("queue_move_in_tenant", &Flat::queue_move_in_tenant);
 	register_method("queue_repair_flat", &Flat::queue_repair_flat);
 	register_method("queue_fire_tenant", &Flat::queue_fire_tenant);
@@ -24,6 +25,31 @@ void Flat::_init() {
 	update_charge();
 }
 
+void Flat::_ready() {
+	connect("pressed", this, "_on_pressed");
+	id = get_name().right(4).to_int();
+	flatMask = cast_to<TextureRect>(get_node("FlatMask"));
+	set_tooltip("Click to open flat details");
+	Ref<PackedScene> characterScene = ResourceLoader::get_singleton()->load("entity/Flat/Character.tscn");
+	tenantSpawnPosition = cast_to<Position2D>(get_node("TenantSpawn"));
+	if(tenantSpawnPosition != nullptr) {
+		tenantCharacter = cast_to<KinematicBody2D>(characterScene->instance());
+		tenantCharacter->set_position(tenantSpawnPosition->get_position());
+	}
+}
+
+void Flat::_process(float delta) {
+	if(tenant != nullptr){
+		const float slideX = tenantGoLeft ? -tenantSpeed : tenantSpeed;
+		tenantCharacter->move_and_slide(Vector2(slideX*(1+delta), 0));
+		if(tenantCharacter->is_on_wall()){
+			Node2D *tenantShape = cast_to<Node2D>(tenantCharacter->get_node("CharacterShape"));
+			tenantShape->apply_scale(Vector2(-1, 1));
+			tenantGoLeft = !tenantGoLeft;
+		}
+	}
+}
+
 // Should be run after each cycle when
 // the flat health changes.
 void Flat::update_charge() {
@@ -31,13 +57,6 @@ void Flat::update_charge() {
 	// - 50% of the rent
 	// - Bonus of 25% of the health (remove the bonus from the charge)
 	charge = (rent * 25.f) / 100.f - (health * 0.25);
-}
-
-void Flat::_ready() {
-	connect("pressed", this, "_on_pressed");
-	id = get_name().right(4).to_int();
-	flatMask = cast_to<TextureRect>(get_node("FlatMask"));
-	set_tooltip("Click to open flat details");
 }
 
 void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
@@ -48,6 +67,11 @@ void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration;
 	}
 	this->tenant = tenant;
+	spawn_tenant();
+}
+
+void Flat::spawn_tenant() {
+	add_child(tenantCharacter);
 }
 
 void Flat::_on_pressed() {
@@ -150,6 +174,7 @@ void Flat::repair() {
 
 void Flat::fire_tenant() {
 	tenant = nullptr;
+	remove_child(tenantCharacter);
 }
 
 void Flat::fire_tenant_if_end_leasing() {

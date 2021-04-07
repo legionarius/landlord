@@ -105,6 +105,7 @@ anims/flying_birds = ExtResource( 19 )
 position = Vector2( 755.544, 46.7725 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Cloud" type="Sprite" parent="Map/Weather"]
@@ -170,6 +171,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat01"]
+position = Vector2( 0, 60 )
+
 [node name="Flat02" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
 anchor_top = -0.00148651
@@ -225,6 +229,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat02"]
+position = Vector2( 28, 60 )
+
 [node name="Flat03" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
 anchor_top = -0.00148651
@@ -276,6 +283,9 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat03"]
+position = Vector2( 25, 59 )
 
 [node name="Flat04" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
@@ -329,6 +339,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat04"]
+position = Vector2( 55, 59 )
+
 [node name="Flat05" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
 anchor_top = -0.00148651
@@ -380,6 +393,9 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat05"]
+position = Vector2( 71, 58 )
 
 [node name="Flat06" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
@@ -434,6 +450,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat06"]
+position = Vector2( 39, 60 )
+
 [node name="Flat07" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
 anchor_top = -0.00148651
@@ -486,6 +505,9 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat07"]
+position = Vector2( 45, 70 )
 
 [node name="Flat08" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
@@ -543,6 +565,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat08"]
+position = Vector2( 20, 70 )
+
 [node name="Flat09" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
 anchor_top = -0.00148651
@@ -595,6 +620,9 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat09"]
+position = Vector2( 33, 52 )
 
 [node name="Flat10" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
@@ -649,6 +677,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat10"]
+position = Vector2( -8, 59 )
+
 [node name="Flat11" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
 anchor_top = -0.00148651
@@ -701,6 +732,9 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat11"]
+position = Vector2( 64, 79 )
 
 [node name="Flat12" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
@@ -755,6 +789,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat12"]
+position = Vector2( 34, 54 )
+
 [node name="Flat13" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
 anchor_top = -0.00148651
@@ -807,6 +844,9 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat13"]
+position = Vector2( -6, 66 )
 
 [node name="Flat14" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
@@ -861,6 +901,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat14"]
+position = Vector2( 57, 74 )
+
 [node name="Flat15" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
 anchor_top = -0.00148651
@@ -913,6 +956,9 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat15"]
+position = Vector2( 0, 58 )
 
 [node name="Flat16" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
@@ -967,6 +1013,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat16"]
+position = Vector2( 58, 57 )
+
 [node name="Flat17" type="TextureButton" parent="Map/Flats"]
 anchor_left = -0.000290334
 anchor_top = -0.00148651
@@ -976,6 +1025,7 @@ margin_left = 554.0
 margin_top = 298.0
 margin_right = 630.0
 margin_bottom = 381.0
+rect_pivot_offset = Vector2( -787.888, -170.315 )
 mouse_default_cursor_shape = 2
 texture_hover = ExtResource( 5 )
 expand = true
@@ -1019,6 +1069,9 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TenantSpawn" type="Position2D" parent="Map/Flats/Flat17"]
+position = Vector2( 32, 80 )
 
 [node name="Walls" type="StaticBody2D" parent="Map"]
 position = Vector2( 61.6757, 69.7297 )
