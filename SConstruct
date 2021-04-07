@@ -90,9 +90,9 @@ if env['platform'] == "osx":
 elif env['platform'] in ('x11', 'linux'):
     env['target_path'] += 'x11/'
     if env['target'] in ('debug', 'd'):
-        env.Append(CCFLAGS = ['-fPIC', '-g3','-Og', '-std=c++2a'])
+        env.Append(CCFLAGS = ['-fPIC', '-g3','-Og', '-std=c++17'])
     else:
-        env.Append(CCFLAGS = ['-fPIC', '-g','-O3', '-std=c++2a'])
+        env.Append(CCFLAGS = ['-fPIC', '-g','-O3', '-std=c++17'])
 
 elif env['platform'] == "windows":
     env['target_path'] += 'win64/'
@@ -147,7 +147,7 @@ elif env["platform"] == "javascript":
     env["CXX"] = "em++"
     env["AR"] = "emar"
     env["RANLIB"] = "emranlib"
-    env.Append(CPPFLAGS=["-s", "SIDE_MODULE=1", "-std=c++2a"])
+    env.Append(CPPFLAGS=["-s", "SIDE_MODULE=1", "-std=c++17"])
     env.Append(LINKFLAGS=["-s", "SIDE_MODULE=1"])
     env["SHOBJSUFFIX"] = ".bc"
     env["SHLIBSUFFIX"] = ".wasm"

@@ -713,6 +713,6 @@ add_executable(
         src/ActionMoveInTenant.cpp src/ActionMoveInTenant.h
         src/TenantSelector.cpp src/TenantSelector.h src/TenantSelectorButton.cpp src/TenantSelectorButton.h
         src/EndScreen.cpp src/EndScreen.h
-        src/FlatFrame.cpp
+        src/TenantCharacter.cpp src/TenantCharacter.h
 )
 
