@@ -49,6 +49,7 @@ public:
 	static void _register_methods();
 	void _init();
 	void _ready();
+	void _exit_tree();
 	void _on_pressed();
 	void sign_lease(TenantIdentityCard::Tenant *tenant);
 	void update_charge();

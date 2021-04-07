@@ -9,6 +9,7 @@ using namespace godot;
 void Flat::_register_methods() {
 	register_method("_init", &Flat::_init);
 	register_method("_ready", &Flat::_ready);
+	register_method("_exit_tree", &Flat::_exit_tree);
 	register_method("_on_pressed", &Flat::_on_pressed);
 	register_method("queue_move_in_tenant", &Flat::queue_move_in_tenant);
 	register_method("queue_repair_flat", &Flat::queue_repair_flat);
@@ -34,6 +35,11 @@ void Flat::_ready() {
 	if(tenantSpawnPosition != nullptr) {
 		tenantCharacter = cast_to<TenantCharacter>(characterScene->instance());
 	}
+}
+
+void Flat::_exit_tree() {
+	// In case of tenant character isn't in scene tree
+	tenantCharacter->queue_free();	
 }
 
 // Should be run after each cycle when
