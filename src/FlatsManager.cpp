@@ -19,8 +19,9 @@ void FlatsManager::add_tenants() {
 	TenantManager *tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
 	for (size_t i = 0; i < flats.size(); i++) {
 		Flat *flat = cast_to<Flat>(flats[i]);
-		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(i+1);
+		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(i + 1);
 		flat->sign_lease(tenant);
+		flat->update_tenant_presence();
 	}
 }
 
@@ -56,11 +57,10 @@ void FlatsManager::update_flats() {
 	for (size_t i = 0; i < flats.size(); i++) {
 		Flat *flat = cast_to<Flat>(flats[i]);
 		flat->fire_tenant_if_end_leasing();
-		flat->reset_action_icon();
+		// flat->reset_action_icon();
 		flat->update_charge();
 		flat->update_health();
 		flat->update_tenant_presence();
-		flat->show_indicators();
 	}
 }
 

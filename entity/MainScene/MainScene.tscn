@@ -1,10 +1,10 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://asset/MainScene/buildings.png" type="Texture" id=1]
 [ext_resource path="res://asset/MainScene/paper_texture.png" type="Texture" id=2]
 [ext_resource path="res://asset/MainScene/ui_box.png" type="Texture" id=3]
 [ext_resource path="res://asset/font/TheRustic-Demo.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://entity/Flat/Flat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://asset/Flat/hover_texture.png" type="Texture" id=5]
 [ext_resource path="res://entity/MainScene/year_label_font.tres" type="DynamicFont" id=6]
 [ext_resource path="res://asset/MainScene/btn_next_turn.png" type="Texture" id=7]
 [ext_resource path="res://asset/MainScene/btn_hover_next_turn.png" type="Texture" id=8]
@@ -21,6 +21,8 @@
 [ext_resource path="res://entity/MainScene/MainSceneflying_birds.tres" type="Animation" id=19]
 [ext_resource path="res://asset/sound/background_music.ogg" type="AudioStream" id=20]
 [ext_resource path="res://asset/sound/background_chatter.ogg" type="AudioStream" id=21]
+[ext_resource path="res://entity/Flat/Flat.gdns" type="Script" id=22]
+[ext_resource path="res://entity/FlatFrame/FlatFrame.tscn" type="PackedScene" id=23]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -30,23 +32,59 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.0705882, 0.0705882, 0.0705882, 1, 0.917647, 0.894118, 0.831373, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 50
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0, 0, 0, 1, 0.360784, 0.360784, 0.360784, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+width = 100
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8.30394, 154.914 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 16.0867, 162.649 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 8.92419, 114.845 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 10
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=10]
 size = 12
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=11]
 size = 48
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=12]
 size = 18
 font_data = ExtResource( 11 )
 
 [node name="MainScene" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="FlatFrame" parent="." instance=ExtResource( 23 )]
 
 [node name="Map" type="Node2D" parent="."]
 
 [node name="BackgroundTexture" type="TextureRect" parent="Map"]
+light_mask = 0
 margin_left = 2.12132
 margin_top = -0.707108
 margin_right = 1026.12
@@ -74,10 +112,948 @@ position = Vector2( 812.083, 41.9526 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 17 )
 
-[node name="Buildings" type="TextureRect" parent="Map"]
-margin_left = 12.0
-margin_right = 698.0
-margin_bottom = 603.0
+[node name="Flats" type="Node2D" parent="Map"]
+script = ExtResource( 12 )
+
+[node name="Flat01" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 61.6757
+margin_top = 69.7297
+margin_right = 168.676
+margin_bottom = 125.73
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat01"]
+margin_left = 111.0
+margin_top = -3.0
+margin_right = 170.0
+margin_bottom = 108.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat01"]
+margin_left = 102.0
+margin_top = 19.0
+margin_right = 139.0
+margin_bottom = 110.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat01"]
+margin_left = 107.0
+margin_right = 163.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat02" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 180.0
+margin_top = 73.0
+margin_right = 286.0
+margin_bottom = 129.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat02"]
+margin_left = 111.0
+margin_top = -3.0
+margin_right = 170.0
+margin_bottom = 108.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat02"]
+margin_left = 101.0
+margin_top = 16.0
+margin_right = 141.0
+margin_bottom = 112.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat02"]
+margin_left = 107.0
+margin_right = 160.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat03" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 62.1505
+margin_top = 141.903
+margin_right = 168.151
+margin_bottom = 197.903
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat03"]
+margin_left = 106.0
+margin_top = -9.0
+margin_right = 167.0
+margin_bottom = 90.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat03"]
+margin_left = 101.0
+margin_top = 14.0
+margin_right = 139.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat03"]
+margin_left = 107.0
+margin_right = 160.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat04" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 182.495
+margin_top = 141.903
+margin_right = 288.495
+margin_bottom = 197.903
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat04"]
+margin_left = 103.0
+margin_top = -5.0
+margin_right = 160.0
+margin_bottom = 98.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat04"]
+margin_left = 98.0
+margin_top = 14.0
+margin_right = 136.0
+margin_bottom = 108.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat04"]
+margin_left = 107.0
+margin_right = 160.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat05" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 65.4542
+margin_top = 220.245
+margin_right = 171.454
+margin_bottom = 277.245
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat05"]
+margin_left = 107.0
+margin_top = -17.0
+margin_right = 181.0
+margin_bottom = 90.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat05"]
+margin_left = 98.0
+margin_top = 10.0
+margin_right = 146.0
+margin_bottom = 99.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat05"]
+margin_left = 107.0
+margin_right = 164.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat06" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 182.495
+margin_top = 219.0
+margin_right = 288.495
+margin_bottom = 278.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat06"]
+margin_left = 105.0
+margin_top = -16.0
+margin_right = 180.0
+margin_bottom = 89.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat06"]
+margin_left = 97.0
+margin_top = 11.0
+margin_right = 145.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat06"]
+visible = false
+margin_left = 107.0
+margin_right = 165.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat07" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 65.0
+margin_top = 296.0
+margin_right = 171.0
+margin_bottom = 377.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat07"]
+margin_left = 106.0
+margin_top = -13.0
+margin_right = 192.0
+margin_bottom = 93.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat07"]
+margin_left = 99.0
+margin_top = 16.0
+margin_right = 151.0
+margin_bottom = 109.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat07"]
+visible = false
+margin_left = 107.0
+margin_right = 175.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat08" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 180.0
+margin_top = 298.0
+margin_right = 286.0
+margin_bottom = 380.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat08"]
+margin_left = 107.0
+margin_top = -13.0
+margin_right = 186.0
+margin_bottom = 94.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat08"]
+margin_left = 101.0
+margin_top = 14.0
+margin_right = 153.0
+margin_bottom = 111.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat08"]
+visible = false
+margin_left = 107.0
+margin_right = 173.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat09" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 308.974
+margin_top = 161.724
+margin_right = 414.974
+margin_bottom = 217.724
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat09"]
+margin_left = 107.0
+margin_top = -16.0
+margin_right = 189.0
+margin_bottom = 91.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat09"]
+margin_left = 93.0
+margin_top = 12.0
+margin_right = 147.0
+margin_bottom = 95.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat09"]
+visible = false
+margin_left = 107.0
+margin_right = 160.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat10" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 311.0
+margin_top = 228.0
+margin_right = 417.0
+margin_bottom = 291.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat10"]
+margin_left = 107.0
+margin_top = -16.0
+margin_right = 189.0
+margin_bottom = 91.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat10"]
+margin_left = 93.0
+margin_top = 14.0
+margin_right = 145.0
+margin_bottom = 101.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat10"]
+visible = false
+margin_left = 107.0
+margin_right = 160.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat11" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 305.0
+margin_top = 305.0
+margin_right = 419.0
+margin_bottom = 382.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat11"]
+margin_left = 107.0
+margin_top = -16.0
+margin_right = 189.0
+margin_bottom = 91.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat11"]
+margin_left = 102.0
+margin_top = 14.0
+margin_right = 161.0
+margin_bottom = 108.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat11"]
+visible = false
+margin_left = 107.0
+margin_right = 185.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat12" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 430.0
+margin_top = 165.0
+margin_right = 546.0
+margin_bottom = 221.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat12"]
+margin_left = 116.0
+margin_top = -6.0
+margin_right = 171.0
+margin_bottom = 110.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat12"]
+margin_left = 106.0
+margin_top = 11.0
+margin_right = 168.0
+margin_bottom = 114.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat12"]
+visible = false
+margin_left = 110.0
+margin_right = 163.0
+margin_bottom = 108.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat13" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 433.0
+margin_top = 226.0
+margin_right = 544.0
+margin_bottom = 292.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat13"]
+margin_left = 107.0
+margin_top = -14.0
+margin_right = 195.0
+margin_bottom = 93.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat13"]
+margin_left = 103.0
+margin_top = 12.0
+margin_right = 164.0
+margin_bottom = 113.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat13"]
+visible = false
+margin_left = 107.0
+margin_right = 166.0
+margin_bottom = 105.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat14" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 430.0
+margin_top = 310.0
+margin_right = 544.0
+margin_bottom = 388.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat14"]
+margin_left = 114.0
+margin_top = -21.0
+margin_right = 203.0
+margin_bottom = 93.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat14"]
+margin_left = 106.0
+margin_top = 12.0
+margin_right = 167.0
+margin_bottom = 118.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat14"]
+visible = false
+margin_left = 110.0
+margin_right = 178.0
+margin_bottom = 108.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat15" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 555.0
+margin_top = 165.0
+margin_right = 634.0
+margin_bottom = 221.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat15"]
+margin_left = 79.0
+margin_top = -9.0
+margin_right = 154.0
+margin_bottom = 70.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat15"]
+margin_left = 69.0
+margin_top = 14.0
+margin_right = 107.0
+margin_bottom = 83.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat15"]
+visible = false
+margin_left = 79.0
+margin_right = 140.0
+margin_bottom = 77.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat16" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 554.0
+margin_top = 233.0
+margin_right = 631.0
+margin_bottom = 289.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat16"]
+margin_left = 77.0
+margin_top = -16.0
+margin_right = 149.0
+margin_bottom = 61.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat16"]
+margin_left = 70.0
+margin_top = 9.0
+margin_right = 134.0
+margin_bottom = 74.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat16"]
+visible = false
+margin_left = 77.0
+margin_right = 133.0
+margin_bottom = 75.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Flat17" type="TextureButton" parent="Map/Flats"]
+anchor_left = -0.000290334
+anchor_top = -0.00148651
+anchor_right = 0.99971
+anchor_bottom = 0.998513
+margin_left = 554.0
+margin_top = 298.0
+margin_right = 630.0
+margin_bottom = 381.0
+mouse_default_cursor_shape = 2
+texture_hover = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GradientShadow" type="TextureRect" parent="Map/Flats/Flat17"]
+margin_left = 107.0
+margin_top = -16.0
+margin_right = 200.0
+margin_bottom = 91.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Map/Flats/Flat17"]
+margin_left = 70.0
+margin_top = 21.0
+margin_right = 122.0
+margin_bottom = 86.0
+rect_rotation = 90.0
+mouse_filter = 2
+color = Color( 0.917647, 0.894118, 0.831373, 1 )
+
+[node name="FlatMask" type="TextureRect" parent="Map/Flats/Flat17"]
+visible = false
+margin_left = 77.0
+margin_right = 157.0
+margin_bottom = 75.0
+rect_rotation = 90.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Walls" type="StaticBody2D" parent="Map"]
+position = Vector2( 61.6757, 69.7297 )
+
+[node name="Wall" type="CollisionShape2D" parent="Map/Walls"]
+position = Vector2( 2, 140 )
+shape = SubResource( 6 )
+
+[node name="Wall2" type="CollisionShape2D" parent="Map/Walls"]
+position = Vector2( 116, 140 )
+shape = SubResource( 6 )
+
+[node name="Wall3" type="CollisionShape2D" parent="Map/Walls"]
+position = Vector2( 239, 151 )
+shape = SubResource( 7 )
+
+[node name="Wall4" type="CollisionShape2D" parent="Map/Walls"]
+position = Vector2( 361, 211 )
+shape = SubResource( 8 )
+
+[node name="Wall5" type="CollisionShape2D" parent="Map/Walls"]
+position = Vector2( 488, 211 )
+shape = SubResource( 8 )
+
+[node name="Wall6" type="CollisionShape2D" parent="Map/Walls"]
+position = Vector2( 578, 211 )
+shape = SubResource( 8 )
+
+[node name="Buildings" type="TextureRect" parent="."]
+light_mask = 0
+margin_left = 13.1164
+margin_top = -1.0
+margin_right = 699.116
+margin_bottom = 602.0
+mouse_filter = 2
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
@@ -85,110 +1061,245 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Flats" type="Node2D" parent="Map"]
-script = ExtResource( 12 )
+[node name="FlatPlates" type="Node2D" parent="."]
 
-[node name="Flat01" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 61.6757
-margin_top = 69.7297
-margin_right = 167.676
-margin_bottom = 125.73
+[node name="Label" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 163.434
+margin_top = 57.7961
+margin_right = 170.434
+margin_bottom = 78.7961
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat02" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 174.0
-margin_top = 73.0
-margin_right = 280.0
-margin_bottom = 129.0
+[node name="Label2" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 281.563
+margin_top = 59.5764
+margin_right = 291.563
+margin_bottom = 80.5764
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat03" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 62.1505
-margin_top = 141.903
-margin_right = 168.151
-margin_bottom = 197.903
+[node name="Label3" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 161.512
+margin_top = 127.685
+margin_right = 171.512
+margin_bottom = 148.685
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat04" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 182.495
-margin_top = 141.903
-margin_right = 288.495
-margin_bottom = 197.903
+[node name="Label4" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 282.007
+margin_top = 129.406
+margin_right = 292.007
+margin_bottom = 150.406
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat05" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 65.4542
-margin_top = 220.245
-margin_right = 171.454
-margin_bottom = 276.245
+[node name="Label5" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 162.259
+margin_top = 198.893
+margin_right = 172.259
+margin_bottom = 219.893
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat06" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 182.495
-margin_top = 220.245
-margin_right = 288.495
-margin_bottom = 276.245
+[node name="Label6" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 280.591
+margin_top = 200.904
+margin_right = 291.591
+margin_bottom = 221.904
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat07" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 65.0
-margin_top = 296.0
-margin_right = 171.0
-margin_bottom = 377.0
+[node name="Label7" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 162.692
+margin_top = 283.49
+margin_right = 173.692
+margin_bottom = 304.49
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "7"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat08" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 180.0
-margin_top = 298.0
-margin_right = 286.0
-margin_bottom = 380.0
+[node name="Label8" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 280.139
+margin_top = 283.942
+margin_right = 291.139
+margin_bottom = 304.942
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "8"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat09" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 308.974
-margin_top = 161.724
-margin_right = 414.974
-margin_bottom = 217.724
+[node name="Label9" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 413.918
+margin_top = 146.46
+margin_right = 424.918
+margin_bottom = 167.46
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "9"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat10" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 311.0
-margin_top = 228.0
-margin_right = 417.0
-margin_bottom = 291.0
+[node name="Label10" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 410.91
+margin_top = 210.863
+margin_right = 427.91
+margin_bottom = 231.863
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat11" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 305.0
-margin_top = 305.0
-margin_right = 419.0
-margin_bottom = 382.0
+[node name="Label11" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 412.475
+margin_top = 296.904
+margin_right = 429.475
+margin_bottom = 317.904
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "11"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat12" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 430.0
-margin_top = 165.0
-margin_right = 546.0
-margin_bottom = 221.0
+[node name="Label12" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 535.46
+margin_top = 154.318
+margin_right = 552.46
+margin_bottom = 175.318
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "12"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat13" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 433.0
-margin_top = 226.0
-margin_right = 544.0
-margin_bottom = 292.0
+[node name="Label13" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 536.46
+margin_top = 214.318
+margin_right = 553.46
+margin_bottom = 235.318
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "13"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat14" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 430.0
-margin_top = 310.0
-margin_right = 544.0
-margin_bottom = 388.0
+[node name="Label14" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 535.46
+margin_top = 297.318
+margin_right = 552.46
+margin_bottom = 318.318
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "14"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat15" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 555.0
-margin_top = 165.0
-margin_right = 634.0
-margin_bottom = 221.0
+[node name="Label15" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 622.46
+margin_top = 160.318
+margin_right = 639.46
+margin_bottom = 181.318
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "15"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat16" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 554.0
-margin_top = 233.0
-margin_right = 631.0
-margin_bottom = 289.0
+[node name="Label16" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 621.46
+margin_top = 221.318
+margin_right = 639.46
+margin_bottom = 242.318
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "16"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Flat17" parent="Map/Flats" instance=ExtResource( 5 )]
-margin_left = 554.0
-margin_top = 298.0
-margin_right = 630.0
-margin_bottom = 381.0
+[node name="Label17" type="Label" parent="FlatPlates"]
+light_mask = 0
+margin_left = 622.46
+margin_top = 299.318
+margin_right = 640.46
+margin_bottom = 320.318
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.894118, 0.882353, 0.823529, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "17"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="UILayer" type="Control" parent="."]
 margin_top = 0.707104
@@ -227,7 +1338,7 @@ mouse_filter = 1
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.541176, 0.521569, 0.521569, 1 )
-text = "Last Month's Report"
+text = "Next Month Actions"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -238,7 +1349,7 @@ margin_left = 727.0
 margin_top = 165.0
 margin_right = 1006.0
 margin_bottom = 368.0
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 10 )
 custom_colors/default_color = Color( 0.278431, 0.223529, 0.223529, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -271,7 +1382,7 @@ margin_left = 18.0
 margin_top = 18.0
 margin_right = 307.0
 margin_bottom = 75.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.905882, 0.760784, 0.647059, 1 )
 custom_colors/font_color_shadow = Color( 0.356863, 0.262745, 0.168627, 1 )
 text = "JANUARY"
@@ -287,9 +1398,9 @@ margin_right = 252.7
 margin_bottom = 580.52
 hint_tooltip = "Your total capital."
 mouse_filter = 1
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "1000.00 $"
+text = "1100.00 $"
 align = 2
 valign = 1
 __meta__ = {

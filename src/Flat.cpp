@@ -13,8 +13,7 @@ void Flat::_register_methods() {
 	register_method("queue_move_in_tenant", &Flat::queue_move_in_tenant);
 	register_method("queue_repair_flat", &Flat::queue_repair_flat);
 	register_method("queue_fire_tenant", &Flat::queue_fire_tenant);
-	register_method("reset_action_icon", &Flat::reset_action_icon);
-	register_method("show_indicators", &Flat::show_indicators);
+	// register_method("reset_action_icon", &Flat::reset_action_icon);
 }
 
 void Flat::_init() {
@@ -37,17 +36,14 @@ void Flat::update_charge() {
 void Flat::_ready() {
 	connect("pressed", this, "_on_pressed");
 	id = get_name().right(4).to_int();
-	flatIndicators = cast_to<FlatIndicators>(get_node("FlatIndicators"));
-	lightBulbTenant = cast_to<Light2D>(get_node("LightBulb/Light2D"));
-	lightBulb = cast_to<Sprite>(get_node("LightBulb"));
-	lightBulb->set_modulate(Color(0.5, 0.5, 0.5));
+	flatMask = cast_to<TextureRect>(get_node("FlatMask"));
 	set_tooltip("Click to open flat details");
 }
 
 void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 	GameState *gameState = Object::cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
-	if(gameState->get_cycle_number() == 0){
-		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration-1;
+	if (gameState->get_cycle_number() == 0) {
+		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration - 1;
 	} else {
 		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration;
 	}
@@ -55,18 +51,14 @@ void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 }
 
 void Flat::_on_pressed() {
-	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
-	FlatFrame *flatFrame = cast_to<FlatFrame>(flatFrameScene->instance());
+	//	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
+	FlatFrame *flatFrame = cast_to<FlatFrame>(get_tree()->get_root()->get_node("MainScene/FlatFrame"));
 	flatFrame->_set_flat(this);
 	flatFrame->_set_flat_label(id);
 	flatFrame->_set_health(health);
 	flatFrame->_set_rent(rent);
 	flatFrame->_set_tenant(tenant);
 	// TODO: Voir pour faire une methode queue action en passant un param dans la méthode connect
-	flatFrame->connect(SIGNAL_REPAIR_FLAT, this, "queue_repair_flat");
-	flatFrame->connect(SIGNAL_FIRE_TENANT, this, "queue_fire_tenant");
-	flatFrame->connect(SIGNAL_MOVE_IN_TENANT, this, "queue_move_in_tenant");
-	add_child(flatFrame);
 	flatFrame->popup();
 }
 
@@ -75,12 +67,8 @@ real_t Flat::break_legs_and_collect_money() {
 		rng->randomize();
 		real_t n = rng->randf_range(0, 1);
 		if (n < (tenant->confidence / 100.f)) {
-			flatIndicators->isPayedVisible = true;
-			flatIndicators->isNotPayedVisible = false;
 			return rent - charge;
 		} else {
-			flatIndicators->isNotPayedVisible = true;
-			flatIndicators->isPayedVisible = false;
 			return -charge;
 		}
 	} else {
@@ -92,7 +80,7 @@ void Flat::queue_move_in_tenant(const bool isPressed, const uint64_t tenantId) {
 	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
 	if (isPressed) {
 		TenantManager *tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
-		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(tenantId-1);
+		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(tenantId - 1);
 		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this, tenant);
 		flatsManager->add_action(actionMoveInTenant);
 		_add_action_icon_on_flat(actionMoveInTenant);
@@ -109,11 +97,9 @@ void Flat::queue_fire_tenant(const bool isPressed) {
 		ActionFireTenant *actionFireTenant = new ActionFireTenant(this);
 		flatsManager->add_action(actionFireTenant);
 		_add_action_icon_on_flat(actionFireTenant);
-		flatIndicators->isLeaveVisible = true;
 	} else {
 		flatsManager->remove_action(this, ACTION_FIRE_TENANT);
 		_remove_action_icon_on_flat(ACTION_FIRE_TENANT);
-		flatIndicators->isLeaveVisible = false;
 	}
 }
 
@@ -124,28 +110,22 @@ void Flat::queue_repair_flat(const bool isPressed) {
 		if (!flatsManager->action_will_be_executed_in_flat(this, ACTION_REPAIR_FLAT)) {
 			flatsManager->add_action(actionRepairFlat);
 			_add_action_icon_on_flat(actionRepairFlat);
-			flatIndicators->isLeaveVisible = true;
 		}
 	} else {
 		flatsManager->remove_action(this, ACTION_REPAIR_FLAT);
 		_remove_action_icon_on_flat(ACTION_REPAIR_FLAT);
-		flatIndicators->isLeaveVisible = false;
 	}
 }
 
-void Flat::reset_action_icon() {
-	Array icons = get_children();
-	for (size_t i = 0; i < icons.size(); i++) {
-		Node *icon = cast_to<Node>(icons[i]);
-		if (icon->get_class() == "TextureRect") {
-			icon->queue_free();
-		}
-	}
-}
-
-void Flat::show_indicators() {
-	flatIndicators->_show_indicators();
-}
+//void Flat::reset_action_icon() {
+//	Array icons = get_children();
+//	for (size_t i = 0; i < icons.size(); i++) {
+//		Node *icon = cast_to<Node>(icons[i]);
+//		if (icon->get_class() == "TextureRect") {
+//			icon->queue_free();
+//		}
+//	}
+//}
 
 void Flat::_add_action_icon_on_flat(Action *action) {
 	TextureRect *textureRect = TextureRect::_new();
@@ -169,7 +149,6 @@ void Flat::repair() {
 }
 
 void Flat::fire_tenant() {
-	flatIndicators->isLeaveVisible = true;
 	tenant = nullptr;
 }
 
@@ -195,8 +174,8 @@ void Flat::update_health() {
 
 void Flat::update_tenant_presence() {
 	if (tenant != nullptr) {
-		lightBulbTenant->set_enabled(true);
+		flatMask->set_visible(false);
 	} else {
-		lightBulbTenant->set_enabled(false);
+		flatMask->set_visible(true);
 	}
 }

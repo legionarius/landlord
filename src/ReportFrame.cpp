@@ -8,6 +8,10 @@ using namespace godot;
 
 void ReportFrame::_init() {}
 
-void ReportFrame::_ready() {}
+void ReportFrame::_ready() {
+	connect(POPUP_ABOUT_TO_SHOW, this, "_on_pre_show");
+}
+
+void ReportFrame::_on_pre_show() {}
 
 void ReportFrame::_register_methods() {}

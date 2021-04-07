@@ -19,6 +19,7 @@ private:
 	static void _register_methods();
 	void _init();
 	void _ready();
+	void _on_pre_show();
 };
 } // namespace godot
 

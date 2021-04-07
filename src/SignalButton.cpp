@@ -9,7 +9,7 @@ using namespace godot;
 void SignalButton::_init() {}
 
 void SignalButton::_ready() {
-	GameState * gameState = cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
+	GameState *gameState = cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
 	connect(BTN_PRESSED, gameState, _method_name);
 }
 
