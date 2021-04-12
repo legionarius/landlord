@@ -8,6 +8,7 @@
 #include "FlatFrame.h"
 #include "FlatsManager.h"
 #include "GameState.h"
+#include "MainScene.h"
 #include "MonthReport.h"
 #include "OnBoarding.h"
 #include "SignalButton.h"
@@ -46,4 +47,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
 	godot::register_class<godot::Weather>();
 	godot::register_class<godot::MonthReport>();
 	godot::register_class<godot::OnBoarding>();
+	godot::register_class<godot::MainScene>();
 }

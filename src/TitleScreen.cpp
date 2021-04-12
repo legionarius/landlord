@@ -22,7 +22,7 @@ void TitleScreen::_exit() {
 }
 
 void TitleScreen::_start() {
-	gameState->start_game();
+	get_tree()->change_scene("entity/MainScene/MainScene.tscn");
 }
 
 void TitleScreen::_input(const Ref<InputEvent> event) {
