@@ -74,12 +74,7 @@ void GameState::calculate_actions_cost() {
 	balance -= flatManager->get_actions_cost();
 }
 
-void GameState::start_game() {
-	Ref<PackedScene> mainScene = ResourceLoader::get_singleton()->load("entity/MainScene/MainScene.tscn");
-	mainSceneNode = mainScene->instance();
-	// mainSceneNode->connect("ready", this, "main_scene_loaded");
-	get_tree()->_change_scene(mainSceneNode);
-}
+void GameState::start_game() {}
 
 void GameState::main_scene_loaded() {
 	Godot::print("Main scene loaded");
