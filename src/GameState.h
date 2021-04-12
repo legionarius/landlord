@@ -8,6 +8,7 @@
 #include "ActionRepairFlat.h"
 #include "FlatsManager.h"
 #include "MonthReport.h"
+#include "OnBoarding.h"
 #include "Signals.h"
 
 #include <Control.hpp>
@@ -30,6 +31,8 @@ private:
 	real_t cycle_number;
 	real_t balance;
 	MonthReport *monthReport;
+	Node *mainSceneNode;
+	OnBoarding *onBoarding;
 
 	void next_month();
 	void calculate_balance();
@@ -48,6 +51,7 @@ public:
 	void _input(const Ref<InputEvent> event);
 	void init_properties();
 	void start_game();
+	void main_scene_loaded();
 };
 } // namespace godot
 

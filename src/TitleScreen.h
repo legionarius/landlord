@@ -17,10 +17,14 @@
 #include <SceneTree.hpp>
 #include <Viewport.hpp>
 
+#include "GameState.h"
+
 namespace godot {
 
 class TitleScreen : public Control {
 	GODOT_CLASS(TitleScreen, Control);
+
+	GameState *gameState;
 
 public:
 	static void _register_methods();

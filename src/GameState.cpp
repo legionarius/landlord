@@ -75,11 +75,21 @@ void GameState::calculate_actions_cost() {
 }
 
 void GameState::start_game() {
+	Ref<PackedScene> mainScene = ResourceLoader::get_singleton()->load("entity/MainScene/MainScene.tscn");
+	mainSceneNode = mainScene->instance();
+	// mainSceneNode->connect("ready", this, "main_scene_loaded");
+	get_tree()->_change_scene(mainSceneNode);
+}
+
+void GameState::main_scene_loaded() {
+	Godot::print("Main scene loaded");
+	Ref<PackedScene> onBoardingScene = ResourceLoader::get_singleton()->load("entity/OnBoarding/OnBoarding.tscn");
+	onBoarding = cast_to<OnBoarding>(onBoardingScene->instance());
+	onBoarding->next_step();
 }
 
 void GameState::end_game() {
-	Node *mainScene = get_tree()->get_root()->get_node("MainScene");
-	mainScene->queue_free();
+	mainSceneNode->queue_free();
 	get_tree()->change_scene("entity/EndScreen/EndScreen.tscn");
 }
 
@@ -90,5 +100,6 @@ void GameState::_register_methods() {
 	register_method("_next_turn", &GameState::_next_turn);
 	register_method("init_properties", &GameState::init_properties);
 	register_method("start_game", &GameState::start_game);
+	register_method("main_scene_loaded", &GameState::main_scene_loaded);
 	register_signal<GameState>(NEW_CYCLE, "month", GODOT_VARIANT_TYPE_INT, "year", GODOT_VARIANT_TYPE_INT, "balance", GODOT_VARIANT_TYPE_REAL);
 }
