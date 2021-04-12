@@ -33,6 +33,7 @@ void FlatFrame::_on_pre_show() {
 	if (tenant != nullptr) {
 		Godot::print("[FlatFrame] : Pre-show with tenant");
 		tenantIdentityCard->set_tenant(tenant);
+		tenantIdentityCard->update_display();
 		tenantIdentityCard->show();
 	} else {
 		Godot::print("[FlatFrame] : Pre-show without tenant");
@@ -87,8 +88,8 @@ void FlatFrame::_on_exitButton_pressed() {
 
 void FlatFrame::_on_move_in_pressed() {
 	TextureButton *moveInButton = cast_to<TextureButton>(actionContainer->get_node("MoveInButton"));
-	if(!moveInButton->is_pressed()){
-		emit_signal(SIGNAL_MOVE_IN_TENANT, moveInButton->is_pressed(), 0);
+	if (!moveInButton->is_pressed()) {
+		emit_signal(SIGNAL_MOVE_IN_TENANT, moveInButton->is_pressed(), -1);
 	} else {
 		Ref<PackedScene> tenantSelectorScene = ResourceLoader::get_singleton()->load("entity/Tenant/TenantSelector.tscn");
 		TenantSelector *tenantSelector = Object::cast_to<TenantSelector>(tenantSelectorScene->instance());
@@ -167,7 +168,7 @@ void FlatFrame::_toggle_move_in_tenant_button(bool enabled) const {
 			moveInButton->connect(BTN_PRESSED, this, "_on_move_in_pressed");
 			moveInButton->set_pressed(flatsManager->action_will_be_executed_in_flat(this->flat, ACTION_MOVE_IN_TENANT));
 			actionContainer->add_child(moveInButton);
-		}  else {
+		} else {
 			auto moveInButton = cast_to<TextureButton>(actionContainer->get_node("MoveInButton"));
 			moveInButton->set_pressed(flatsManager->action_will_be_executed_in_flat(this->flat, ACTION_MOVE_IN_TENANT));
 		}

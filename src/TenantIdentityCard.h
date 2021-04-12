@@ -37,19 +37,19 @@ public:
 	void _init();
 	void _ready();
 
-	// Getter
-	uint64_t get_id() { return tenant->id; }
-	String get_first_name() { return tenant->first_name; }
-	String get_last_name() { return tenant->last_name; }
-	uint16_t get_age() { return tenant->age; }
-	String get_description() { return tenant->description; }
-	String get_picture_path() { return tenant->picture_path; }
-	uint16_t get_confidence() { return tenant->confidence; }
-	uint16_t get_cleanliness() { return tenant->cleanliness; }
-	uint16_t get_leasing_duration() { return tenant->leasing_duration; }
-
 	// Setter
-	void set_tenant(TenantIdentityCard::Tenant *m_tenant) { tenant = m_tenant; };
+	void set_tenant(TenantIdentityCard::Tenant *m_tenant);
+	void update_display();
+
+private:
+	Label *first_name_label;
+	Label *last_name_label;
+	Label *age_label;
+	Label *confidence_label;
+	Label *cleanliness_label;
+	Label *leasing_duration_label;
+	RichTextLabel *description_label;
+	TextureRect *picture;
 };
 } // namespace godot
 
