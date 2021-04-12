@@ -8,17 +8,20 @@
 #include "ActionFireTenant.h"
 #include "ActionMoveInTenant.h"
 #include "ActionRepairFlat.h"
+#include "Constants.h"
 #include "GameState.h"
 #include "FlatFrame.h"
 #include "FlatsManager.h"
 #include "Signals.h"
+#include "TenantCharacter.h"
 #include "TenantIdentityCard.h"
-#include "Constants.h"
+
 
 #include <ColorRect.hpp>
 #include <Godot.hpp>
 #include <Light2D.hpp>
 #include <PackedScene.hpp>
+#include <Position2D.hpp>
 #include <PopupDialog.hpp>
 #include <RandomNumberGenerator.hpp>
 #include <Ref.hpp>
@@ -36,13 +39,17 @@ class Flat : public TextureButton {
 	GODOT_CLASS(Flat, TextureButton);
 
 	TenantIdentityCard::Tenant *tenant;
+	TenantCharacter *tenantCharacter;
+	Position2D *tenantSpawnPosition;
 	RandomNumberGenerator *rng;
 	TextureRect *flatMask;
+
 
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
+	void _exit_tree();
 	void _on_pressed();
 	void sign_lease(TenantIdentityCard::Tenant *tenant);
 	void update_charge();
@@ -58,6 +65,7 @@ public:
 	void update_tenant_presence();
 	void fire_tenant();
 	void fire_tenant_if_end_leasing();
+	void spawn_tenant();
 
 	int64_t id;
 	real_t rent;

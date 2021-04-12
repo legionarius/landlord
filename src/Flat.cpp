@@ -9,6 +9,7 @@ using namespace godot;
 void Flat::_register_methods() {
 	register_method("_init", &Flat::_init);
 	register_method("_ready", &Flat::_ready);
+	register_method("_exit_tree", &Flat::_exit_tree);
 	register_method("_on_pressed", &Flat::_on_pressed);
 	register_method("queue_move_in_tenant", &Flat::queue_move_in_tenant);
 	register_method("queue_repair_flat", &Flat::queue_repair_flat);
@@ -19,9 +20,26 @@ void Flat::_register_methods() {
 void Flat::_init() {
 	rng = RandomNumberGenerator()._new();
 	rng->randomize();
-	health = rng->randi_range(0, 100);
+	health = rng->randi_range(20, 100);
 	rent = rng->randf_range(100, 500);
 	update_charge();
+}
+
+void Flat::_ready() {
+	connect("pressed", this, "_on_pressed");
+	id = get_name().right(4).to_int();
+	flatMask = cast_to<TextureRect>(get_node("FlatMask"));
+	set_tooltip("Click to open flat details");
+	Ref<PackedScene> characterScene = ResourceLoader::get_singleton()->load("entity/Tenant/Character.tscn");
+	tenantSpawnPosition = cast_to<Position2D>(get_node("TenantSpawn"));
+	if(tenantSpawnPosition != nullptr) {
+		tenantCharacter = cast_to<TenantCharacter>(characterScene->instance());
+	}
+}
+
+void Flat::_exit_tree() {
+	// In case of tenant character isn't in scene tree
+	tenantCharacter->queue_free();	
 }
 
 // Should be run after each cycle when
@@ -33,13 +51,6 @@ void Flat::update_charge() {
 	charge = (rent * 25.f) / 100.f - (health * 0.25);
 }
 
-void Flat::_ready() {
-	connect("pressed", this, "_on_pressed");
-	id = get_name().right(4).to_int();
-	flatMask = cast_to<TextureRect>(get_node("FlatMask"));
-	set_tooltip("Click to open flat details");
-}
-
 void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 	GameState *gameState = Object::cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
 	if(gameState->get_cycle_number() == 0){
@@ -48,6 +59,12 @@ void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration;
 	}
 	this->tenant = tenant;
+	spawn_tenant();
+}
+
+void Flat::spawn_tenant() {
+	tenantCharacter->set_position(tenantSpawnPosition->get_position());
+	add_child(tenantCharacter);
 }
 
 void Flat::_on_pressed() {
@@ -150,6 +167,7 @@ void Flat::repair() {
 
 void Flat::fire_tenant() {
 	tenant = nullptr;
+	remove_child(tenantCharacter);
 }
 
 void Flat::fire_tenant_if_end_leasing() {

@@ -17,7 +17,7 @@ include_directories(godot-cpp/include/core)
 include_directories(godot-cpp/include/gen)
 
 add_executable(
-        weekly-gamejam-190
+        mundane-jam
         godot-cpp/godot-headers/android/godot_android.h
         godot-cpp/godot-headers/arvr/godot_arvr.h
         godot-cpp/godot-headers/gdnative/aabb.h
@@ -250,7 +250,6 @@ add_executable(
         godot-cpp/include/gen/EditorResourcePreview.hpp
         godot-cpp/include/gen/EditorResourcePreviewGenerator.hpp
         godot-cpp/include/gen/EditorSceneImporter.hpp
-        godot-cpp/include/gen/EditorSceneImporterAssimp.hpp
         godot-cpp/include/gen/EditorScenePostImport.hpp
         godot-cpp/include/gen/EditorScript.hpp
         godot-cpp/include/gen/EditorSelection.hpp
@@ -714,6 +713,6 @@ add_executable(
         src/ActionMoveInTenant.cpp src/ActionMoveInTenant.h
         src/TenantSelector.cpp src/TenantSelector.h src/TenantSelectorButton.cpp src/TenantSelectorButton.h
         src/EndScreen.cpp src/EndScreen.h
-        src/FlatFrame.cpp
+        src/TenantCharacter.cpp src/TenantCharacter.h
 )
 
