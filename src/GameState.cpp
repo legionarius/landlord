@@ -22,13 +22,6 @@ void GameState::_input(const Ref<InputEvent> event) {
 }
 
 void GameState::_next_turn() {
-	// Clean-up logs
-	if (get_cycle_number() == 0) {
-		monthReport = cast_to<MonthReport>(get_tree()->get_root()->get_node("MainScene/UILayer/MonthReport"));
-	}
-
-	monthReport->_flush();
-
 	calculate_balance();
 	calculate_actions_cost();
 
