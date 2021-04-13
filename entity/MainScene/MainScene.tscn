@@ -107,7 +107,6 @@ anims/flying_birds = ExtResource( 19 )
 position = Vector2( 755.544, 46.7725 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Cloud" type="Sprite" parent="Map/Weather"]

@@ -7,28 +7,31 @@
 
 #include <Button.hpp>
 #include <Control.hpp>
+#include <PopupDialog.hpp>
 #include <Godot.hpp>
-#include <Node.hpp>
+#include <Node2D.hpp>
+#include <SceneTree.hpp>
+#include <Viewport.hpp>
+#include <sstream>
 
 namespace godot {
-class OnBoarding : public Node {
-	GODOT_CLASS(OnBoarding, Node);
+class OnBoarding : public Node2D {
+	GODOT_CLASS(OnBoarding, Node2D);
 
 	int16_t currentStep = 0;
-	Control *step1;
-	Control *step2;
-	Control *step3;
+	Control *currentStepNode;
 
 private:
-	void _game_presentation();
-	void _flat_presentation();
-	void _tenant_presentation();
-	void _cycle_presentation();
+	void _flat_detail_presentation();
+	void _text_button_presentation();
+	void _flat_detail_exit_presentation();
+	void _next_cycle_presentation();
 
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
+	void update_current_step_node();
 
 	void next_step();
 };
