@@ -8,6 +8,7 @@
 #include "ActionRepairFlat.h"
 #include "FlatsManager.h"
 #include "MonthReport.h"
+#include "ReportFrame.h"
 #include "Signals.h"
 
 #include <Control.hpp>
@@ -30,6 +31,7 @@ private:
 	real_t cycle_number;
 	real_t balance;
 	MonthReport *monthReport;
+	ReportFrame *reportFrame;
 
 	void next_month();
 	void calculate_balance();

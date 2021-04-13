@@ -16,7 +16,8 @@ void GameState::init_properties() {
 	balance = 1000;
 }
 
-void GameState::_ready() {}
+void GameState::_ready() {
+}
 
 void GameState::_input(const Ref<InputEvent> event) {
 }
@@ -25,6 +26,7 @@ void GameState::_next_turn() {
 	// Clean-up logs
 	if (get_cycle_number() == 0) {
 		monthReport = cast_to<MonthReport>(get_tree()->get_root()->get_node("MainScene/UILayer/MonthReport"));
+		reportFrame = cast_to<ReportFrame>(get_tree()->get_root()->get_node("MainScene/ReportFrame"));
 	}
 
 	monthReport->_flush();

@@ -250,7 +250,6 @@ add_executable(
         godot-cpp/include/gen/EditorResourcePreview.hpp
         godot-cpp/include/gen/EditorResourcePreviewGenerator.hpp
         godot-cpp/include/gen/EditorSceneImporter.hpp
-        godot-cpp/include/gen/EditorSceneImporterAssimp.hpp
         godot-cpp/include/gen/EditorScenePostImport.hpp
         godot-cpp/include/gen/EditorScript.hpp
         godot-cpp/include/gen/EditorSelection.hpp

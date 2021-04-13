@@ -9,6 +9,7 @@
 #include "Flat.h"
 #include "GameState.h"
 #include "MonthReport.h"
+#include "ReportFrame.h"
 #include "TenantManager.h"
 
 #include <Array.hpp>
@@ -26,6 +27,7 @@ class FlatsManager : public Node2D {
 private:
 	std::vector<Action *> actions;
 	MonthReport *monthReport;
+	ReportFrame *reportFrame;
 
 public:
 	void run_cycle();

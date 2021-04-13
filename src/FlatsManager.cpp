@@ -12,6 +12,7 @@ void FlatsManager::_init() {
 void FlatsManager::_ready() {
 	add_tenants();
 	monthReport = cast_to<MonthReport>(get_tree()->get_root()->get_node("MainScene/UILayer/MonthReport"));
+	reportFrame = cast_to<ReportFrame>(get_tree()->get_root()->get_node("MainScene/ReportFrame"));
 }
 
 void FlatsManager::add_tenants() {
@@ -32,9 +33,9 @@ real_t FlatsManager::_collect_rent() {
 		Flat *flat = cast_to<Flat>(flats[i]);
 		real_t rent = flat->break_legs_and_collect_money();
 		if (rent == 0) {
-			monthReport->_add_entry(String("FLAT ") + String(std::to_string(flat->id).c_str()) + String(": Not Payed\n"));
+			reportFrame->add_entry(String("FLAT ") + String(std::to_string(flat->id).c_str()) + String(": Not Payed\n"));
 		} else {
-			monthReport->_add_entry(String("FLAT ") + String(std::to_string(flat->id).c_str()) + String(": Payed\n"));
+			reportFrame->add_entry(String("FLAT ") + String(std::to_string(flat->id).c_str()) + String(": Payed\n"));
 		}
 		money += rent;
 	}
