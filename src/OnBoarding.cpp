@@ -8,7 +8,9 @@ using namespace godot;
 
 void OnBoarding::_init() {}
 
-void OnBoarding::_ready() {}
+void OnBoarding::_ready() {
+	step1 = cast_to<Control>(get_node("Step1"));
+}
 
 void OnBoarding::next_step() {
 	currentStep += 1;
@@ -33,9 +35,13 @@ void OnBoarding::next_step() {
 
 void OnBoarding::_game_presentation() {
 	Godot::print("[ONBORDING]: game presentation");
+	Button *step1Button = cast_to<Button>(step1->get_node("Next"));
+	step1Button->connect("pressed", this, "next_step");
+	step1->set_visible(true);
 }
 
 void OnBoarding::_flat_presentation() {
+	step1->set_visible(false);
 	Godot::print("[ONBORDING]: flat presentation");
 }
 
@@ -50,4 +56,5 @@ void OnBoarding::_cycle_presentation() {
 void OnBoarding::_register_methods() {
 	register_method("_init", &OnBoarding::_init);
 	register_method("_ready", &OnBoarding::_ready);
+	register_method("next_step", &OnBoarding::next_step);
 }
