@@ -12,7 +12,7 @@
 
 namespace godot {
 class MainScene : public Node2D {
-GODOT_CLASS(GameState, Node2D);
+GODOT_CLASS(MainScene, Node2D);
 
 public:
 	static void _register_methods();

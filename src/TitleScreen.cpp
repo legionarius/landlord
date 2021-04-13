@@ -10,7 +10,6 @@ void TitleScreen::_init() {
 }
 
 void TitleScreen::_ready() {
-	gameState = Object::cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
 	Button *exitBtn = Object::cast_to<Button>(get_node("MainMenu/Exit"));
 	Button *startBtn = Object::cast_to<Button>(get_node("MainMenu/Start"));
 	exitBtn->connect("pressed", this, "_exit");

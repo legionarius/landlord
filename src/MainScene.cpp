@@ -14,6 +14,6 @@ void MainScene::_ready() {
 }
 
 void MainScene::_register_methods() {
-	register_method("_init", &OnBoarding::_init);
-	register_method("_ready", &OnBoarding::_ready);
+	register_method("_init", &MainScene::_init);
+	register_method("_ready", &MainScene::_ready);
 }

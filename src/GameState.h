@@ -31,8 +31,6 @@ private:
 	real_t cycle_number;
 	real_t balance;
 	MonthReport *monthReport;
-	Node *mainSceneNode;
-	OnBoarding *onBoarding;
 
 	void next_month();
 	void calculate_balance();

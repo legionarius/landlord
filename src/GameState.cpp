@@ -79,12 +79,13 @@ void GameState::start_game() {}
 void GameState::main_scene_loaded() {
 	Godot::print("Main scene loaded");
 	Ref<PackedScene> onBoardingScene = ResourceLoader::get_singleton()->load("entity/OnBoarding/OnBoarding.tscn");
-	onBoarding = cast_to<OnBoarding>(onBoardingScene->instance());
+	OnBoarding *onBoarding = cast_to<OnBoarding>(onBoardingScene->instance());
 	onBoarding->next_step();
 }
 
 void GameState::end_game() {
-	mainSceneNode->queue_free();
+	Node *mainScene = get_tree()->get_root()->get_node("MainScene");
+	mainScene->queue_free();
 	get_tree()->change_scene("entity/EndScreen/EndScreen.tscn");
 }
 
