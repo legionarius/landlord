@@ -23,12 +23,13 @@ void FlatFrame::_ready() {
 
 	exitButton->connect("pressed", this, "_on_exitButton_pressed");
 	connect(POPUP_ABOUT_TO_SHOW, this, "_on_pre_show");
+	flatsManager->connect(ACTION_COUNT, this, "_on_action_count");
 }
 
 void FlatFrame::_on_pre_show() {
-	connect(SIGNAL_REPAIR_FLAT, flat, "queue_repair_flat");
-	connect(SIGNAL_FIRE_TENANT, flat, "queue_fire_tenant");
-	connect(SIGNAL_MOVE_IN_TENANT, flat, "queue_move_in_tenant");
+	connect(SIGNAL_REPAIR_FLAT, flatsManager, "queue_repair_flat");
+	connect(SIGNAL_FIRE_TENANT, flatsManager, "queue_fire_tenant");
+	connect(SIGNAL_MOVE_IN_TENANT, flatsManager, "queue_move_in_tenant");
 
 	if (tenant != nullptr) {
 		Godot::print("[FlatFrame] : Pre-show with tenant");
@@ -42,6 +43,12 @@ void FlatFrame::_on_pre_show() {
 	_toggle_fire_tenant_button(tenant != nullptr);
 	_toggle_move_in_tenant_button(tenant == nullptr);
 	_toggle_repair_flat_button(tenant == nullptr);
+	if (!flatsManager->can_add_action()) {
+		// Forcing action button disabling
+		_on_action_count(0, 0);
+	} else {
+		_on_action_count(0, 1);
+	}
 
 	audio->play();
 	animation->play("open");
@@ -80,16 +87,16 @@ void FlatFrame::_set_tenant(TenantIdentityCard::Tenant *tenant) {
 
 void FlatFrame::_on_exitButton_pressed() {
 	hide();
-	disconnect(SIGNAL_REPAIR_FLAT, flat, "queue_repair_flat");
-	disconnect(SIGNAL_FIRE_TENANT, flat, "queue_fire_tenant");
-	disconnect(SIGNAL_MOVE_IN_TENANT, flat, "queue_move_in_tenant");
+	disconnect(SIGNAL_REPAIR_FLAT, flatsManager, "queue_repair_flat");
+	disconnect(SIGNAL_FIRE_TENANT, flatsManager, "queue_fire_tenant");
+	disconnect(SIGNAL_MOVE_IN_TENANT, flatsManager, "queue_move_in_tenant");
 	flat = nullptr;
 }
 
 void FlatFrame::_on_move_in_pressed() {
 	TextureButton *moveInButton = cast_to<TextureButton>(actionContainer->get_node("MoveInButton"));
 	if (!moveInButton->is_pressed()) {
-		emit_signal(SIGNAL_MOVE_IN_TENANT, moveInButton->is_pressed(), -1);
+		emit_signal(SIGNAL_MOVE_IN_TENANT, moveInButton->is_pressed(), flatId, 0);
 	} else {
 		Ref<PackedScene> tenantSelectorScene = ResourceLoader::get_singleton()->load("entity/Tenant/TenantSelector.tscn");
 		TenantSelector *tenantSelector = Object::cast_to<TenantSelector>(tenantSelectorScene->instance());
@@ -111,17 +118,17 @@ void FlatFrame::_on_tenant_selected(uint64_t tenantId) {
 	Node *tenantSelector = get_node("TenantSelector");
 	tenantSelector->queue_free();
 	TextureButton *moveInButton = cast_to<TextureButton>(actionContainer->get_node("MoveInButton"));
-	emit_signal(SIGNAL_MOVE_IN_TENANT, moveInButton->is_pressed(), tenantId);
+	emit_signal(SIGNAL_MOVE_IN_TENANT, moveInButton->is_pressed(), flatId, tenantId);
 }
 
 void FlatFrame::_on_fire_pressed() {
 	TextureButton *fireButton = cast_to<TextureButton>(actionContainer->get_node("FireButton"));
-	emit_signal(SIGNAL_FIRE_TENANT, fireButton->is_pressed());
+	emit_signal(SIGNAL_FIRE_TENANT, fireButton->is_pressed(), flatId);
 }
 
 void FlatFrame::_on_repair_pressed() {
 	TextureButton *repairButton = cast_to<TextureButton>(actionContainer->get_node("RepairButton"));
-	emit_signal(SIGNAL_REPAIR_FLAT, repairButton->is_pressed());
+	emit_signal(SIGNAL_REPAIR_FLAT, repairButton->is_pressed(), flatId);
 }
 
 void FlatFrame::_toggle_fire_tenant_button(bool enabled) const {
@@ -208,6 +215,26 @@ void FlatFrame::_toggle_repair_flat_button(bool enabled) const {
 	}
 }
 
+void FlatFrame::_on_action_count(int current, int max) {
+	if (current == max) {
+		Array children = actionContainer->get_children();
+		for (size_t i = 0; i < children.size(); i++) {
+			auto button = cast_to<TextureButton>(children[i]);
+			if (button != nullptr && !button->is_pressed()) {
+				button->set_disabled(true);
+			}
+		}
+	} else {
+		Array children = actionContainer->get_children();
+		for (size_t i = 0; i < children.size(); i++) {
+			auto button = cast_to<TextureButton>(children[i]);
+			if (button != nullptr) {
+				button->set_disabled(false);
+			}
+		}
+	}
+}
+
 void FlatFrame::_register_methods() {
 	register_method("_init", &FlatFrame::_init);
 	register_method("_ready", &FlatFrame::_ready);
@@ -220,7 +247,8 @@ void FlatFrame::_register_methods() {
 	register_method("_on_fire_pressed", &FlatFrame::_on_fire_pressed);
 	register_method("_exit_tenant_selector", &FlatFrame::_exit_tenant_selector);
 	register_method("_on_pre_show", &FlatFrame::_on_pre_show);
-	register_signal<FlatFrame>(SIGNAL_MOVE_IN_TENANT, "isPressed", GODOT_VARIANT_TYPE_BOOL, "tenantId", GODOT_VARIANT_TYPE_INT);
-	register_signal<FlatFrame>(SIGNAL_FIRE_TENANT, "isPressed", GODOT_VARIANT_TYPE_BOOL);
-	register_signal<FlatFrame>(SIGNAL_REPAIR_FLAT, "isPressed", GODOT_VARIANT_TYPE_BOOL);
+	register_method("_on_action_count", &FlatFrame::_on_action_count);
+	register_signal<FlatFrame>(SIGNAL_MOVE_IN_TENANT, "isPressed", GODOT_VARIANT_TYPE_BOOL, "flatId", GODOT_VARIANT_TYPE_INT, "tenantId", GODOT_VARIANT_TYPE_INT);
+	register_signal<FlatFrame>(SIGNAL_FIRE_TENANT, "isPressed", GODOT_VARIANT_TYPE_BOOL, "flatId", GODOT_VARIANT_TYPE_INT);
+	register_signal<FlatFrame>(SIGNAL_REPAIR_FLAT, "isPressed", GODOT_VARIANT_TYPE_BOOL, "flatId", GODOT_VARIANT_TYPE_INT);
 }
