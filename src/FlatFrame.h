@@ -61,6 +61,7 @@ public:
 	void _on_tenant_selected(uint64_t tenantId);
 	void _exit_tenant_selector();
 	void _on_pre_show();
+	void _flat_is_displayed();
 
 	void _set_flat(Node * item);
 	void _set_flat_label(real_t id);

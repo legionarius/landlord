@@ -57,12 +57,14 @@ __meta__ = {
 margin_top = 38.0
 margin_right = 249.0
 margin_bottom = 58.0
+mouse_default_cursor_shape = 2
 text = "Start"
 
 [node name="Exit" type="Button" parent="MainMenu"]
 margin_top = 62.0
 margin_right = 249.0
 margin_bottom = 82.0
+mouse_default_cursor_shape = 2
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
