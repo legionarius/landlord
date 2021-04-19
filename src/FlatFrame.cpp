@@ -44,6 +44,7 @@ void FlatFrame::_on_pre_show() {
 
 	audio->play();
 	animation->play("open");
+	emit_signal(START_OPEN_FLAT_DETAIL);
 	animation->connect("animation_finished", this, "_flat_is_displayed");
 
 	flatName->set_text(flatNameLabel);
@@ -209,7 +210,7 @@ void FlatFrame::_toggle_repair_flat_button(bool enabled) const {
 }
 
 void FlatFrame::_flat_is_displayed() {
-	emit_signal(OPEN_FLAT_DETAIL);
+	emit_signal(END_OPEN_FLAT_DETAIL);
 }
 
 void FlatFrame::_register_methods() {
@@ -228,5 +229,6 @@ void FlatFrame::_register_methods() {
 	register_signal<FlatFrame>(SIGNAL_MOVE_IN_TENANT, "isPressed", GODOT_VARIANT_TYPE_BOOL, "tenantId", GODOT_VARIANT_TYPE_INT);
 	register_signal<FlatFrame>(SIGNAL_FIRE_TENANT, "isPressed", GODOT_VARIANT_TYPE_BOOL);
 	register_signal<FlatFrame>(SIGNAL_REPAIR_FLAT, "isPressed", GODOT_VARIANT_TYPE_BOOL);
-	register_signal<FlatFrame>(OPEN_FLAT_DETAIL);
+	register_signal<FlatFrame>(START_OPEN_FLAT_DETAIL);
+	register_signal<FlatFrame>(END_OPEN_FLAT_DETAIL);
 }

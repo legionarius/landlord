@@ -9,7 +9,8 @@ using namespace godot;
 void OnBoarding::_init() {}
 
 void OnBoarding::_ready() {
-	next_step();
+	Timer *timer = cast_to<Timer>(get_node("StartTimer"));
+	timer->connect("timeout", this, "next_step");
 }
 
 void OnBoarding::next_step() {
@@ -97,7 +98,12 @@ void OnBoarding::_text_button_presentation() {
 
 void OnBoarding::_flat_detail_presentation() {
 	FlatFrame *flatFrame = cast_to<FlatFrame>(get_tree()->get_root()->get_node("MainScene/FlatFrame"));
-	flatFrame->connect(OPEN_FLAT_DETAIL, this, "next_step");
+	flatFrame->connect(START_OPEN_FLAT_DETAIL, this, "hide_current_step");
+	flatFrame->connect(END_OPEN_FLAT_DETAIL, this, "next_step");
+}
+
+void OnBoarding::hide_current_step() {
+	currentStepNode->hide();
 }
 
 void OnBoarding::_flat_detail_exit_presentation() {
@@ -114,5 +120,6 @@ void OnBoarding::_register_methods() {
 	register_method("_init", &OnBoarding::_init);
 	register_method("_ready", &OnBoarding::_ready);
 	register_method("next_step", &OnBoarding::next_step);
+	register_method("hide_current_step", &OnBoarding::hide_current_step);
 	register_method("end_tour", &OnBoarding::end_tour);
 }

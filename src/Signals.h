@@ -15,7 +15,8 @@
 #define NEW_TENANT_SELECTED "new_tenant_selected"
 #define TENANT_SELECTOR_PRESSED "tenant_selector_pressed"
 #define EXIT_TENANT_SELECTOR "exit_tenant_selector"
-#define OPEN_FLAT_DETAIL "open_flat_detail"
+#define START_OPEN_FLAT_DETAIL "start_open_flat_detail"
+#define END_OPEN_FLAT_DETAIL "end_open_flat_detail"
 
 // Godot Signals
 

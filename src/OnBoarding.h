@@ -12,6 +12,7 @@
 #include <Godot.hpp>
 #include <Node2D.hpp>
 #include <SceneTree.hpp>
+#include <Timer.hpp>
 #include <Viewport.hpp>
 #include <sstream>
 
@@ -37,6 +38,7 @@ public:
 	void _init();
 	void _ready();
 	void update_current_step_node();
+	void hide_current_step();
 	void last_step();
 	void end_tour();
 
