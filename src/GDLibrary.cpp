@@ -2,6 +2,8 @@
 // Created by bogdan on 11/02/2021.
 //
 
+#include "ActionItem.h"
+#include "ActionManager.h"
 #include "CycleInfo.h"
 #include "EndScreen.h"
 #include "Flat.h"
@@ -46,6 +48,8 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
 	godot::register_class<godot::FlatsManager>();
 	godot::register_class<godot::Weather>();
 	godot::register_class<godot::MonthReport>();
+	godot::register_class<godot::ActionManager>();
+	godot::register_class<godot::ActionItem>();
 	godot::register_class<godot::OnBoarding>();
 	godot::register_class<godot::MainScene>();
 }

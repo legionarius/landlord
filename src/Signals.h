@@ -17,6 +17,12 @@
 #define EXIT_TENANT_SELECTOR "exit_tenant_selector"
 #define START_OPEN_FLAT_DETAIL "start_open_flat_detail"
 #define END_OPEN_FLAT_DETAIL "end_open_flat_detail"
+// Sent when an action is effectively added to the action stack
+#define ADD_ACTION "add_action"
+// Sent when an action is effectively removed to the action stack
+#define REMOVE_ACTION "remove_action"
+// Sent each time the action count effectively changes
+#define ACTION_COUNT "action_count"
 
 // Godot Signals
 

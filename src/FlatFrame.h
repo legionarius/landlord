@@ -14,6 +14,7 @@
 #include <AnimationPlayer.hpp>
 #include <AudioStreamPlayer.hpp>
 #include <Godot.hpp>
+#include <GridContainer.hpp>
 #include <Label.hpp>
 #include <Node2D.hpp>
 #include <PackedScene.hpp>
@@ -22,9 +23,7 @@
 #include <ResourceLoader.hpp>
 #include <Sprite.hpp>
 #include <TextureButton.hpp>
-#include <GridContainer.hpp>
 #include <iomanip>
-
 
 namespace godot {
 class FlatsManager;
@@ -43,7 +42,7 @@ class FlatFrame : public PopupDialog {
 	FlatsManager *flatsManager;
 	GridContainer *actionContainer;
 
-	Node * flat;
+	Node *flat;
 	real_t flatId;
 	String flatNameLabel;
 	real_t healthLabel;
@@ -63,14 +62,15 @@ public:
 	void _on_pre_show();
 	void _flat_is_displayed();
 
-	void _set_flat(Node * item);
+	void _set_flat(Node *item);
 	void _set_flat_label(real_t id);
 	void _set_health(real_t health);
 	void _set_rent(real_t rent);
-	void _set_tenant(TenantIdentityCard::Tenant* tenant);
+	void _set_tenant(TenantIdentityCard::Tenant *tenant);
 	void _toggle_fire_tenant_button(bool enabled) const;
 	void _toggle_move_in_tenant_button(bool enabled) const;
 	void _toggle_repair_flat_button(bool enabled) const;
+	void _on_action_count(int current, int max);
 };
 } // namespace godot
 

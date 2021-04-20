@@ -28,7 +28,6 @@ class GameState : public Node {
 private:
 	int64_t year;
 	int64_t month;
-	real_t cycle_number;
 	real_t balance;
 	MonthReport *monthReport;
 	Node *mainScene;

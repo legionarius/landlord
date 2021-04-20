@@ -15,15 +15,18 @@
 #include "TenantIdentityCard.h"
 
 class ActionMoveInTenant : public Action {
-
 public:
-	static std::string iconPath;
-	static std::string iconPathSelected;
+	static const std::string iconPath;
+	static const std::string iconPathSelected;
+	static const ActionType actionType = ACTION_MOVE_IN_TENANT;
 
-	ActionMoveInTenant(godot::Node *item, godot::TenantIdentityCard::Tenant *m_tenant, ActionType actionType = ACTION_MOVE_IN_TENANT): Action{ actionType, item }, tenant {m_tenant} {};
-    godot::TenantIdentityCard::Tenant *tenant;
+	ActionMoveInTenant(godot::Node *item, godot::TenantIdentityCard::Tenant *m_tenant) :
+			Action{ item }, tenant{ m_tenant } {};
+	godot::TenantIdentityCard::Tenant *tenant;
 
 	void apply() override;
-	godot::String get_texture_path() override {return godot::String(iconPath.c_str());};
+	godot::String get_name() override;
+	ActionType get_actionType() override;
+	godot::String get_texture_path() override { return godot::String(iconPath.c_str()); };
 };
 #endif //MUNDANE_JAM_ACTIONMOVEINTENANT_H

@@ -9,18 +9,25 @@
 #include <Node.hpp>
 #include <string>
 
-enum ActionType { ACTION_REPAIR_FLAT, ACTION_FIRE_TENANT, ACTION_MOVE_IN_TENANT};
+enum ActionType {
+	ACTION,
+	ACTION_REPAIR_FLAT,
+	ACTION_FIRE_TENANT,
+	ACTION_MOVE_IN_TENANT
+};
 
 class Action {
 public:
-	Action(ActionType actionType, godot::Node *item): actionType{ actionType }, target{ item } {}
+	Action(godot::Node *item) :
+			target{ item } {}
 	~Action() = default;
 	godot::Node *target;
-	ActionType actionType;
+	static const ActionType actionType = ACTION;
+	virtual ActionType get_actionType();
+	virtual godot::String get_name();
 	virtual void apply();
 	virtual real_t get_cost();
 	virtual godot::String get_texture_path();
-	static godot::String type_to_string(ActionType type);
 };
 
 #endif //MUNDANE_JAM_ACTION_H

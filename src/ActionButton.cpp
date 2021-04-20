@@ -14,6 +14,7 @@ void ActionButton::set_number(int64_t number) {
 void ActionButton::_register_methods() {
 	register_method("_init", &ActionButton::_init);
 	register_method("_ready", &ActionButton::_ready);
+//	register_signal<ActionButton>("")
 }
 
 void ActionButton::_init() {}
