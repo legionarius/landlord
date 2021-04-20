@@ -21,12 +21,13 @@
 #include <vector>
 
 namespace godot {
+class ReportFrame;
+
 class FlatsManager : public Node2D {
 	GODOT_CLASS(FlatsManager, Node2D);
 
 private:
 	std::vector<Action *> actions;
-	MonthReport *monthReport;
 	ReportFrame *reportFrame;
 
 public:

@@ -22,6 +22,8 @@
 #include <Viewport.hpp>
 
 namespace godot {
+class ReportFrame;
+
 class GameState : public Node {
 	GODOT_CLASS(GameState, Node);
 

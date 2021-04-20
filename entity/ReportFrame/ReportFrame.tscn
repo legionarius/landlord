@@ -1,21 +1,25 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entity/ReportFrame/ReportFrame.gdns" type="Script" id=1]
 [ext_resource path="res://asset/ReportFrame/report_frame.png" type="Texture" id=2]
 [ext_resource path="res://asset/ReportFrame/report_header.png" type="Texture" id=3]
-[ext_resource path="res://asset/ReportFrame/Charlotte Southern.otf" type="DynamicFontData" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-size = 40
-font_data = ExtResource( 4 )
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "show"
 length = 0.5
 
 [node name="ReportFrame" type="PopupDialog"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = -4.0
+margin_right = 4.0
+margin_bottom = 4.0
+custom_styles/panel = SubResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -29,10 +33,10 @@ __meta__ = {
 }
 
 [node name="Background" type="TextureRect" parent="MarginContainer"]
-margin_left = 294.0
-margin_top = 14.0
-margin_right = 730.0
-margin_bottom = 586.0
+margin_left = 298.0
+margin_top = 18.0
+margin_right = 734.0
+margin_bottom = 590.0
 texture = ExtResource( 2 )
 flip_h = true
 flip_v = true
@@ -46,42 +50,10 @@ __meta__ = {
 }
 
 [node name="ItemList" type="VBoxContainer" parent="MarginContainer/Background/CenterContainer"]
-margin_left = 80.0
-margin_top = 177.0
-margin_right = 355.0
-margin_bottom = 305.0
-
-[node name="Label" type="Label" parent="MarginContainer/Background/CenterContainer/ItemList"]
-margin_right = 275.0
-margin_bottom = 40.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.337255, 0.309804, 0.309804, 1 )
-text = "L'ppart test123"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="MarginContainer/Background/CenterContainer/ItemList"]
-margin_top = 44.0
-margin_right = 275.0
-margin_bottom = 84.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.337255, 0.309804, 0.309804, 1 )
-text = "L'ppart test123qsdqsdqsdqsd"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="MarginContainer/Background/CenterContainer/ItemList"]
-margin_top = 88.0
-margin_right = 275.0
-margin_bottom = 128.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.337255, 0.309804, 0.309804, 1 )
-text = "L'ppart test123"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 218.0
+margin_top = 241.0
+margin_right = 218.0
+margin_bottom = 241.0
 
 [node name="ReportHeader" type="Sprite" parent="MarginContainer/Background"]
 position = Vector2( 221.103, 57.6219 )
@@ -90,3 +62,13 @@ texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/show = SubResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 859.0
+margin_top = 542.0
+margin_right = 994.0
+margin_bottom = 582.0
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}

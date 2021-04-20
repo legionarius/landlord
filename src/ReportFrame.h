@@ -5,22 +5,32 @@
 #ifndef MUNDANE_JAM_REPORTFRAME_H
 #define MUNDANE_JAM_REPORTFRAME_H
 
+#include "Flat.h"
 #include "Signals.h"
 
-#include "Label.hpp"
+#include <BoxContainer.hpp>
+#include <Button.hpp>
 #include <Control.hpp>
+#include <DynamicFont.hpp>
 #include <Godot.hpp>
 #include <ItemList.hpp>
 #include <Label.hpp>
+#include <Node.hpp>
 #include <PopupDialog.hpp>
+#include <ResourceLoader.hpp>
+#include <iostream>
+#include <sstream>
 
 namespace godot {
+class Flat;
+
 class ReportFrame : public PopupDialog {
 	GODOT_CLASS(ReportFrame, PopupDialog);
 
 private:
-	ItemList *itemList;
-	Label *label;
+	BoxContainer *itemList;
+	// DynamicFont *font;
+	Button *closeButton;
 
 public:
 	static void _register_methods();
@@ -28,7 +38,7 @@ public:
 	void _ready();
 	void _on_pre_show();
 	void _hide();
-	void add_entry(String entry);
+	void add_entry(Flat *flat, bool hasPayed);
 };
 } // namespace godot
 

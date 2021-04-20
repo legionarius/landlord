@@ -25,11 +25,8 @@ void GameState::_input(const Ref<InputEvent> event) {
 void GameState::_next_turn() {
 	// Clean-up logs
 	if (get_cycle_number() == 0) {
-		monthReport = cast_to<MonthReport>(get_tree()->get_root()->get_node("MainScene/UILayer/MonthReport"));
 		reportFrame = cast_to<ReportFrame>(get_tree()->get_root()->get_node("MainScene/ReportFrame"));
 	}
-
-	monthReport->_flush();
 
 	calculate_balance();
 	calculate_actions_cost();
@@ -41,6 +38,8 @@ void GameState::_next_turn() {
 		run_actions();
 		// Update current state
 		next_month();
+		// Show month report
+		reportFrame->show();
 		// Update UI
 		emit_signal(NEW_CYCLE, month, year, balance);
 	}
