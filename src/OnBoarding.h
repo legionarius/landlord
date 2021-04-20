@@ -9,6 +9,7 @@
 #include <CanvasLayer.hpp>
 #include <Control.hpp>
 #include <Popup.hpp>
+#include <PopupDialog.hpp>
 #include <Godot.hpp>
 #include <Node2D.hpp>
 #include <SceneTree.hpp>

@@ -1,17 +1,39 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://entity/OnBoarding/OnBoarding.gdns" type="Script" id=1]
+[ext_resource path="res://asset/OnBoarding/men.png" type="Texture" id=2]
 [ext_resource path="res://asset/font/Fashion Stamp.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://asset/MainScene/paper_texture.png" type="Texture" id=4]
 [ext_resource path="res://asset/OnBoarding/hand.png" type="Texture" id=5]
+[ext_resource path="res://asset/FlatFrame/apartment_title_card.png" type="Texture" id=7]
+[ext_resource path="res://asset/OnBoarding/button_background.png" type="Texture" id=8]
 
-[sub_resource type="DynamicFont" id=1]
-size = 22
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "FluctuateColor"
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 0.235294 )
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 17
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
+
+[sub_resource type="Animation" id=8]
 length = 1.4
 loop = true
 tracks/0/type = "value"
@@ -27,8 +49,68 @@ tracks/0/keys = {
 "values": [ Color( 0.898039, 0.898039, 0.898039, 0.313726 ), Color( 0.898039, 0.898039, 0.898039, 0.470588 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "FluctuateColor"
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
+
+[sub_resource type="Animation" id=20]
+length = 1.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.898039, 0.898039, 0.898039, 0.403922 ), Color( 0.898039, 0.898039, 0.898039, 0.470588 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
+
+[sub_resource type="Animation" id=24]
 length = 1.4
 loop = true
 tracks/0/type = "value"
@@ -44,22 +126,17 @@ tracks/0/keys = {
 "values": [ Color( 0.898039, 0.898039, 0.898039, 0.313726 ), Color( 0.898039, 0.898039, 0.898039, 0.470588 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "FluctuateColor"
-length = 1.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 0.458824, 0.458824, 0.458824, 0.156863 ), Color( 0.458824, 0.458824, 0.458824, 0.392157 ) ]
-}
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 1, 1, 1, 0.235294 )
 
 [node name="OnBoarding" type="CanvasLayer"]
 layer = 3
@@ -79,40 +156,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Step1" type="Popup" parent="Container"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = -20.0
-margin_bottom = -20.0
-
-[node name="TextureRect2" type="ColorRect" parent="Container/Step1"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -243.0
-margin_top = -208.0
-margin_right = 367.0
-margin_bottom = 207.0
-color = Color( 0.133333, 0.133333, 0.133333, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Step1" type="PopupDialog" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+popup_exclusive = true
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -241.0
-margin_top = -205.5
-margin_right = 365.0
-margin_bottom = 205.5
-texture = ExtResource( 4 )
+margin_left = -250.5
+margin_top = -160.265
+margin_right = 250.5
+margin_bottom = 159.735
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -123,28 +182,59 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -162.5
-margin_top = -77.0
-margin_right = 294.5
-margin_bottom = 77.0
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = -67.6809
+margin_top = -115.465
+margin_right = 209.319
+margin_bottom = 99.5352
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Hey little peace of shit ! So it's you, the new landloard of this town. You will not last long. "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Container/Step1"]
+position = Vector2( 363.287, 345.802 )
+scale = Vector2( 0.444707, 0.421088 )
+texture = ExtResource( 2 )
+
+[node name="ButtonBackground" type="TextureRect" parent="Container/Step1"]
+margin_left = 617.54
+margin_top = 415.88
+margin_right = 2001.54
+margin_bottom = 681.88
+rect_scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Next" type="Button" parent="Container/Step1"]
-margin_left = 248.064
-margin_top = 143.234
-margin_right = 323.064
-margin_bottom = 173.234
+margin_left = 617.963
+margin_top = 416.042
+margin_right = 727.963
+margin_bottom = 443.042
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Step2" type="Popup" parent="Container"]
+[node name="Step2" type="PopupDialog" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+custom_styles/panel = SubResource( 7 )
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="Container/Step2"]
 margin_left = 56.0
@@ -152,32 +242,44 @@ margin_top = 69.0
 margin_right = 174.0
 margin_bottom = 128.0
 mouse_filter = 2
-color = Color( 0.898039, 0.898039, 0.898039, 0.403361 )
+color = Color( 0.898039, 0.898039, 0.898039, 0.470588 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Container/Step2"]
 autoplay = "FluctuateColor"
-anims/FluctuateColor = SubResource( 2 )
+anims/FluctuateColor = SubResource( 8 )
 
-[node name="Step3" type="Popup" parent="Container"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect2" type="ColorRect" parent="Container/Step3"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -254.0
-margin_top = -107.0
-margin_right = 255.0
-margin_bottom = 107.0
-color = Color( 0.133333, 0.133333, 0.133333, 1 )
+[node name="Container" type="PanelContainer" parent="Container/Step2"]
+margin_left = 54.0
+margin_top = 127.0
+margin_right = 1023.0
+margin_bottom = 599.0
+custom_styles/panel = SubResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Container2" type="PanelContainer" parent="Container/Step2"]
+margin_left = 174.208
+margin_top = 69.0172
+margin_right = 1001.21
+margin_bottom = 132.017
+custom_styles/panel = SubResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Step3" type="PopupDialog" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -0.5
+margin_right = 1.0
+margin_bottom = -0.5
+custom_styles/panel = SubResource( 9 )
+popup_exclusive = true
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step3"]
 anchor_left = 0.5
@@ -188,7 +290,7 @@ margin_left = -253.5
 margin_top = -106.0
 margin_right = 253.5
 margin_bottom = 106.0
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -199,48 +301,51 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -228.0
-margin_top = -77.0
-margin_right = 216.0
-margin_bottom = 86.0
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = -201.108
+margin_top = -82.2379
+margin_right = 218.892
+margin_bottom = 80.7621
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "By clicking on a flat you open the details popup which shows you all the information of the flat"
+text = "By clicking on a flat you open the details popup which shows you all the information of the flat."
+
+[node name="ButtonBackground" type="TextureRect" parent="Container/Step3"]
+margin_left = 620.353
+margin_top = 365.904
+margin_right = 2004.36
+margin_bottom = 631.904
+rect_scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Next" type="Button" parent="Container/Step3"]
-margin_left = 675.873
-margin_top = 367.832
-margin_right = 750.873
-margin_bottom = 397.832
+margin_left = 620.776
+margin_top = 366.066
+margin_right = 730.776
+margin_bottom = 393.066
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Step4" type="Popup" parent="Container"]
+[node name="Step4" type="PopupDialog" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.374573
 margin_top = -0.490479
 margin_right = 0.374573
 margin_bottom = -0.490479
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="ColorRect" parent="Container/Step4"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -258.0
-margin_top = -34.0
-margin_right = 141.0
-margin_bottom = 219.0
-color = Color( 0.133333, 0.133333, 0.133333, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = SubResource( 11 )
+popup_exclusive = true
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step4"]
 anchor_left = 0.5
@@ -251,7 +356,7 @@ margin_left = -257.0
 margin_top = -33.0
 margin_right = 140.0
 margin_bottom = 218.0
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -262,23 +367,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -237.0
-margin_top = -20.0
-margin_right = 138.0
-margin_bottom = 241.0
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = -218.387
+margin_top = -9.20447
+margin_right = 126.613
+margin_bottom = 242.796
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Here you can visualize the state of degradation of the flat. When it's state reach the minimun, the flat does not bring you any more money."
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Next" type="Button" parent="Container/Step4"]
-margin_left = 570.267
-margin_top = 484.981
-margin_right = 645.267
-margin_bottom = 514.981
-text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -289,30 +384,42 @@ rotation = -0.380482
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 5 )
 
-[node name="Step5" type="Popup" parent="Container"]
+[node name="ButtonBackground" type="TextureRect" parent="Container/Step4"]
+margin_left = 511.615
+margin_top = 479.404
+margin_right = 1895.62
+margin_bottom = 745.404
+rect_scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="Button" parent="Container/Step4"]
+margin_left = 512.039
+margin_top = 479.566
+margin_right = 622.039
+margin_bottom = 506.566
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Step5" type="PopupDialog" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.374573
 margin_top = -0.490479
 margin_right = 0.374573
 margin_bottom = -0.490479
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="ColorRect" parent="Container/Step5"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -197.0
-margin_top = 50.0
-margin_right = 185.0
-margin_bottom = 148.0
-color = Color( 0.133333, 0.133333, 0.133333, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = SubResource( 13 )
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step5"]
 anchor_left = 0.5
@@ -320,10 +427,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -196.0
-margin_top = 51.0
+margin_top = 7.0
 margin_right = 184.0
 margin_bottom = 147.0
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -334,23 +441,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -175.528
-margin_top = 55.7264
-margin_right = 151.472
-margin_bottom = 160.726
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = -163.622
+margin_top = 21.5973
+margin_right = 163.378
+margin_bottom = 126.597
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Here you see the rent of the flat."
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Next" type="Button" parent="Container/Step5"]
-margin_left = 564.031
-margin_top = 409.255
-margin_right = 639.031
-margin_bottom = 439.255
-text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -361,26 +458,38 @@ rotation = 0.762709
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 5 )
 
-[node name="Step6" type="Popup" parent="Container"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="ButtonBackground" type="TextureRect" parent="Container/Step5"]
+margin_left = 536.22
+margin_top = 411.145
+margin_right = 1920.22
+margin_bottom = 677.145
+rect_scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 8 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect2" type="ColorRect" parent="Container/Step6"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 173.0
-margin_top = -290.0
-margin_right = 498.0
-margin_bottom = 288.0
-color = Color( 0.133333, 0.133333, 0.133333, 1 )
+[node name="Next" type="Button" parent="Container/Step5"]
+margin_left = 536.643
+margin_top = 411.307
+margin_right = 646.643
+margin_bottom = 438.307
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Step6" type="PopupDialog" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 15 )
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step6"]
 anchor_left = 0.5
@@ -391,7 +500,7 @@ margin_left = 174.0
 margin_top = -289.0
 margin_right = 497.0
 margin_bottom = 287.0
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -402,56 +511,59 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 189.0
-margin_top = -274.0
-margin_right = 509.0
-margin_bottom = 279.0
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = 199.703
+margin_top = -268.054
+margin_right = 486.703
+margin_bottom = 274.946
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Here you can see the identity card of the tenant who live in the flat. This card indicate the trust and the cleanliness of the tenant. This character traits impact the game. Someone reliable will pay you for sure and someone clean will make your flat less dirty. The leasing duration indicate the the duration, in play cycle, during which the tenant will stay."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="Container/Step6"]
+position = Vector2( 645.08, 321.368 )
+rotation = -3.14159
+scale = Vector2( 0.2, -0.2 )
+texture = ExtResource( 5 )
+
+[node name="ButtonBackground" type="TextureRect" parent="Container/Step6"]
+margin_left = 707.659
+margin_top = 535.756
+margin_right = 2091.66
+margin_bottom = 801.756
+rect_scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Next" type="Button" parent="Container/Step6"]
-margin_left = 920.693
-margin_top = 540.39
-margin_right = 995.693
-margin_bottom = 570.39
+margin_left = 708.083
+margin_top = 535.918
+margin_right = 818.083
+margin_bottom = 562.918
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Container/Step6"]
-position = Vector2( 645.08, 321.368 )
-scale = Vector2( -0.2, 0.2 )
-texture = ExtResource( 5 )
-
-[node name="Step7" type="Popup" parent="Container"]
+[node name="Step7" type="PopupDialog" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 38.7542
 margin_top = 1.78183
 margin_right = 38.7542
 margin_bottom = 1.78186
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="ColorRect" parent="Container/Step7"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -243.0
-margin_top = -29.0
-margin_right = 68.0
-margin_bottom = 127.0
-color = Color( 0.133333, 0.133333, 0.133333, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = SubResource( 17 )
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step7"]
 anchor_left = 0.5
@@ -462,7 +574,7 @@ margin_left = -242.0
 margin_top = -28.0
 margin_right = 67.0
 margin_bottom = 126.0
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -473,37 +585,56 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -233.0
-margin_top = -25.0
-margin_right = 65.0
-margin_bottom = 147.0
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = -212.238
+margin_top = -19.2063
+margin_right = 49.7622
+margin_bottom = 152.794
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Here you have the buttons that permit you to interact with your flat."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="Container/Step7"]
+position = Vector2( 246.287, 440.073 )
+rotation = 2.25322
+scale = Vector2( 0.2, -0.2 )
+texture = ExtResource( 5 )
+
+[node name="ButtonBackground" type="TextureRect" parent="Container/Step7"]
+margin_left = 445.738
+margin_top = 392.097
+margin_right = 1829.74
+margin_bottom = 658.097
+rect_scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Next" type="Button" parent="Container/Step7"]
-margin_left = 489.373
-margin_top = 385.616
-margin_right = 564.373
-margin_bottom = 415.616
+margin_left = 446.162
+margin_top = 392.259
+margin_right = 556.162
+margin_bottom = 419.259
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Container/Step7"]
-position = Vector2( 246.287, 440.073 )
-rotation = -0.888373
-scale = Vector2( -0.2, 0.2 )
-texture = ExtResource( 5 )
-
-[node name="Step8" type="Popup" parent="Container"]
+[node name="Step8" type="PopupDialog" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+custom_styles/panel = SubResource( 19 )
 
 [node name="ColorRect" type="ColorRect" parent="Container/Step8"]
 margin_left = 142.0
@@ -511,39 +642,23 @@ margin_top = 52.0
 margin_right = 201.0
 margin_bottom = 93.0
 mouse_filter = 2
-color = Color( 0.898039, 0.898039, 0.898039, 0.470588 )
+color = Color( 0.898039, 0.898039, 0.898039, 0.403922 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Container/Step8"]
 autoplay = "FluctuateColor"
-anims/FluctuateColor = SubResource( 3 )
+anims/FluctuateColor = SubResource( 20 )
 
-[node name="Step9" type="Popup" parent="Container"]
+[node name="Step9" type="PopupDialog" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.42041
 margin_top = 2.24493
 margin_right = 0.42041
 margin_bottom = 2.24493
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="ColorRect" parent="Container/Step9"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -265.0
-margin_top = -116.0
-margin_right = 266.0
-margin_bottom = 116.0
-color = Color( 0.133333, 0.133333, 0.133333, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = SubResource( 21 )
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step9"]
 anchor_left = 0.5
@@ -554,7 +669,7 @@ margin_left = -264.5
 margin_top = -115.0
 margin_right = 264.5
 margin_bottom = 115.0
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -565,69 +680,80 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -244.837
-margin_top = -97.1413
-margin_right = 221.163
-margin_bottom = 115.859
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = -224.364
+margin_top = -99.3811
+margin_right = 230.636
+margin_bottom = 113.619
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "The game is based on cycles, that represent the time. At each change of cycle your rent is collected and your flat is degrading. If yours tenants arrive at the end of the lease, they leave."
 
+[node name="ButtonBackground" type="TextureRect" parent="Container/Step9"]
+margin_left = 629.083
+margin_top = 376.223
+margin_right = 2013.09
+margin_bottom = 642.223
+rect_scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Next" type="Button" parent="Container/Step9"]
-margin_left = 692.559
-margin_top = 379.253
-margin_right = 767.559
-margin_bottom = 409.253
+margin_left = 629.506
+margin_top = 376.385
+margin_right = 739.506
+margin_bottom = 403.385
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Step10" type="Popup" parent="Container"]
+[node name="Step10" type="PopupDialog" parent="Container"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = SubResource( 23 )
 
 [node name="ColorRect" type="ColorRect" parent="Container/Step10"]
 margin_left = 942.0
-margin_top = 391.0
+margin_top = 390.0
 margin_right = 1012.0
-margin_bottom = 541.0
+margin_bottom = 534.0
 mouse_filter = 2
-color = Color( 0.458824, 0.458824, 0.458824, 0.392157 )
+color = Color( 0.898039, 0.898039, 0.898039, 0.470588 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Container/Step10"]
 autoplay = "FluctuateColor"
-anims/FluctuateColor = SubResource( 4 )
+anims/FluctuateColor = SubResource( 24 )
 
-[node name="Step11" type="Popup" parent="Container"]
+[node name="Container" type="PanelContainer" parent="Container/Step10"]
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 938.0
+margin_bottom = 599.0
+custom_styles/panel = SubResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Step11" type="PopupDialog" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 0.894806
 margin_bottom = 0.894775
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="ColorRect" parent="Container/Step11"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -336.477
-margin_top = -116.683
-margin_right = 103.523
-margin_bottom = 26.3167
-color = Color( 0.133333, 0.133333, 0.133333, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/panel = SubResource( 25 )
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step11"]
 anchor_left = 0.5
@@ -638,7 +764,7 @@ margin_left = -335.477
 margin_top = -115.683
 margin_right = 102.523
 margin_bottom = 25.3167
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -649,23 +775,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -326.977
-margin_top = -85.6833
-margin_right = 130.023
-margin_bottom = 68.3167
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = -300.143
+margin_top = -105.049
+margin_right = 27.8567
+margin_bottom = 48.9512
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "In this box you can follow if yours tenant have payed or not."
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Next" type="Button" parent="Container/Step11"]
-margin_left = 527.904
-margin_top = 291.788
-margin_right = 602.904
-margin_bottom = 321.788
-text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -676,34 +792,49 @@ rotation = -0.010472
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 5 )
 
-[node name="Step12" type="Popup" parent="Container"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect2" type="ColorRect" parent="Container/Step12"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -130.0
-margin_top = -49.0
-margin_right = 131.0
-margin_bottom = 49.0
-color = Color( 0.133333, 0.133333, 0.133333, 1 )
+[node name="ButtonBackground" type="TextureRect" parent="Container/Step11"]
+margin_left = 471.93
+margin_top = 287.328
+margin_right = 1855.93
+margin_bottom = 553.328
+rect_scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 8 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Next" type="Button" parent="Container/Step11"]
+margin_left = 472.354
+margin_top = 287.49
+margin_right = 582.354
+margin_bottom = 314.49
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 26 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Step12" type="PopupDialog" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 27 )
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step12"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -129.5
-margin_top = -48.0
-margin_right = 129.5
-margin_bottom = 48.0
-texture = ExtResource( 4 )
+margin_left = -211.0
+margin_top = -130.5
+margin_right = 211.0
+margin_bottom = 130.5
+texture = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -714,20 +845,46 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -119.375
-margin_top = -38.8593
-margin_right = 337.625
-margin_bottom = 115.141
-custom_fonts/normal_font = SubResource( 1 )
+margin_left = -52.8829
+margin_top = -80.2568
+margin_right = 404.117
+margin_bottom = 73.7432
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "That all ! Good luck !"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Container/Step12"]
+position = Vector2( 395.997, 317.36 )
+scale = Vector2( 0.444707, 0.421088 )
+texture = ExtResource( 2 )
+
+[node name="ButtonBackground" type="TextureRect" parent="Container/Step12"]
+margin_left = 579.08
+margin_top = 389.715
+margin_right = 1963.08
+margin_bottom = 655.715
+rect_scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Next" type="Button" parent="Container/Step12"]
-margin_left = 559.523
-margin_top = 313.688
-margin_right = 634.523
-margin_bottom = 343.688
-text = "Next"
+margin_left = 579.503
+margin_top = 389.877
+margin_right = 689.503
+margin_bottom = 416.877
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 28 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+text = "Finish"
 __meta__ = {
 "_edit_use_anchors_": false
 }

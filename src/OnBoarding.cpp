@@ -18,61 +18,60 @@ void OnBoarding::next_step() {
 	update_current_step_node();
 	switch (currentStep) {
 		case 1:
-			Godot::print("[ONBOARDING]: Game presentation");
+			// [ONBOARDING]: Game presentation
 			_text_button_presentation();
 			break;
 		case 2:
-			Godot::print("[ONBOARDING]: Over flat");
+			// [ONBOARDING]: Over flat
 			_flat_detail_presentation();
 			break;
 		case 3:
-			Godot::print("[ONBOARDING]: Flat detail presentation");
+			// [ONBOARDING]: Flat detail presentation
 			_text_button_presentation();
 			break;
 		case 4:
-			Godot::print("[ONBOARDING]: Flat characteristic presentation");
+			// [ONBOARDING]: Flat characteristic presentation
 			_text_button_presentation();
 			break;
 		case 5:
-			Godot::print("[ONBOARDING]: Flat characteristic presentation");
+			//[ONBOARDING]: Flat characteristic presentation
 			_text_button_presentation();
 			break;
 		case 6:
-			Godot::print("[ONBOARDING]: Flat tenant presentation");
+			// [ONBOARDING]: Flat tenant presentation
 			_text_button_presentation();
 			break;
 		case 7:
-			Godot::print("[ONBOARDING]: Flat rent");
+			// [ONBOARDING]: Flat rent
 			_text_button_presentation();
 			break;
 		case 8:
-			Godot::print("[ONBOARDING]: Flat detail exit presentation");
+			// [ONBOARDING]: Flat detail exit presentation
 			_flat_detail_exit_presentation();
 			break;
 		case 9:
-			Godot::print("[ONBOARDING]: Cycle presentation");
+			//[ONBOARDING]: Cycle presentation
 			_text_button_presentation();
 			break;
 		case 10:
-			Godot::print("[ONBOARDING]: Next cycle presentation");
+			// [ONBOARDING]: Next cycle presentation
 			_next_cycle_presentation();
 			break;
 		case 11:
-			Godot::print("[ONBOARDING]: Cycle report presentation");
+			// [ONBOARDING]: Cycle report presentation
 			_text_button_presentation();
 			break;
 		case 12:
-			Godot::print("[ONBOARDING]: End tour presentation");
+			// [ONBOARDING]: End tour presentation
 			last_step();
 			break;
 		default:
-			Godot::print("[ONBORDING]: Step doesn't exist");
+			// [ONBORDING]: Step doesn't exist
 			break;
 	}
 }
 
 void OnBoarding::update_current_step_node() {
-	Godot::print("Update");
 	currentStep += 1;
 	if(currentStepNode != nullptr) {
 		currentStepNode->queue_free();
@@ -80,7 +79,7 @@ void OnBoarding::update_current_step_node() {
 	disconnect_flat_frame_signals();
 	std::stringstream nodePath;
 	nodePath << "Container/Step" << currentStep;
-	currentStepNode = cast_to<Popup>(get_node(nodePath.str().c_str()));
+	currentStepNode = cast_to<PopupDialog>(get_node(nodePath.str().c_str()));
 	currentStepNode->show();
 }
 
