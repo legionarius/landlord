@@ -31,6 +31,7 @@ private:
 	real_t balance;
 	MonthReport *monthReport;
 	Node *mainScene;
+	// If the onBoarding piss you off, you can pass the following variable to "true"
 	bool onBoardingLoaded = false;
 
 	void next_month();
