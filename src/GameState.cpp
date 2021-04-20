@@ -78,9 +78,12 @@ void GameState::start_game() {}
 
 void GameState::main_scene_loaded() {
 	mainScene = get_tree()->get_root()->get_node("MainScene");
-	Ref<PackedScene> onBoardingScene = ResourceLoader::get_singleton()->load("entity/OnBoarding/OnBoarding.tscn");
-	OnBoarding *onBoarding = cast_to<OnBoarding>(onBoardingScene->instance());
-	mainScene->add_child(onBoarding);
+	if(!onBoardingLoaded){
+		Ref<PackedScene> onBoardingScene = ResourceLoader::get_singleton()->load("entity/OnBoarding/OnBoarding.tscn");
+		OnBoarding *onBoarding = cast_to<OnBoarding>(onBoardingScene->instance());
+		mainScene->add_child(onBoarding);
+		onBoardingLoaded = true;
+	}
 }
 
 void GameState::end_game() {

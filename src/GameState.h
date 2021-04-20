@@ -32,6 +32,7 @@ private:
 	real_t balance;
 	MonthReport *monthReport;
 	Node *mainScene;
+	bool onBoardingLoaded = false;
 
 	void next_month();
 	void calculate_balance();

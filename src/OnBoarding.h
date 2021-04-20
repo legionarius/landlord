@@ -21,11 +21,14 @@
 #include "Signals.h"
 
 namespace godot {
+class FlatFrame;
+
 class OnBoarding : public CanvasLayer {
 	GODOT_CLASS(OnBoarding, CanvasLayer);
 
 	int16_t currentStep = 0;
 	Control *currentStepNode;
+	FlatFrame *flatFrame;
 
 private:
 	void _flat_detail_presentation();
@@ -38,8 +41,9 @@ public:
 	void _init();
 	void _ready();
 	void update_current_step_node();
-	void hide_current_step();
+	void disconnect_flat_frame_signals();
 	void last_step();
+	void hide_current_step();
 	void end_tour();
 
 	void next_step();
