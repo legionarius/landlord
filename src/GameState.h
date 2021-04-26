@@ -8,6 +8,7 @@
 #include "ActionRepairFlat.h"
 #include "FlatsManager.h"
 #include "MonthReport.h"
+#include "OnBoarding.h"
 #include "Signals.h"
 
 #include <Control.hpp>
@@ -28,6 +29,10 @@ private:
 	int64_t year;
 	int64_t month;
 	real_t balance;
+	MonthReport *monthReport;
+	Node *mainScene;
+	// If the onBoarding piss you off, you can pass the following variable to "true"
+	bool onBoardingLoaded = false;
 
 	void next_month();
 	void calculate_balance();
@@ -46,6 +51,7 @@ public:
 	void _input(const Ref<InputEvent> event);
 	void init_properties();
 	void start_game();
+	void main_scene_loaded();
 };
 } // namespace godot
 

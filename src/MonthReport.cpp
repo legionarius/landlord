@@ -23,5 +23,4 @@ void MonthReport::_flush() {
 void MonthReport::_register_methods() {
 	register_method("_init", &MonthReport::_init);
 	register_method("_ready", &MonthReport::_ready);
-	register_method("_add_entry", &MonthReport::_add_entry);
 }

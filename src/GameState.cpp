@@ -67,11 +67,19 @@ void GameState::calculate_actions_cost() {
 	balance -= flatManager->get_actions_cost();
 }
 
-void GameState::start_game() {
+void GameState::start_game() {}
+
+void GameState::main_scene_loaded() {
+	mainScene = get_tree()->get_root()->get_node("MainScene");
+	if(!onBoardingLoaded){
+		Ref<PackedScene> onBoardingScene = ResourceLoader::get_singleton()->load("entity/OnBoarding/OnBoarding.tscn");
+		OnBoarding *onBoarding = cast_to<OnBoarding>(onBoardingScene->instance());
+		mainScene->add_child(onBoarding);
+		onBoardingLoaded = true;
+	}
 }
 
 void GameState::end_game() {
-	Node *mainScene = get_tree()->get_root()->get_node("MainScene");
 	mainScene->queue_free();
 	get_tree()->change_scene("entity/EndScreen/EndScreen.tscn");
 }
@@ -83,5 +91,6 @@ void GameState::_register_methods() {
 	register_method("_next_turn", &GameState::_next_turn);
 	register_method("init_properties", &GameState::init_properties);
 	register_method("start_game", &GameState::start_game);
+	register_method("main_scene_loaded", &GameState::main_scene_loaded);
 	register_signal<GameState>(NEW_CYCLE, "month", GODOT_VARIANT_TYPE_INT, "year", GODOT_VARIANT_TYPE_INT, "balance", GODOT_VARIANT_TYPE_REAL);
 }

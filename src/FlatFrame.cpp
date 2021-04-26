@@ -52,6 +52,8 @@ void FlatFrame::_on_pre_show() {
 
 	audio->play();
 	animation->play("open");
+	emit_signal(START_OPEN_FLAT_DETAIL);
+	animation->connect("animation_finished", this, "_flat_is_displayed");
 
 	flatName->set_text(flatNameLabel);
 	rent->set_text(rentLabel);
@@ -235,6 +237,10 @@ void FlatFrame::_on_action_count(int current, int max) {
 	}
 }
 
+void FlatFrame::_flat_is_displayed() {
+	emit_signal(END_OPEN_FLAT_DETAIL);
+}
+
 void FlatFrame::_register_methods() {
 	register_method("_init", &FlatFrame::_init);
 	register_method("_ready", &FlatFrame::_ready);
@@ -247,8 +253,11 @@ void FlatFrame::_register_methods() {
 	register_method("_on_fire_pressed", &FlatFrame::_on_fire_pressed);
 	register_method("_exit_tenant_selector", &FlatFrame::_exit_tenant_selector);
 	register_method("_on_pre_show", &FlatFrame::_on_pre_show);
+    register_method("_flat_is_displayed", &FlatFrame::_flat_is_displayed);
 	register_method("_on_action_count", &FlatFrame::_on_action_count);
 	register_signal<FlatFrame>(SIGNAL_MOVE_IN_TENANT, "isPressed", GODOT_VARIANT_TYPE_BOOL, "flatId", GODOT_VARIANT_TYPE_INT, "tenantId", GODOT_VARIANT_TYPE_INT);
 	register_signal<FlatFrame>(SIGNAL_FIRE_TENANT, "isPressed", GODOT_VARIANT_TYPE_BOOL, "flatId", GODOT_VARIANT_TYPE_INT);
 	register_signal<FlatFrame>(SIGNAL_REPAIR_FLAT, "isPressed", GODOT_VARIANT_TYPE_BOOL, "flatId", GODOT_VARIANT_TYPE_INT);
+	register_signal<FlatFrame>(START_OPEN_FLAT_DETAIL);
+	register_signal<FlatFrame>(END_OPEN_FLAT_DETAIL);
 }
