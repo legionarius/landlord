@@ -686,7 +686,7 @@ margin_right = 230.636
 margin_bottom = 113.619
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "The game is based on cycles, that represent the time. At each change of cycle your rent is collected and your flat is degrading. If yours tenants arrive at the end of the lease, they leave."
+text = "The game is based on cycles, that represent the time. At each change of cycle your rent is collected and your flat is degrading. If your tenants are at the end of their lease, they will leave."
 
 [node name="ButtonBackground" type="TextureRect" parent="Container/Step9"]
 margin_left = 629.083
