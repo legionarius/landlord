@@ -720,6 +720,6 @@ add_executable(
         src/ActionButton.cpp
         src/Action.cpp src/Action.h
         src/ActionManager.cpp src/ActionManager.h
-        src/ActionItem.cpp src/ActionItem.h
-)
+        src/ActionItem.cpp src/ActionItem.h,
+        src/OnBoarding.cpp src/OnBoarding.h)
 
