@@ -373,7 +373,7 @@ margin_right = 126.613
 margin_bottom = 242.796
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Here you can visualize the state of degradation of the flat. When it's state reach the minimun, the flat does not bring you any more money."
+text = "Here you can see the degradation state of the flat. When it reaches zero, you won't receive its rent, it will even cost you."
 __meta__ = {
 "_edit_use_anchors_": false
 }
