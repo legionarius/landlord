@@ -6,8 +6,8 @@
 
 using namespace godot;
 
-std::string ActionFireTenant::iconPath = "res://asset/FlatFrame/fire_action_button.png";
-std::string ActionFireTenant::iconPathSelected = "res://asset/FlatFrame/fire_action_button_selected.png";
+const std::string ActionFireTenant::iconPath = "res://asset/FlatFrame/fire_action_button.png";
+const std::string ActionFireTenant::iconPathSelected = "res://asset/FlatFrame/fire_action_button_selected.png";
 
 void ActionFireTenant::apply() {
 	godot::Flat *flat = godot::Object::cast_to<godot::Flat>(target);
@@ -16,4 +16,12 @@ void ActionFireTenant::apply() {
 
 real_t ActionFireTenant::get_cost() {
 	return 0.f;
+}
+
+godot::String ActionFireTenant::get_name() {
+	return godot::String("ActionFireTenant");
+}
+
+ActionType ActionFireTenant::get_actionType() {
+	return ACTION_FIRE_TENANT;
 }

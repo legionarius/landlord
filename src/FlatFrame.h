@@ -69,6 +69,7 @@ public:
 	void _toggle_fire_tenant_button(bool enabled) const;
 	void _toggle_move_in_tenant_button(bool enabled) const;
 	void _toggle_repair_flat_button(bool enabled) const;
+	void _on_action_count(int current, int max);
 };
 } // namespace godot
 

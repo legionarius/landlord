@@ -28,6 +28,7 @@ class FlatsManager : public Node2D {
 
 private:
 	std::vector<Action *> actions;
+	static const int8_t MAX_ACTIONS = 6;
 	ReportFrame *reportFrame;
 
 public:
@@ -43,6 +44,12 @@ public:
 	static void _register_methods();
 	void _init();
 	void _ready();
+	void _add_action(int flatId, int actionTypeOrdinal);
+	void queue_move_in_tenant(const bool isPressed, const int flatId, const uint64_t tenantId);
+	void queue_fire_tenant(const bool isPressed, const int flatId);
+	void queue_repair_flat(const bool isPressed, const int flatId);
+	Node *get_flat(int flatId);
+	bool can_add_action();
 };
 } // namespace godot
 

@@ -15,6 +15,12 @@
 #define NEW_TENANT_SELECTED "new_tenant_selected"
 #define TENANT_SELECTOR_PRESSED "tenant_selector_pressed"
 #define EXIT_TENANT_SELECTOR "exit_tenant_selector"
+// Sent when an action is effectively added to the action stack
+#define ADD_ACTION "add_action"
+// Sent when an action is effectively removed to the action stack
+#define REMOVE_ACTION "remove_action"
+// Sent each time the action count effectively changes
+#define ACTION_COUNT "action_count"
 
 // Godot Signals
 

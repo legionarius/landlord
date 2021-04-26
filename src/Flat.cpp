@@ -9,28 +9,16 @@ using namespace godot;
 void Flat::_register_methods() {
 	register_method("_init", &Flat::_init);
 	register_method("_ready", &Flat::_ready);
+	register_method("_exit_tree", &Flat::_exit_tree);
 	register_method("_on_pressed", &Flat::_on_pressed);
-	register_method("queue_move_in_tenant", &Flat::queue_move_in_tenant);
-	register_method("queue_repair_flat", &Flat::queue_repair_flat);
-	register_method("queue_fire_tenant", &Flat::queue_fire_tenant);
-	// register_method("reset_action_icon", &Flat::reset_action_icon);
 }
 
 void Flat::_init() {
 	rng = RandomNumberGenerator()._new();
 	rng->randomize();
-	health = rng->randi_range(0, 100);
+	health = rng->randi_range(20, 100);
 	rent = rng->randf_range(100, 500);
 	update_charge();
-}
-
-// Should be run after each cycle when
-// the flat health changes.
-void Flat::update_charge() {
-	// Charge :
-	// - 50% of the rent
-	// - Bonus of 25% of the health (remove the bonus from the charge)
-	charge = (rent * 25.f) / 100.f - (health * 0.25);
 }
 
 void Flat::_ready() {
@@ -38,6 +26,25 @@ void Flat::_ready() {
 	id = get_name().right(4).to_int();
 	flatMask = cast_to<TextureRect>(get_node("FlatMask"));
 	set_tooltip("Click to open flat details");
+	Ref<PackedScene> characterScene = ResourceLoader::get_singleton()->load("entity/Tenant/Character.tscn");
+	tenantSpawnPosition = cast_to<Position2D>(get_node("TenantSpawn"));
+	if (tenantSpawnPosition != nullptr) {
+		tenantCharacter = cast_to<TenantCharacter>(characterScene->instance());
+	}
+}
+
+void Flat::_exit_tree() {
+	// In case of tenant character isn't in scene tree
+	tenantCharacter->free();
+}
+
+// Should be run after each cycle when
+// the flat health changes.
+void Flat::update_charge() {
+	// Charge
+	// - 50% of the rent
+	// - Bonus of 25% of the health (remove the bonus from the charge)
+	charge = (rent * 25.f) / 100.f - (health * 0.25);
 }
 
 void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
@@ -48,10 +55,15 @@ void Flat::sign_lease(TenantIdentityCard::Tenant *tenant) {
 		tenant->leasing_end_cycle = gameState->get_cycle_number() + tenant->leasing_duration;
 	}
 	this->tenant = tenant;
+	spawn_tenant();
+}
+
+void Flat::spawn_tenant() {
+	tenantCharacter->set_position(tenantSpawnPosition->get_position());
+	add_child(tenantCharacter);
 }
 
 void Flat::_on_pressed() {
-	//	Ref<PackedScene> flatFrameScene = ResourceLoader::get_singleton()->load("entity/FlatFrame/FlatFrame.tscn");
 	FlatFrame *flatFrame = cast_to<FlatFrame>(get_tree()->get_root()->get_node("MainScene/FlatFrame"));
 	flatFrame->_set_flat(this);
 	flatFrame->_set_flat_label(id);
@@ -83,11 +95,9 @@ void Flat::queue_move_in_tenant(const bool isPressed, const uint64_t tenantId) {
 		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(tenantId - 1);
 		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this, tenant);
 		flatsManager->add_action(actionMoveInTenant);
-		_add_action_icon_on_flat(actionMoveInTenant);
 
 	} else {
 		flatsManager->remove_action(this, ACTION_MOVE_IN_TENANT);
-		_remove_action_icon_on_flat(ACTION_MOVE_IN_TENANT);
 	}
 }
 
@@ -96,10 +106,8 @@ void Flat::queue_fire_tenant(const bool isPressed) {
 	if (isPressed) {
 		ActionFireTenant *actionFireTenant = new ActionFireTenant(this);
 		flatsManager->add_action(actionFireTenant);
-		_add_action_icon_on_flat(actionFireTenant);
 	} else {
 		flatsManager->remove_action(this, ACTION_FIRE_TENANT);
-		_remove_action_icon_on_flat(ACTION_FIRE_TENANT);
 	}
 }
 
@@ -109,39 +117,10 @@ void Flat::queue_repair_flat(const bool isPressed) {
 		ActionRepairFlat *actionRepairFlat = new ActionRepairFlat(this);
 		if (!flatsManager->action_will_be_executed_in_flat(this, ACTION_REPAIR_FLAT)) {
 			flatsManager->add_action(actionRepairFlat);
-			_add_action_icon_on_flat(actionRepairFlat);
 		}
 	} else {
 		flatsManager->remove_action(this, ACTION_REPAIR_FLAT);
-		_remove_action_icon_on_flat(ACTION_REPAIR_FLAT);
 	}
-}
-
-//void Flat::reset_action_icon() {
-//	Array icons = get_children();
-//	for (size_t i = 0; i < icons.size(); i++) {
-//		Node *icon = cast_to<Node>(icons[i]);
-//		if (icon->get_class() == "TextureRect") {
-//			icon->queue_free();
-//		}
-//	}
-//}
-
-void Flat::_add_action_icon_on_flat(Action *action) {
-	TextureRect *textureRect = TextureRect::_new();
-	Ref<Texture> action_icon = ResourceLoader::get_singleton()->load(action->get_texture_path());
-	textureRect->set_name(action->type_to_string(action->actionType));
-	textureRect->set_texture(action_icon);
-	textureRect->set_position(Vector2(0, 35));
-	textureRect->set_scale(Vector2(0.2, 0.2));
-	textureRect->set_margin(0, 20 * (get_child_count() - 1));
-	add_child(textureRect);
-}
-
-void Flat::_remove_action_icon_on_flat(ActionType actionType) {
-	std::stringstream actionNodeName;
-	Node *node = get_node(Action::type_to_string(actionType).operator NodePath());
-	node->queue_free();
 }
 
 void Flat::repair() {
@@ -150,6 +129,7 @@ void Flat::repair() {
 
 void Flat::fire_tenant() {
 	tenant = nullptr;
+	remove_child(tenantCharacter);
 }
 
 void Flat::fire_tenant_if_end_leasing() {
@@ -178,4 +158,8 @@ void Flat::update_tenant_presence() {
 	} else {
 		flatMask->set_visible(true);
 	}
+}
+
+Flat::~Flat() {
+	rng->free();
 }

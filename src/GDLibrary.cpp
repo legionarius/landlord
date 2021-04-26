@@ -2,6 +2,8 @@
 // Created by bogdan on 11/02/2021.
 //
 
+#include "ActionItem.h"
+#include "ActionManager.h"
 #include "CycleInfo.h"
 #include "EndScreen.h"
 #include "Flat.h"
@@ -11,6 +13,7 @@
 #include "MonthReport.h"
 #include "ReportFrame.h"
 #include "SignalButton.h"
+#include "TenantCharacter.h"
 #include "TenantIdentityCard.h"
 #include "TenantManager.h"
 #include "TenantSelector.h"
@@ -32,6 +35,7 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
 	godot::register_class<godot::EndScreen>();
 	godot::register_class<godot::Flat>();
 	godot::register_class<godot::GameState>();
+	godot::register_class<godot::TenantCharacter>();
 	godot::register_class<godot::TenantIdentityCard>();
 	godot::register_class<godot::TenantManager>();
 	godot::register_class<godot::TenantSelector>();
@@ -43,5 +47,7 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
 	godot::register_class<godot::FlatsManager>();
 	godot::register_class<godot::Weather>();
 	godot::register_class<godot::MonthReport>();
+	godot::register_class<godot::ActionManager>();
+	godot::register_class<godot::ActionItem>();
 	godot::register_class<godot::ReportFrame>();
 }

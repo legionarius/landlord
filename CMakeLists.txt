@@ -17,7 +17,7 @@ include_directories(godot-cpp/include/core)
 include_directories(godot-cpp/include/gen)
 
 add_executable(
-        weekly-gamejam-190
+        mundane-jam
         godot-cpp/godot-headers/android/godot_android.h
         godot-cpp/godot-headers/arvr/godot_arvr.h
         godot-cpp/godot-headers/gdnative/aabb.h
@@ -714,6 +714,12 @@ add_executable(
         src/TenantSelector.cpp src/TenantSelector.h src/TenantSelectorButton.cpp src/TenantSelectorButton.h
         src/ReportFrame.cpp src/ReportFrame.h
         src/EndScreen.cpp src/EndScreen.h
-        src/FlatFrame.cpp
+        src/TenantCharacter.cpp src/TenantCharacter.h
+        src/Weather.cpp src/Weather.h
+        src/Utils.cpp src/Utils.h
+        src/ActionButton.cpp
+        src/Action.cpp src/Action.h
+        src/ActionManager.cpp src/ActionManager.h
+        src/ActionItem.cpp src/ActionItem.h
 )
 

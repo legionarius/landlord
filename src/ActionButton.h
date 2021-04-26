@@ -5,6 +5,7 @@
 #ifndef MUNDANE_JAM_ACTIONBUTTON_H
 #define MUNDANE_JAM_ACTIONBUTTON_H
 
+#include "Action.h"
 #include "Signals.h"
 #include <Array.hpp>
 #include <Godot.hpp>
@@ -18,6 +19,7 @@ class ActionButton : public TextureButton {
 
 private:
 	Label *flat_number;
+	Action *action;
 
 public:
 	void set_number(int64_t number);

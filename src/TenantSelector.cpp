@@ -6,9 +6,8 @@
 
 using namespace godot;
 
-int64_t TenantSelector::maxTenantInSelector = 3;
-
 void TenantSelector::_init() {
+	maxItems = 3;
 	rng = RandomNumberGenerator()._new();
 }
 
@@ -20,8 +19,12 @@ void TenantSelector::_ready() {
 	Ref<Texture> hover_texture = ResourceLoader::get_singleton()->load("asset/Flat/hover_texture.png");
 	rng->randomize();
 	Ref<PackedScene> tenantIdentityCardScene = ResourceLoader::get_singleton()->load("entity/Tenant/TenantIdentityCard.tscn");
-	for (int64_t i = 0; i < maxTenantInSelector; i++) {
-		real_t tenantIndex = rng->randf_range(0, 49);
+	std::vector<size_t> selected;
+	for (size_t i = 0; i < maxItems; i++) {
+		size_t tenantIndex = rng->randi_range(0, 49);
+		while (selected.end() != std::find(selected.begin(), selected.end(), tenantIndex)) {
+			tenantIndex = rng->randi_range(0, 49);
+		}
 		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(tenantIndex);
 		TenantIdentityCard *tenantIdentityCard = cast_to<TenantIdentityCard>(tenantIdentityCardScene->instance());
 		TenantSelectorButton *tenantButtonSelector = TenantSelectorButton::_new();
@@ -30,8 +33,8 @@ void TenantSelector::_ready() {
 		tenantButtonSelector->connect(TENANT_SELECTOR_PRESSED, this, "tenant_selected");
 		tenantButtonSelector->set_tenant_id(tenant->id);
 		tenantIdentityCard->set_tenant(tenant);
-		tenantButtonSelector->set_position(Vector2(0,30));
-		tenantButtonSelector->set_margin(0, 200 * (i+1));
+		tenantButtonSelector->set_position(Vector2(0, 30));
+		tenantButtonSelector->set_margin(0, 200 * (i + 1));
 		tenantButtonSelector->add_child(tenantIdentityCard);
 		selectorBackground->add_child(tenantButtonSelector);
 	}

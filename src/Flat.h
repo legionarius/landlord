@@ -13,13 +13,16 @@
 #include "FlatsManager.h"
 #include "GameState.h"
 #include "Signals.h"
+#include "TenantCharacter.h"
 #include "TenantIdentityCard.h"
 
 #include <ColorRect.hpp>
 #include <Godot.hpp>
+#include <KinematicBody2D.hpp>
 #include <Light2D.hpp>
 #include <PackedScene.hpp>
 #include <PopupDialog.hpp>
+#include <Position2D.hpp>
 #include <RandomNumberGenerator.hpp>
 #include <Ref.hpp>
 #include <ResourceLoader.hpp>
@@ -36,6 +39,8 @@ class Flat : public TextureButton {
 	GODOT_CLASS(Flat, TextureButton);
 
 	TenantIdentityCard::Tenant *tenant;
+	TenantCharacter *tenantCharacter;
+	Position2D *tenantSpawnPosition;
 	RandomNumberGenerator *rng;
 	TextureRect *flatMask;
 
@@ -43,6 +48,7 @@ public:
 	static void _register_methods();
 	void _init();
 	void _ready();
+	void _exit_tree();
 	void _on_pressed();
 	void sign_lease(TenantIdentityCard::Tenant *tenant);
 	void update_charge();
@@ -50,14 +56,14 @@ public:
 	void queue_move_in_tenant(const bool isPressed, const uint64_t tenantId);
 	void queue_fire_tenant(const bool isPressed);
 	void queue_repair_flat(const bool isPressed);
-	// void reset_action_icon();
-	void _add_action_icon_on_flat(Action *action);
-	void _remove_action_icon_on_flat(ActionType actionType);
 	void repair();
 	void update_health();
 	void update_tenant_presence();
 	void fire_tenant();
 	void fire_tenant_if_end_leasing();
+	void spawn_tenant();
+
+	~Flat();
 
 	int64_t id;
 	real_t rent;

@@ -6,21 +6,21 @@
 #define MUNDANE_JAM_TENANTSELECTOR_H
 
 #include <Godot.hpp>
+#include <RandomNumberGenerator.hpp>
 #include <TextureButton.hpp>
 #include <TextureRect.hpp>
-#include <RandomNumberGenerator.hpp>
 
-#include "TenantManager.h"
-#include "TenantIdentityCard.h"
-#include "TenantSelectorButton.h"
 #include "Signals.h"
+#include "TenantIdentityCard.h"
+#include "TenantManager.h"
+#include "TenantSelectorButton.h"
 
 namespace godot {
-class TenantSelector: public TextureRect {
+class TenantSelector : public TextureRect {
 	GODOT_CLASS(TenantSelector, TextureRect);
 
-	static int64_t maxTenantInSelector;
-	RandomNumberGenerator * rng;
+	size_t maxItems;
+	RandomNumberGenerator *rng;
 
 public:
 	static void _register_methods();
@@ -29,6 +29,6 @@ public:
 	void tenant_selected(int64_t tenantId);
 	void exit_selector();
 };
-}
+} // namespace godot
 
 #endif //MUNDANE_JAM_TENANTSELECTOR_H
