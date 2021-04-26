@@ -517,7 +517,7 @@ margin_right = 486.703
 margin_bottom = 274.946
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Here you can see the identity card of the tenant who live in the flat. This card indicate the trust and the cleanliness of the tenant. This character traits impact the game. Someone reliable will pay you for sure and someone clean will make your flat less dirty. The leasing duration indicate the the duration, in play cycle, during which the tenant will stay."
+text = "Here you can see the identity card of the tenant who live in the flat. The card indicates the trust and the cleanliness of the tenant. These character traits impact the game. A reliable tenant will pay you for sure and if he's clean it will make your flat less dirty. The leasing duration indicate the duration, in play cycle, during which the tenant will stay."
 __meta__ = {
 "_edit_use_anchors_": false
 }
