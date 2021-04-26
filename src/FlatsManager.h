@@ -9,6 +9,7 @@
 #include "Flat.h"
 #include "GameState.h"
 #include "MonthReport.h"
+#include "ReportFrame.h"
 #include "TenantManager.h"
 
 #include <Array.hpp>
@@ -20,12 +21,15 @@
 #include <vector>
 
 namespace godot {
+class ReportFrame;
+
 class FlatsManager : public Node2D {
 	GODOT_CLASS(FlatsManager, Node2D);
 
 private:
 	std::vector<Action *> actions;
 	static const int8_t MAX_ACTIONS = 6;
+	ReportFrame *reportFrame;
 
 public:
 	void run_cycle();

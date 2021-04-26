@@ -9,8 +9,8 @@
 
 #include <Button.hpp>
 #include <Control.hpp>
-#include <Label.hpp>
 #include <Godot.hpp>
+#include <Label.hpp>
 #include <Ref.hpp>
 #include <ResourceLoader.hpp>
 #include <SceneTree.hpp>
@@ -29,6 +29,6 @@ public:
 	void _restartGame();
 	void _exitGame();
 };
-}
+} // namespace godot
 
 #endif //MUNDANE_JAM_ENDSCREEN_H

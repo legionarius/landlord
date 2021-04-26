@@ -712,6 +712,7 @@ add_executable(
         src/ActionRepairFlat.cpp src/ActionRepairFlat.h
         src/ActionMoveInTenant.cpp src/ActionMoveInTenant.h
         src/TenantSelector.cpp src/TenantSelector.h src/TenantSelectorButton.cpp src/TenantSelectorButton.h
+        src/ReportFrame.cpp src/ReportFrame.h
         src/EndScreen.cpp src/EndScreen.h
         src/TenantCharacter.cpp src/TenantCharacter.h
         src/Weather.cpp src/Weather.h

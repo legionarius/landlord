@@ -88,6 +88,41 @@ real_t Flat::break_legs_and_collect_money() {
 	}
 }
 
+void Flat::queue_move_in_tenant(const bool isPressed, const uint64_t tenantId) {
+	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	if (isPressed) {
+		TenantManager *tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
+		TenantIdentityCard::Tenant *tenant = tenantManager->get_tenant(tenantId - 1);
+		ActionMoveInTenant *actionMoveInTenant = new ActionMoveInTenant(this, tenant);
+		flatsManager->add_action(actionMoveInTenant);
+
+	} else {
+		flatsManager->remove_action(this, ACTION_MOVE_IN_TENANT);
+	}
+}
+
+void Flat::queue_fire_tenant(const bool isPressed) {
+	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	if (isPressed) {
+		ActionFireTenant *actionFireTenant = new ActionFireTenant(this);
+		flatsManager->add_action(actionFireTenant);
+	} else {
+		flatsManager->remove_action(this, ACTION_FIRE_TENANT);
+	}
+}
+
+void Flat::queue_repair_flat(const bool isPressed) {
+	FlatsManager *flatsManager = cast_to<FlatsManager>(get_tree()->get_root()->get_node("MainScene/Map/Flats"));
+	if (isPressed) {
+		ActionRepairFlat *actionRepairFlat = new ActionRepairFlat(this);
+		if (!flatsManager->action_will_be_executed_in_flat(this, ACTION_REPAIR_FLAT)) {
+			flatsManager->add_action(actionRepairFlat);
+		}
+	} else {
+		flatsManager->remove_action(this, ACTION_REPAIR_FLAT);
+	}
+}
+
 void Flat::repair() {
 	health = 100;
 }

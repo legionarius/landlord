@@ -23,7 +23,11 @@
 [ext_resource path="res://asset/sound/background_chatter.ogg" type="AudioStream" id=21]
 [ext_resource path="res://entity/Flat/Flat.gdns" type="Script" id=22]
 [ext_resource path="res://entity/FlatFrame/FlatFrame.tscn" type="PackedScene" id=23]
+<<<<<<< HEAD
+[ext_resource path="res://entity/ReportFrame/ReportFrame.tscn" type="PackedScene" id=24]
+=======
 [ext_resource path="res://entity/MainScene/MainScene.gdns" type="Script" id=24]
+>>>>>>> f58eb9e9fb63a4c75143be89ffc025d4cf041987
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -78,6 +82,9 @@ __meta__ = {
 }
 
 [node name="FlatFrame" parent="." instance=ExtResource( 23 )]
+
+[node name="ReportFrame" parent="." instance=ExtResource( 24 )]
+visible = false
 
 [node name="Map" type="Node2D" parent="."]
 

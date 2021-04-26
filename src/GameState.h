@@ -7,8 +7,8 @@
 
 #include "ActionRepairFlat.h"
 #include "FlatsManager.h"
-#include "MonthReport.h"
 #include "OnBoarding.h"
+#include "ReportFrame.h"
 #include "Signals.h"
 
 #include <Control.hpp>
@@ -22,6 +22,8 @@
 #include <Viewport.hpp>
 
 namespace godot {
+class ReportFrame;
+
 class GameState : public Node {
 	GODOT_CLASS(GameState, Node);
 
@@ -29,7 +31,8 @@ private:
 	int64_t year;
 	int64_t month;
 	real_t balance;
-	MonthReport *monthReport;
+
+	ReportFrame *reportFrame;
 	Node *mainScene;
 	// If the onBoarding piss you off, you can pass the following variable to "true"
 	bool onBoardingLoaded = false;

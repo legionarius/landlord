@@ -3,6 +3,7 @@
 //
 
 #include "FlatsManager.h"
+#include <iostream>
 
 using namespace godot;
 
@@ -11,6 +12,7 @@ void FlatsManager::_init() {
 
 void FlatsManager::_ready() {
 	add_tenants();
+	reportFrame = cast_to<ReportFrame>(get_tree()->get_root()->get_node("MainScene/ReportFrame"));
 }
 
 void FlatsManager::add_tenants() {
@@ -30,6 +32,11 @@ real_t FlatsManager::_collect_rent() {
 	for (size_t i = 0; i < flats.size(); i++) {
 		Flat *flat = cast_to<Flat>(flats[i]);
 		real_t rent = flat->break_legs_and_collect_money();
+		if (rent == 0) {
+			reportFrame->add_entry(flat, false);
+		} else {
+			reportFrame->add_entry(flat, true);
+		}
 		money += rent;
 	}
 	return money;

@@ -73,7 +73,7 @@ void OnBoarding::next_step() {
 
 void OnBoarding::update_current_step_node() {
 	currentStep += 1;
-	if(currentStepNode != nullptr) {
+	if (currentStepNode != nullptr) {
 		currentStepNode->queue_free();
 	}
 	disconnect_flat_frame_signals();
@@ -102,14 +102,14 @@ void OnBoarding::_flat_detail_presentation() {
 	flatFrame->connect(END_OPEN_FLAT_DETAIL, this, "next_step");
 }
 
-void OnBoarding::disconnect_flat_frame_signals(){
-	if(flatFrame->is_connected(START_OPEN_FLAT_DETAIL, this, "hide_current_step")){
+void OnBoarding::disconnect_flat_frame_signals() {
+	if (flatFrame->is_connected(START_OPEN_FLAT_DETAIL, this, "hide_current_step")) {
 		flatFrame->disconnect(START_OPEN_FLAT_DETAIL, this, "hide_current_step");
 	}
-	if(flatFrame->is_connected(END_OPEN_FLAT_DETAIL, this, "next_step")){
+	if (flatFrame->is_connected(END_OPEN_FLAT_DETAIL, this, "next_step")) {
 		flatFrame->disconnect(END_OPEN_FLAT_DETAIL, this, "next_step");
 	}
-	if(flatFrame->is_connected("popup_hide", this, "next_step")){
+	if (flatFrame->is_connected("popup_hide", this, "next_step")) {
 		flatFrame->disconnect("popup_hide", this, "next_step");
 	}
 }
@@ -124,7 +124,7 @@ void OnBoarding::_flat_detail_exit_presentation() {
 
 void OnBoarding::_next_cycle_presentation() {
 	GameState *gameState = cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
-	gameState->connect(NEW_CYCLE,this, "next_step");
+	gameState->connect(NEW_CYCLE, this, "next_step");
 }
 
 void OnBoarding::_register_methods() {

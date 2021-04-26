@@ -15,6 +15,7 @@
 #include "Signals.h"
 #include "TenantCharacter.h"
 #include "TenantIdentityCard.h"
+
 #include <ColorRect.hpp>
 #include <Godot.hpp>
 #include <KinematicBody2D.hpp>

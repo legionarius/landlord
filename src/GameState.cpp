@@ -16,12 +16,18 @@ void GameState::init_properties() {
 	balance = 1000;
 }
 
-void GameState::_ready() {}
+void GameState::_ready() {
+}
 
 void GameState::_input(const Ref<InputEvent> event) {
 }
 
 void GameState::_next_turn() {
+	// Clean-up logs
+	if (get_cycle_number() == 0) {
+		reportFrame = cast_to<ReportFrame>(get_tree()->get_root()->get_node("MainScene/ReportFrame"));
+	}
+
 	calculate_balance();
 	calculate_actions_cost();
 
@@ -32,6 +38,8 @@ void GameState::_next_turn() {
 		run_actions();
 		// Update current state
 		next_month();
+		// Show month report
+		reportFrame->show();
 		// Update UI
 		emit_signal(NEW_CYCLE, month, year, balance);
 	}
@@ -71,7 +79,7 @@ void GameState::start_game() {}
 
 void GameState::main_scene_loaded() {
 	mainScene = get_tree()->get_root()->get_node("MainScene");
-	if(!onBoardingLoaded){
+	if (!onBoardingLoaded) {
 		Ref<PackedScene> onBoardingScene = ResourceLoader::get_singleton()->load("entity/OnBoarding/OnBoarding.tscn");
 		OnBoarding *onBoarding = cast_to<OnBoarding>(onBoardingScene->instance());
 		mainScene->add_child(onBoarding);
