@@ -30,8 +30,6 @@ real_t FlatsManager::_collect_rent() {
 	real_t money = 0.f;
 	Array flats = get_children();
 	for (size_t i = 0; i < flats.size(); i++) {
-		// flats[i]
-		std::cout << flats[i].get_type() << std::endl;
 		Flat *flat = cast_to<Flat>(flats[i]);
 		real_t rent = flat->break_legs_and_collect_money();
 		if (rent == 0) {

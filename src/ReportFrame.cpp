@@ -11,9 +11,6 @@ void ReportFrame::_init() {}
 void ReportFrame::_ready() {
 	itemList = Object::cast_to<BoxContainer>(get_node("MarginContainer/Background/CenterContainer/ItemList"));
 	closeButton = Object::cast_to<Button>(get_node("Button"));
-	// font = DynamicFont::_new();
-	// Ref<DynamicFontData> data = ResourceLoader::get_singleton()->load("res://asset/font/CharlotteSouthern.otf");
-	// font->set_font_data(data);
 	closeButton->connect("pressed", this, "_hide");
 	connect(POPUP_ABOUT_TO_SHOW, this, "_on_pre_show");
 }
@@ -31,8 +28,6 @@ void ReportFrame::_hide() {
 
 void ReportFrame::add_entry(Flat *flat, bool hasPayed) {
 	Label *label = Label::_new();
-	// label->add_font_override("test", font);
-
 	std::stringstream string;
 
 	if (hasPayed) {

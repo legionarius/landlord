@@ -31,7 +31,6 @@ private:
 	int64_t year;
 	int64_t month;
 	real_t balance;
-	MonthReport *monthReport;
 	ReportFrame *reportFrame;
 
 	void next_month();
