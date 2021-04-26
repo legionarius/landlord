@@ -307,7 +307,7 @@ margin_right = 218.892
 margin_bottom = 80.7621
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "By clicking on a flat you open the details popup which shows you all the information of the flat."
+text = "Click on a flat to show detailed information about it."
 
 [node name="ButtonBackground" type="TextureRect" parent="Container/Step3"]
 margin_left = 620.353
