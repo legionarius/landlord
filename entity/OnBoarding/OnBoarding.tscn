@@ -781,7 +781,7 @@ margin_right = 27.8567
 margin_bottom = 48.9512
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "In this box you can follow if yours tenant have payed or not."
+text = "In this box you can follow if your tenants have payed or not."
 __meta__ = {
 "_edit_use_anchors_": false
 }
