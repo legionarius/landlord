@@ -30,10 +30,11 @@ def gender():
     return choice(['male','female'])
 
 def picture(gender):
+    pictureIndex = randint(1, 5)
     if gender == 'male':
-        return men_pic
+        return "asset/Tenant/picture/men{0}.png".format(pictureIndex)
     else:
-        return women_pic
+        return "asset/Tenant/picture/woman{0}.png".format(pictureIndex)
 
 def leasing_duration():
     return leasing_duration_array[randint(0,2)]

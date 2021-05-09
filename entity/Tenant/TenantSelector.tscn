@@ -8,17 +8,35 @@ z_index = 3
 script = ExtResource( 2 )
 
 [node name="TenantSelectorBackground" type="TextureRect" parent="."]
-margin_top = 300.0
+margin_top = 239.0
 margin_right = 1024.0
 margin_bottom = 600.0
 texture = ExtResource( 1 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ExitSelector" type="TextureButton" parent="."]
 margin_right = 1023.0
-margin_bottom = 300.0
+margin_bottom = 236.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="."]
+margin_top = 242.0
+margin_right = 1024.0
+margin_bottom = 545.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="Center"]
+margin_left = 512.0
+margin_top = 151.0
+margin_right = 512.0
+margin_bottom = 151.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

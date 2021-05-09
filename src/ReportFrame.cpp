@@ -9,19 +9,16 @@ using namespace godot;
 void ReportFrame::_init() {}
 
 void ReportFrame::_ready() {
-	itemList = Object::cast_to<BoxContainer>(get_node("MarginContainer/Background/CenterContainer/ItemList"));
-	closeButton = Object::cast_to<Button>(get_node("Button"));
-	closeButton->connect("pressed", this, "_hide");
-	connect(POPUP_ABOUT_TO_SHOW, this, "_on_pre_show");
-}
-
-void ReportFrame::_on_pre_show() {
+	itemList = cast_to<GridContainer>(get_node("MarginContainer/Background/CenterContainer/ItemList"));
+	closeButton = cast_to<Button>(get_node("Button"));
+	closeButton->connect(BTN_PRESSED, this, "_hide");
+	dynamicFont = ResourceLoader::get_singleton()->load("asset/font/CharlotteSouthern.otf");
 }
 
 void ReportFrame::_hide() {
-	Array childrens = itemList->get_children();
-	for (size_t i = 0; i < childrens.size(); i++) {
-		Object::cast_to<Node>(childrens[i])->queue_free();
+	Array children = itemList->get_children();
+	for (size_t i = 0; i < itemList->get_child_count(); i++) {
+		itemList->get_child(i)->queue_free();
 	}
 	this->hide();
 }
@@ -36,13 +33,18 @@ void ReportFrame::add_entry(Flat *flat, bool hasPayed) {
 		string << "Flat N° " << flat->id << " hasn't payed.";
 	}
 
+	Ref<DynamicFont> font = DynamicFont::_new();
+	font->set_font_data(dynamicFont);
+	font->set_size(24);
+	font->set_use_filter(true);
 	label->set_text(string.str().c_str());
+	label->add_font_override("font", font);
+	label->add_color_override("font_color", Color(0, 0 ,0));
 	itemList->add_child(label);
 }
 
 void ReportFrame::_register_methods() {
 	register_method("_init", &ReportFrame::_init);
 	register_method("_ready", &ReportFrame::_ready);
-	register_method("_on_pre_show", &ReportFrame::_on_pre_show);
 	register_method("_hide", &ReportFrame::_hide);
 }

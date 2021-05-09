@@ -92,6 +92,15 @@ void GameState::end_game() {
 	get_tree()->change_scene("entity/EndScreen/EndScreen.tscn");
 }
 
+void GameState::_update_sound_volume(float_t volume) {
+	sound_volume = volume;
+	emit_signal(UPDATE_VOLUME, volume);
+}
+
+float_t GameState::_get_sound_volume() {
+	return sound_volume;
+}
+
 void GameState::_register_methods() {
 	register_method("_init", &GameState::_init);
 	register_method("_ready", &GameState::_ready);
@@ -101,4 +110,5 @@ void GameState::_register_methods() {
 	register_method("start_game", &GameState::start_game);
 	register_method("main_scene_loaded", &GameState::main_scene_loaded);
 	register_signal<GameState>(NEW_CYCLE, "month", GODOT_VARIANT_TYPE_INT, "year", GODOT_VARIANT_TYPE_INT, "balance", GODOT_VARIANT_TYPE_REAL);
+	register_signal<GameState>(UPDATE_VOLUME, "volume", GODOT_VARIANT_TYPE_REAL);
 }

@@ -31,6 +31,7 @@ private:
 	int64_t year;
 	int64_t month;
 	real_t balance;
+	float_t sound_volume = 1.f;
 
 	ReportFrame *reportFrame;
 	Node *mainScene;
@@ -55,6 +56,8 @@ public:
 	void init_properties();
 	void start_game();
 	void main_scene_loaded();
+	void _update_sound_volume(float_t volume);
+	float_t _get_sound_volume();
 };
 } // namespace godot
 

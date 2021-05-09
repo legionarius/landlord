@@ -32,7 +32,7 @@ real_t FlatsManager::_collect_rent() {
 	for (size_t i = 0; i < flats.size(); i++) {
 		Flat *flat = cast_to<Flat>(flats[i]);
 		real_t rent = flat->break_legs_and_collect_money();
-		if (rent == 0) {
+		if (rent < 0) {
 			reportFrame->add_entry(flat, false);
 		} else {
 			reportFrame->add_entry(flat, true);
@@ -99,23 +99,6 @@ real_t FlatsManager::get_actions_cost() {
 	return cost;
 }
 
-void FlatsManager::_add_action(int flatId, int actionTypeOrdinal) {
-	auto actionType = static_cast<ActionType>(actionTypeOrdinal);
-	switch (actionType) {
-		case ACTION:
-			break;
-		case ACTION_REPAIR_FLAT:
-			Godot::print("Repairing Flat");
-			break;
-		case ACTION_FIRE_TENANT:
-			Godot::print("Fire Tenant");
-			break;
-		case ACTION_MOVE_IN_TENANT:
-			Godot::print("Move In Tenant");
-			break;
-	}
-}
-
 void FlatsManager::queue_move_in_tenant(const bool isPressed, const int flatId, const uint64_t tenantId) {
 	if (isPressed) {
 		TenantManager *tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
@@ -164,7 +147,6 @@ bool FlatsManager::can_add_action() {
 void FlatsManager::_register_methods() {
 	register_method("_init", &FlatsManager::_init);
 	register_method("_ready", &FlatsManager::_ready);
-	register_method("_add_action", &FlatsManager::_add_action);
 	register_method("queue_move_in_tenant", &FlatsManager::queue_move_in_tenant);
 	register_method("queue_repair_flat", &FlatsManager::queue_repair_flat);
 	register_method("queue_fire_tenant", &FlatsManager::queue_fire_tenant);

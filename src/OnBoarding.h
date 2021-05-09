@@ -19,10 +19,12 @@
 
 #include "FlatFrame.h"
 #include "GameState.h"
+#include "ReportFrame.h"
 #include "Signals.h"
 
 namespace godot {
 class FlatFrame;
+class ReportFrame;
 
 class OnBoarding : public CanvasLayer {
 	GODOT_CLASS(OnBoarding, CanvasLayer);
@@ -30,11 +32,13 @@ class OnBoarding : public CanvasLayer {
 	int16_t currentStep = 0;
 	Control *currentStepNode;
 	FlatFrame *flatFrame;
+	ReportFrame *reportFrame;
 
 private:
 	void _flat_detail_presentation();
 	void _text_button_presentation();
 	void _flat_detail_exit_presentation();
+	void _report_frame_exit_presentation();
 	void _next_cycle_presentation();
 
 public:

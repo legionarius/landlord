@@ -11,12 +11,15 @@
 #include <BoxContainer.hpp>
 #include <Button.hpp>
 #include <Control.hpp>
+#include <Color.hpp>
 #include <DynamicFont.hpp>
+#include <DynamicFontData.hpp>
 #include <Godot.hpp>
-#include <ItemList.hpp>
+#include <GridContainer.hpp>
 #include <Label.hpp>
 #include <Node.hpp>
 #include <PopupDialog.hpp>
+#include <Ref.hpp>
 #include <ResourceLoader.hpp>
 #include <iostream>
 #include <sstream>
@@ -28,15 +31,14 @@ class ReportFrame : public PopupDialog {
 	GODOT_CLASS(ReportFrame, PopupDialog);
 
 private:
-	BoxContainer *itemList;
-	// DynamicFont *font;
+	GridContainer *itemList;
+	Ref<DynamicFontData> dynamicFont;
 	Button *closeButton;
 
 public:
 	static void _register_methods();
 	void _init();
 	void _ready();
-	void _on_pre_show();
 	void _hide();
 	void add_entry(Flat *flat, bool hasPayed);
 };

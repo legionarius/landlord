@@ -1,9 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://entity/TitleScreen/TitleScreen.gdns" type="Script" id=1]
 [ext_resource path="res://asset/TitleScreen/background.png" type="Texture" id=2]
 [ext_resource path="res://asset/TitleScreen/game_title_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://asset/sound/title_music.ogg" type="AudioStream" id=4]
+[ext_resource path="res://asset/font/Carnevalee Freakshow.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://asset/TitleScreen/texture_button.png" type="Texture" id=6]
+[ext_resource path="res://entity/Settings/Settings.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+use_filter = true
+font_data = ExtResource( 5 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -28,10 +41,12 @@ __meta__ = {
 }
 
 [node name="GameTitle" type="Label" parent="."]
-margin_left = 229.93
-margin_top = 14.6207
-margin_right = 843.93
-margin_bottom = 132.621
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -307.0
+margin_top = 28.0
+margin_right = 307.0
+margin_bottom = 146.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.788235, 0.564706, 0.388235, 1 )
 custom_colors/font_color_shadow = Color( 0.356863, 0.262745, 0.168627, 1 )
@@ -42,32 +57,74 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+autoplay = true
+
 [node name="MainMenu" type="VBoxContainer" parent="."]
-margin_left = 416.321
-margin_top = 363.665
-margin_right = 666.321
-margin_bottom = 483.665
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -32.0
+margin_right = 125.0
+margin_bottom = 88.0
 rect_clip_content = true
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Start" type="Button" parent="MainMenu"]
-margin_top = 38.0
-margin_right = 249.0
+[node name="Start" type="TextureButton" parent="MainMenu"]
+margin_top = 23.0
+margin_right = 250.0
 margin_bottom = 58.0
 mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="MainMenu/Start"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.0594
+margin_top = -18.0
+margin_right = 34.9406
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.85098, 0.737255, 0.580392, 1 )
 text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Exit" type="Button" parent="MainMenu"]
+[node name="Exit" type="TextureButton" parent="MainMenu"]
 margin_top = 62.0
-margin_right = 249.0
-margin_bottom = 82.0
+margin_right = 250.0
+margin_bottom = 97.0
 mouse_default_cursor_shape = 2
-text = "Exit"
+texture_normal = ExtResource( 6 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-volume_db = -10.0
-autoplay = true
+[node name="Label" type="Label" parent="MainMenu/Exit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -20.0
+margin_right = 25.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.85098, 0.737255, 0.580392, 1 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" parent="." instance=ExtResource( 7 )]
+margin_left = 1.18921
+margin_top = 1.18921
+margin_right = 1.18921
+margin_bottom = 1.18921

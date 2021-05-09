@@ -26,8 +26,6 @@ void ActionItem::_ready() {
 			break;
 		case ACTION_FIRE_TENANT:
 			break;
-		default:
-			Godot::print("DEFAULT");
 	}
 }
 
