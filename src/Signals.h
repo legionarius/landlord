@@ -23,10 +23,13 @@
 #define REMOVE_ACTION "remove_action"
 // Sent each time the action count effectively changes
 #define ACTION_COUNT "action_count"
+#define UPDATE_VOLUME "update_volume"
 
 // Godot Signals
 
 #define BTN_PRESSED "pressed"
 #define POPUP_ABOUT_TO_SHOW "about_to_show"
+#define POPUP_HIDE "popup_hide"
+#define HIDE "hide"
 
 #endif //MUNDANE_JAM_SIGNALS_H

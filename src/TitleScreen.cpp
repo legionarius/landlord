@@ -10,10 +10,13 @@ void TitleScreen::_init() {
 }
 
 void TitleScreen::_ready() {
-	Button *exitBtn = Object::cast_to<Button>(get_node("MainMenu/Exit"));
-	Button *startBtn = Object::cast_to<Button>(get_node("MainMenu/Start"));
-	exitBtn->connect("pressed", this, "_exit");
-	startBtn->connect("pressed", this, "_start");
+	TextureButton *exitBtn = Object::cast_to<TextureButton>(get_node("MainMenu/Exit"));
+	TextureButton *startBtn = Object::cast_to<TextureButton>(get_node("MainMenu/Start"));
+	GameState *gameState = cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
+	sound = cast_to<AudioStreamPlayer>(get_node("Sound"));
+	exitBtn->connect(BTN_PRESSED, this, "_exit");
+	startBtn->connect(BTN_PRESSED, this, "_start");
+	gameState->connect(UPDATE_VOLUME, this, "_update_sound_volume");
 }
 
 void TitleScreen::_exit() {
@@ -33,10 +36,15 @@ void TitleScreen::_input(const Ref<InputEvent> event) {
 	}
 }
 
+void TitleScreen::_update_sound_volume(float_t volume) {
+	sound->set_volume_db(volume);
+}
+
 void TitleScreen::_register_methods() {
 	register_method("_init", &TitleScreen::_init);
 	register_method("_ready", &TitleScreen::_ready);
 	register_method("_exit", &TitleScreen::_exit);
 	register_method("_start", &TitleScreen::_start);
 	register_method("_input", &TitleScreen::_input);
+	register_method("_update_sound_volume", &TitleScreen::_update_sound_volume);
 }

@@ -5,6 +5,7 @@
 #ifndef MUNDANE_JAM_MAINSCENE_H
 #define MUNDANE_JAM_MAINSCENE_H
 
+#include <AudioStreamPlayer2D.hpp>
 #include <Godot.hpp>
 #include <Node2D.hpp>
 

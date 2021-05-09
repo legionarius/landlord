@@ -13,6 +13,7 @@
 #include "MainScene.h"
 #include "OnBoarding.h"
 #include "ReportFrame.h"
+#include "Settings.h"
 #include "SignalButton.h"
 #include "TenantCharacter.h"
 #include "TenantIdentityCard.h"
@@ -51,5 +52,6 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
 	godot::register_class<godot::ActionItem>();
 	godot::register_class<godot::ReportFrame>();
 	godot::register_class<godot::OnBoarding>();
+	godot::register_class<godot::Settings>();
 	godot::register_class<godot::MainScene>();
 }

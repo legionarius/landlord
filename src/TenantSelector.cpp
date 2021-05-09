@@ -13,7 +13,7 @@ void TenantSelector::_init() {
 
 void TenantSelector::_ready() {
 	TenantManager *tenantManager = cast_to<TenantManager>(get_tree()->get_root()->get_node("TenantManager"));
-	Node *selectorBackground = get_node("TenantSelectorBackground");
+	HBoxContainer *container = cast_to<HBoxContainer>(get_node("Center/Container"));
 	TextureButton *exitSelector = cast_to<TextureButton>(get_node("ExitSelector"));
 	exitSelector->connect("pressed", this, "exit_selector");
 	Ref<Texture> hover_texture = ResourceLoader::get_singleton()->load("asset/Flat/hover_texture.png");
@@ -33,10 +33,9 @@ void TenantSelector::_ready() {
 		tenantButtonSelector->connect(TENANT_SELECTOR_PRESSED, this, "tenant_selected");
 		tenantButtonSelector->set_tenant_id(tenant->id);
 		tenantIdentityCard->set_tenant(tenant);
-		tenantButtonSelector->set_position(Vector2(0, 30));
-		tenantButtonSelector->set_margin(0, 200 * (i + 1));
 		tenantButtonSelector->add_child(tenantIdentityCard);
-		selectorBackground->add_child(tenantButtonSelector);
+		container->add_constant_override("separation", 50);
+		container->add_child(tenantButtonSelector);
 	}
 }
 

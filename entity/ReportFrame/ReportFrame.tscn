@@ -1,25 +1,41 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://entity/ReportFrame/ReportFrame.gdns" type="Script" id=1]
 [ext_resource path="res://asset/ReportFrame/report_frame.png" type="Texture" id=2]
 [ext_resource path="res://asset/ReportFrame/report_header.png" type="Texture" id=3]
+[ext_resource path="res://asset/OnBoarding/button_background.png" type="Texture" id=4]
+[ext_resource path="res://asset/font/Fashion Stamp.ttf" type="DynamicFontData" id=5]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "show"
 length = 0.5
 
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 0.235294 )
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 17
+use_filter = true
+font_data = ExtResource( 5 )
+
 [node name="ReportFrame" type="PopupDialog"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -5.0
 margin_top = -4.0
 margin_right = 4.0
 margin_bottom = 4.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -44,16 +60,18 @@ flip_v = true
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 90.0
+margin_top = 60.5
+margin_bottom = -29.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemList" type="VBoxContainer" parent="MarginContainer/Background/CenterContainer"]
+[node name="ItemList" type="GridContainer" parent="MarginContainer/Background/CenterContainer"]
 margin_left = 218.0
 margin_top = 241.0
 margin_right = 218.0
 margin_bottom = 241.0
+columns = 2
 
 [node name="ReportHeader" type="Sprite" parent="MarginContainer/Background"]
 position = Vector2( 221.103, 57.6219 )
@@ -63,11 +81,30 @@ texture = ExtResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/show = SubResource( 2 )
 
+[node name="ButtonBackground" type="TextureRect" parent="."]
+margin_left = 467.0
+margin_top = 537.0
+margin_right = 1938.0
+margin_bottom = 828.0
+rect_scale = Vector2( 0.08, 0.1 )
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button" type="Button" parent="."]
-margin_left = 859.0
-margin_top = 542.0
-margin_right = 994.0
-margin_bottom = 582.0
+margin_left = 467.0
+margin_top = 539.0
+margin_right = 584.0
+margin_bottom = 566.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Close"
 __meta__ = {
 "_edit_use_anchors_": false

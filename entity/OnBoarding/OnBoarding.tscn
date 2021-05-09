@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://entity/OnBoarding/OnBoarding.gdns" type="Script" id=1]
 [ext_resource path="res://asset/OnBoarding/men.png" type="Texture" id=2]
@@ -49,43 +49,43 @@ tracks/0/keys = {
 "values": [ Color( 0.898039, 0.898039, 0.898039, 0.313726 ), Color( 0.898039, 0.898039, 0.898039, 0.470588 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=29]
-bg_color = Color( 0, 0, 0, 0 )
-
 [sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 1, 1, 1, 0 )
+bg_color = Color( 0, 0, 0, 0 )
 
 [sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 1, 1, 1, 0.235294 )
+bg_color = Color( 1, 1, 1, 0 )
 
 [sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0, 0, 0, 0 )
+bg_color = Color( 1, 1, 1, 0.235294 )
 
 [sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 1, 1, 1, 0.235294 )
+bg_color = Color( 0, 0, 0, 0 )
 
 [sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0, 0, 0, 0 )
+bg_color = Color( 1, 1, 1, 0.235294 )
 
 [sub_resource type="StyleBoxFlat" id=14]
-bg_color = Color( 1, 1, 1, 0.235294 )
+bg_color = Color( 0, 0, 0, 0 )
 
 [sub_resource type="StyleBoxFlat" id=15]
-bg_color = Color( 0, 0, 0, 0 )
+bg_color = Color( 1, 1, 1, 0.235294 )
 
 [sub_resource type="StyleBoxFlat" id=16]
-bg_color = Color( 1, 1, 1, 0.235294 )
-
-[sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 1, 1, 1, 0.235294 )
 
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0, 0, 0, 0 )
+
 [sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 length = 1.4
 loop = true
 tracks/0/type = "value"
@@ -101,16 +101,16 @@ tracks/0/keys = {
 "values": [ Color( 0.898039, 0.898039, 0.898039, 0.403922 ), Color( 0.898039, 0.898039, 0.898039, 0.470588 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=21]
-bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
-
 [sub_resource type="StyleBoxFlat" id=22]
-bg_color = Color( 1, 1, 1, 0.235294 )
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
 
 [sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 1, 1, 1, 0.235294 )
+
+[sub_resource type="StyleBoxFlat" id=24]
 bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=25]
 length = 1.4
 loop = true
 tracks/0/type = "value"
@@ -126,16 +126,35 @@ tracks/0/keys = {
 "values": [ Color( 0.898039, 0.898039, 0.898039, 0.313726 ), Color( 0.898039, 0.898039, 0.898039, 0.470588 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=25]
-bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
-
 [sub_resource type="StyleBoxFlat" id=26]
-bg_color = Color( 1, 1, 1, 0.235294 )
+bg_color = Color( 0, 0, 0, 0 )
 
 [sub_resource type="StyleBoxFlat" id=27]
-bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
+bg_color = Color( 1, 1, 1, 0.235294 )
 
 [sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
+
+[sub_resource type="Animation" id=29]
+length = 1.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.898039, 0.898039, 0.898039, 0.313726 ), Color( 0.898039, 0.898039, 0.898039, 0.470588 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 0.141176, 0.133333, 0.133333, 0.411765 )
+
+[sub_resource type="StyleBoxFlat" id=31]
 bg_color = Color( 1, 1, 1, 0.235294 )
 
 [node name="OnBoarding" type="CanvasLayer"]
@@ -242,7 +261,7 @@ margin_top = 69.0
 margin_right = 174.0
 margin_bottom = 128.0
 mouse_filter = 2
-color = Color( 0.898039, 0.898039, 0.898039, 0.470588 )
+color = Color( 0.898039, 0.898039, 0.898039, 0.388259 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -256,7 +275,7 @@ margin_left = 54.0
 margin_top = 127.0
 margin_right = 1023.0
 margin_bottom = 599.0
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -266,7 +285,7 @@ margin_left = 174.208
 margin_top = 69.0172
 margin_right = 1001.21
 margin_bottom = 132.017
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -278,7 +297,7 @@ margin_left = 1.0
 margin_top = -0.5
 margin_right = 1.0
 margin_bottom = -0.5
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 10 )
 popup_exclusive = true
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step3"]
@@ -327,7 +346,7 @@ margin_top = 366.066
 margin_right = 730.776
 margin_bottom = 393.066
 custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -344,7 +363,7 @@ margin_left = 0.374573
 margin_top = -0.490479
 margin_right = 0.374573
 margin_bottom = -0.490479
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 12 )
 popup_exclusive = true
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step4"]
@@ -402,7 +421,7 @@ margin_top = 479.566
 margin_right = 622.039
 margin_bottom = 506.566
 custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -419,7 +438,7 @@ margin_left = 0.374573
 margin_top = -0.490479
 margin_right = 0.374573
 margin_bottom = -0.490479
-custom_styles/panel = SubResource( 13 )
+custom_styles/panel = SubResource( 14 )
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step5"]
 anchor_left = 0.5
@@ -476,7 +495,7 @@ margin_top = 411.307
 margin_right = 646.643
 margin_bottom = 438.307
 custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -489,7 +508,7 @@ __meta__ = {
 [node name="Step6" type="PopupDialog" parent="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 15 )
+custom_styles/panel = SubResource( 16 )
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step6"]
 anchor_left = 0.5
@@ -546,7 +565,7 @@ margin_top = 535.918
 margin_right = 818.083
 margin_bottom = 562.918
 custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -563,7 +582,7 @@ margin_left = 38.7542
 margin_top = 1.78183
 margin_right = 38.7542
 margin_bottom = 1.78186
-custom_styles/panel = SubResource( 17 )
+custom_styles/panel = SubResource( 18 )
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step7"]
 anchor_left = 0.5
@@ -620,7 +639,7 @@ margin_top = 392.259
 margin_right = 556.162
 margin_bottom = 419.259
 custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 18 )
+custom_styles/pressed = SubResource( 19 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -634,7 +653,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 20 )
 
 [node name="ColorRect" type="ColorRect" parent="Container/Step8"]
 margin_left = 142.0
@@ -649,7 +668,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Container/Step8"]
 autoplay = "FluctuateColor"
-anims/FluctuateColor = SubResource( 20 )
+anims/FluctuateColor = SubResource( 21 )
 
 [node name="Step9" type="PopupDialog" parent="Container"]
 anchor_right = 1.0
@@ -658,7 +677,7 @@ margin_left = 0.42041
 margin_top = 2.24493
 margin_right = 0.42041
 margin_bottom = 2.24493
-custom_styles/panel = SubResource( 21 )
+custom_styles/panel = SubResource( 22 )
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step9"]
 anchor_left = 0.5
@@ -706,7 +725,7 @@ margin_top = 376.385
 margin_right = 739.506
 margin_bottom = 403.385
 custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -717,11 +736,13 @@ __meta__ = {
 }
 
 [node name="Step10" type="PopupDialog" parent="Container"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="Container/Step10"]
 margin_left = 942.0
@@ -729,21 +750,21 @@ margin_top = 390.0
 margin_right = 1012.0
 margin_bottom = 534.0
 mouse_filter = 2
-color = Color( 0.898039, 0.898039, 0.898039, 0.470588 )
+color = Color( 0.898039, 0.898039, 0.898039, 0.313726 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Container/Step10"]
 autoplay = "FluctuateColor"
-anims/FluctuateColor = SubResource( 24 )
+anims/FluctuateColor = SubResource( 25 )
 
 [node name="Container" type="PanelContainer" parent="Container/Step10"]
 margin_left = 5.0
 margin_top = 4.0
 margin_right = 938.0
 margin_bottom = 599.0
-custom_styles/panel = SubResource( 29 )
+custom_styles/panel = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -753,17 +774,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 0.894806
 margin_bottom = 0.894775
-custom_styles/panel = SubResource( 25 )
+custom_styles/panel = SubResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="Container/Step11"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -335.477
-margin_top = -115.683
-margin_right = 102.523
-margin_bottom = 25.3167
+margin_left = -507.0
+margin_top = -28.0
+margin_right = -183.0
+margin_bottom = 204.0
 texture = ExtResource( 7 )
 expand = true
 __meta__ = {
@@ -775,28 +799,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -300.143
-margin_top = -105.049
-margin_right = 27.8567
-margin_bottom = 48.9512
+margin_left = -481.0
+margin_top = -14.0
+margin_right = -211.0
+margin_bottom = 207.0
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "In this box you can follow if your tenants have payed or not."
+text = "On this paper, you can follow if your tenants have payed or not. It appear at the end of cycle."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sprite" type="Sprite" parent="Container/Step11"]
-position = Vector2( 655.72, 223.652 )
-rotation = -0.010472
+position = Vector2( 333.576, 322.789 )
+rotation = -0.319395
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 5 )
 
 [node name="ButtonBackground" type="TextureRect" parent="Container/Step11"]
-margin_left = 471.93
-margin_top = 287.328
-margin_right = 1855.93
-margin_bottom = 553.328
+margin_left = 196.467
+margin_top = 466.69
+margin_right = 1580.47
+margin_bottom = 732.69
 rect_scale = Vector2( 0.08, 0.1 )
 texture = ExtResource( 8 )
 expand = true
@@ -805,12 +829,12 @@ __meta__ = {
 }
 
 [node name="Next" type="Button" parent="Container/Step11"]
-margin_left = 472.354
-margin_top = 287.49
-margin_right = 582.354
-margin_bottom = 314.49
+margin_left = 195.891
+margin_top = 466.852
+margin_right = 305.891
+margin_bottom = 493.852
 custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 26 )
+custom_styles/pressed = SubResource( 27 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -821,11 +845,36 @@ __meta__ = {
 }
 
 [node name="Step12" type="PopupDialog" parent="Container"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 27 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 28 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect" type="TextureRect" parent="Container/Step12"]
+[node name="ColorRect" type="ColorRect" parent="Container/Step12"]
+margin_left = 462.0
+margin_top = 532.0
+margin_right = 580.0
+margin_bottom = 564.0
+mouse_filter = 2
+color = Color( 0.898039, 0.898039, 0.898039, 0.313726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Container/Step12"]
+autoplay = "FluctuateColor"
+anims/FluctuateColor = SubResource( 29 )
+
+[node name="Step13" type="PopupDialog" parent="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 30 )
+
+[node name="TextureRect" type="TextureRect" parent="Container/Step13"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -840,7 +889,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Container/Step12"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/Step13"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -856,12 +905,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Container/Step12"]
+[node name="Sprite" type="Sprite" parent="Container/Step13"]
 position = Vector2( 395.997, 317.36 )
 scale = Vector2( 0.444707, 0.421088 )
 texture = ExtResource( 2 )
 
-[node name="ButtonBackground" type="TextureRect" parent="Container/Step12"]
+[node name="ButtonBackground" type="TextureRect" parent="Container/Step13"]
 margin_left = 579.08
 margin_top = 389.715
 margin_right = 1963.08
@@ -873,13 +922,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Next" type="Button" parent="Container/Step12"]
+[node name="Next" type="Button" parent="Container/Step13"]
 margin_left = 579.503
 margin_top = 389.877
 margin_right = 689.503
 margin_bottom = 416.877
 custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 28 )
+custom_styles/pressed = SubResource( 31 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )

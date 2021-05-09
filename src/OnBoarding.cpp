@@ -11,6 +11,7 @@ void OnBoarding::_init() {}
 void OnBoarding::_ready() {
 	Timer *timer = cast_to<Timer>(get_node("StartTimer"));
 	flatFrame = cast_to<FlatFrame>(get_tree()->get_root()->get_node("MainScene/FlatFrame"));
+	reportFrame = cast_to<ReportFrame>(get_tree()->get_root()->get_node("MainScene/ReportFrame"));
 	timer->connect("timeout", this, "next_step");
 }
 
@@ -62,6 +63,10 @@ void OnBoarding::next_step() {
 			_text_button_presentation();
 			break;
 		case 12:
+			// [ONBOARDING]: Close report frame
+			_report_frame_exit_presentation();
+			break;
+		case 13:
 			// [ONBOARDING]: End tour presentation
 			last_step();
 			break;
@@ -109,8 +114,8 @@ void OnBoarding::disconnect_flat_frame_signals() {
 	if (flatFrame->is_connected(END_OPEN_FLAT_DETAIL, this, "next_step")) {
 		flatFrame->disconnect(END_OPEN_FLAT_DETAIL, this, "next_step");
 	}
-	if (flatFrame->is_connected("popup_hide", this, "next_step")) {
-		flatFrame->disconnect("popup_hide", this, "next_step");
+	if (flatFrame->is_connected(POPUP_HIDE, this, "next_step")) {
+		flatFrame->disconnect(POPUP_HIDE, this, "next_step");
 	}
 }
 
@@ -119,7 +124,11 @@ void OnBoarding::hide_current_step() {
 }
 
 void OnBoarding::_flat_detail_exit_presentation() {
-	flatFrame->connect("popup_hide", this, "next_step");
+	flatFrame->connect(POPUP_HIDE, this, "next_step");
+}
+
+void OnBoarding::_report_frame_exit_presentation() {
+	reportFrame->connect(HIDE, this, "next_step");
 }
 
 void OnBoarding::_next_cycle_presentation() {

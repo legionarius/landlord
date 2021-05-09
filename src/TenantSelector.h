@@ -6,6 +6,7 @@
 #define MUNDANE_JAM_TENANTSELECTOR_H
 
 #include <Godot.hpp>
+#include <HBoxContainer.hpp>
 #include <RandomNumberGenerator.hpp>
 #include <TextureButton.hpp>
 #include <TextureRect.hpp>

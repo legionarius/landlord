@@ -24,6 +24,7 @@ void FlatFrame::_ready() {
 	exitButton->connect("pressed", this, "_on_exitButton_pressed");
 	connect(POPUP_ABOUT_TO_SHOW, this, "_on_pre_show");
 	flatsManager->connect(ACTION_COUNT, this, "_on_action_count");
+	animation->connect("animation_finished", this, "_flat_is_displayed");
 }
 
 void FlatFrame::_on_pre_show() {
@@ -32,12 +33,10 @@ void FlatFrame::_on_pre_show() {
 	connect(SIGNAL_MOVE_IN_TENANT, flatsManager, "queue_move_in_tenant");
 
 	if (tenant != nullptr) {
-		Godot::print("[FlatFrame] : Pre-show with tenant");
 		tenantIdentityCard->set_tenant(tenant);
 		tenantIdentityCard->update_display();
 		tenantIdentityCard->show();
 	} else {
-		Godot::print("[FlatFrame] : Pre-show without tenant");
 		tenantIdentityCard->hide();
 	}
 	_toggle_fire_tenant_button(tenant != nullptr);
@@ -53,7 +52,6 @@ void FlatFrame::_on_pre_show() {
 	audio->play();
 	animation->play("open");
 	emit_signal(START_OPEN_FLAT_DETAIL);
-	animation->connect("animation_finished", this, "_flat_is_displayed");
 
 	flatName->set_text(flatNameLabel);
 	rent->set_text(rentLabel);
