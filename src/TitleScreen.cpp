@@ -10,6 +10,7 @@ void TitleScreen::_init() {
 }
 
 void TitleScreen::_ready() {
+	String osName = OS::get_singleton()->get_name();
 	TextureButton *exitBtn = Object::cast_to<TextureButton>(get_node("MainMenu/Exit"));
 	TextureButton *startBtn = Object::cast_to<TextureButton>(get_node("MainMenu/Start"));
 	GameState *gameState = cast_to<GameState>(get_tree()->get_root()->get_node("GameState"));
@@ -17,6 +18,9 @@ void TitleScreen::_ready() {
 	exitBtn->connect(BTN_PRESSED, this, "_exit");
 	startBtn->connect(BTN_PRESSED, this, "_start");
 	gameState->connect(UPDATE_VOLUME, this, "_update_sound_volume");
+	if(osName == "HTML5"){
+		exitBtn->set_visible(false);
+	}
 }
 
 void TitleScreen::_exit() {

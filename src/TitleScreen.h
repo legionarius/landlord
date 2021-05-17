@@ -19,6 +19,7 @@
 #include <TextureButton.hpp>
 #include <SceneTree.hpp>
 #include <Viewport.hpp>
+#include <OS.hpp>
 
 namespace godot {
 
